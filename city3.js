@@ -32,6 +32,13 @@ var plotFig = d3.svg.line()
 	.y(function (d) { return y(d.dat); })
 	.defined(function(d) { return !isNaN(d.dat); });
 
+var plotFigTwo = d3.svg.line()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y(function (d) { return y(d.for); })
+	.defined(function(d) { return !isNaN(d.for); });
+
 	svg.datum(data);
 
 	svg.append('path')
@@ -40,6 +47,14 @@ var plotFig = d3.svg.line()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
 		.attr("stroke", "#fdb59c")
+		.attr("stroke-width", "2");
+		
+	svg.append('path')
+		.attr('class', 'figure')
+		.attr('d', plotFigTwo)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "none")
+		.attr("stroke", "#000000")
 		.attr("stroke-width", "2");
 
 	svg.append('text')
@@ -98,8 +113,9 @@ d3.csv('data/Dakar-predict-90.csv', function (rawData) {
 
 	var dataSix = rawData.map(function (d) {
 		return {
-			date: parseDate(d.Date),
-			dat: Math.round(d.Forecast),
+			date: d3.time.format('%d/%m/%y').parse(d.Date),
+			for: Math.round(d.Forecast),
+			dat: Math.round(d.Actual),
 		};
 	});
 	

@@ -46,7 +46,7 @@ var plotFigTwo = d3.svg.line()
 		.attr('d', plotFig)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
-		.attr("stroke", "#000000")
+		.attr("stroke", "#abe3ce")
 		.attr("stroke-width", "2");
 		
 	svg.append('path')
@@ -54,7 +54,7 @@ var plotFigTwo = d3.svg.line()
 		.attr('d', plotFigTwo)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
-		.attr("stroke", "#abe3ce")
+		.attr("stroke", "#000000")
 		.attr("stroke-width", "2");
 		
 	svg.append('text')
