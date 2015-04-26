@@ -37,7 +37,7 @@ var plotFigTwo = d3.svg.line()
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
 	.y(function (d) { return y(d.act); })
-	.defined(function(d) { return !isNaN(d.dat); });
+	.defined(function(d) { return !isNaN(d.act); });
 
 	svg.datum(data);
 
