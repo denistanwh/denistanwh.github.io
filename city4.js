@@ -2,7 +2,7 @@ function runCFour() {
 	
 	var dateFirst = [];
 	var dataLast = [];
-function addAxesAndLegendCFour (svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes) {
+function addAxesAndLegendCFour (svg, xAxis, yAxis, margin, chartWidth, chartHeight) {
 
 	var axes = svg.append('g')
 		.attr('clip-path', 'url(#axes-clip)');
@@ -17,14 +17,14 @@ function addAxesAndLegendCFour (svg, xAxis, yAxis, margin, chartWidth, chartHeig
 		.call(yAxis)
 		.append('text')
 			.attr('transform', 'rotate(-90)')
-			.attr('y', -50)
+			.attr('y', 6)
 			.attr('dy', '.71em')
 			.style('text-anchor', 'end')
-			.text(textAxes);
+			.text('');
 
 }
 
-function drawPathsCFour (svg, data, x, y, titletext) {
+function drawPathsCFour (svg, data, x, y) {
 var plotFig = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
@@ -32,39 +32,13 @@ var plotFig = d3.svg.line()
 	.y(function (d) { return y(d.dat); })
 	.defined(function(d) { return !isNaN(d.dat); });
 
-var plotFigTwo = d3.svg.line()
-	.interpolate('basis')
-	.x (function (d) { return x(d.date) || 1; })
-	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return y(d.dat); })
-	.defined(function(d) { return !isNaN(d.act); });
 
 	svg.datum(data);
 
 	svg.append('path')
-		.attr('class', 'One')
+		.attr('class', 'figure')
 		.attr('d', plotFig)
-		.attr('clip-path', 'url(#rect-clip)')
-		.attr('shape-rendering', "crispEdges")
-		.attr("fill", "none")
-		.attr("stroke", "#abe3ce")
-		.attr("stroke-width", "2");
-
-	svg.append('path')
-		.attr('class', 'Two')
-		.attr('d', plotFigTwo)
-		.attr('clip-path', 'url(#rect-clip)')
-		.attr('shape-rendering', "crispEdges")
-		.attr("fill", "none")
-		.attr("stroke", "#f4d984")
-		.attr("stroke-width", "2");
-
-	svg.append('text')
-		.attr('x', 750)
-		.attr('y', 30)
-		.attr('font-family', 'Open Sans')
-		.attr('font-size', '14px')
-		.text(titletext);
+		.attr('clip-path', 'url(#rect-clip)');
 
 }
 
@@ -74,14 +48,14 @@ function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 
 }
 
-function makeChartCFour (data, titletext, textAxes) {
+function makeChartCFour (data) {
 	var svgWidth  = 960,
-		svgHeight = 300,
+		svgHeight = 150,
 		margin = { top: 20, right: 20, bottom: 40, left: 60 },
 		chartWidth  = svgWidth  - margin.left - margin.right,
 		chartHeight = svgHeight - margin.top  - margin.bottom;
 
-	var x = d3.time.scale().range([0, chartWidth])
+		var x = d3.time.scale().range([0, chartWidth])
 			.domain([dateFirst, dateLast]),
 		y = d3.scale.linear().range([chartHeight, 0])
 			.domain(d3.extent(data, function (d) { return d.dat; }));
@@ -104,8 +78,8 @@ function makeChartCFour (data, titletext, textAxes) {
 			.attr('width', 0)
 			.attr('height', chartHeight);
 
-	addAxesAndLegendCFour(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
-	drawPathsCFour(svg, data, x, y, titletext);
+	addAxesAndLegendCFour(svg, xAxis, yAxis, margin, chartWidth, chartHeight);
+	drawPathsCFour(svg, data, x, y);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
@@ -116,7 +90,6 @@ d3.csv('data/Abidjan-predict-90.csv', function (rawData) {
 	var dataSix = rawData.map(function (d) {
 		return {
 			date: parseDate(d.Date),
-			act: Math.round(d.Actual),
 			dat: Math.round(d.Forecast),
 		};
 	});
@@ -162,25 +135,12 @@ d3.csv('data/Abidjan-predict-90.csv', function (rawData) {
 			return d.date;
 		})[0]
 
-	var titletextOne = 'Energy Demand',
-		titletextTwo = 'Prediction',
-		titletextThree = 'Temperature',
-		titletextFour = 'Trend',
-		titletextFive = 'Random',
-		titletextSix = 'Seasonal',
-		textAxesOne = 'Abidjan Daily Average Energy Demand (MW)',
-		textAxesTwo = 'Abidjan Daily Average Energy 90-Day Forecast (MW)',
-		textAxesThree = 'Abidjan Daily Average Temperature (C)',
-		textAxesFour = 'Trend Component',
-		textAxesFive = 'Random Component',
-		textAxesSix = 'Seasonal Component';
-
-		makeChartCFour(dataOne, titletextOne, textAxesOne);
-		makeChartCFour(dataSix, titletextTwo, textAxesTwo);
-		makeChartCFour(dataTwo, titletextThree, textAxesThree);
-		makeChartCFour(dataThree, titletextFour, textAxesFour);
-		makeChartCFour(dataFour, titletextFive, textAxesFive);
-		makeChartCFour(dataFive, titletextSix, textAxesSix);
+	makeChartCFour(dataOne);
+	makeChartCFour(dataSix);
+	makeChartCFour(dataTwo);
+	makeChartCFour(dataThree);
+	makeChartCFour(dataFour);
+	makeChartCFour(dataFive);
 	});
 });
 
