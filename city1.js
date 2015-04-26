@@ -27,16 +27,16 @@ function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeigh
 function drawPathsCOne (svg, data, x, y, titletext) {
 var plotFig = d3.svg.line()
 	.interpolate('basis')
-	.x (function (d) { return x(d.date) || 1; })
+	.x (function (d) { return x(!isNaN(d.date)) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return y(d.dat); })
+	.y(function (d) { return y(!isNaN(d.dat)); })
 	.defined(function(d) { return !isNaN(d.dat); });
 
 var plotFigTwo = d3.svg.line()
 	.interpolate('basis')
-	.x (function (d) { return x(d.date) || 1; })
+	.x (function (d) { return x(!isNaN(d.date)) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return y(d.dat); })
+	.y(function (d) { return y(!isNaN(d.dat)); })
 	.defined(function(d) { return !isNaN(d.act); });
 
 	svg.datum(data);
