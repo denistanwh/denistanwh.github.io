@@ -114,7 +114,7 @@ d3.csv('data/Springfield-predict-90.csv', function (rawData) {
 
 	var dataSix = rawData.map(function (d) {
 		return {
-			date: d3.time.format('%m/%d/%y').parse(d.Date),
+			date: d3.time.format('%d/%m/%y').parse(d.Date),
 			act: Math.round(d.Actual),
 			dat: Math.round(d.Forecast),
 		};
