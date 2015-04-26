@@ -2,7 +2,7 @@ function runCThree() {
 	
 	var dateFirst = [];
 	var dataLast = [];
-function addAxesAndLegendCThree (svg, xAxis, yAxis, margin, chartWidth, chartHeight) {
+function addAxesAndLegendCThree (svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes) {
 
 	var axes = svg.append('g')
 		.attr('clip-path', 'url(#axes-clip)');
@@ -17,14 +17,14 @@ function addAxesAndLegendCThree (svg, xAxis, yAxis, margin, chartWidth, chartHei
 		.call(yAxis)
 		.append('text')
 			.attr('transform', 'rotate(-90)')
-			.attr('y', 6)
+			.attr('y', -46)
 			.attr('dy', '.71em')
 			.style('text-anchor', 'end')
-			.text('');
+			.text(textAxes);
 
 }
 
-function drawPathsCThree (svg, data, x, y) {
+function drawPathsCThree (svg, data, x, y, titletext) {
 var plotFig = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
@@ -37,7 +37,17 @@ var plotFig = d3.svg.line()
 	svg.append('path')
 		.attr('class', 'figure')
 		.attr('d', plotFig)
-		.attr('clip-path', 'url(#rect-clip)');
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "none")
+		.attr("stroke", "#fdb59c")
+		.attr("stroke-width", "2");
+
+	svg.append('text')
+		.attr('x', 750)
+		.attr('y', 30)
+		.attr('font-family', 'Open Sans')
+		.attr('font-size', '14px')
+		.text(titletext);
 
 }
 
@@ -47,14 +57,14 @@ function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 
 }
 
-function makeChartCThree (data) {
+function makeChartCThree (data, titletext, textAxes) {
 	var svgWidth  = 960,
-		svgHeight = 150,
+		svgHeight = 300,
 		margin = { top: 20, right: 20, bottom: 40, left: 60 },
 		chartWidth  = svgWidth  - margin.left - margin.right,
 		chartHeight = svgHeight - margin.top  - margin.bottom;
 
-		var x = d3.time.scale().range([0, chartWidth])
+	var x = d3.time.scale().range([0, chartWidth])
 			.domain([dateFirst, dateLast]),
 		y = d3.scale.linear().range([chartHeight, 0])
 			.domain(d3.extent(data, function (d) { return d.dat; }));
@@ -77,8 +87,8 @@ function makeChartCThree (data) {
 			.attr('width', 0)
 			.attr('height', chartHeight);
 
-	addAxesAndLegendCThree(svg, xAxis, yAxis, margin, chartWidth, chartHeight);
-	drawPathsCThree(svg, data, x, y);
+	addAxesAndLegendCThree(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
+	drawPathsCThree(svg, data, x, y, titletext);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
@@ -134,12 +144,25 @@ d3.csv('data/Dakar-predict-90.csv', function (rawData) {
 			return d.date;
 		})[0]
 
-	makeChartCThree(dataOne);
-	makeChartCThree(dataSix);
-	makeChartCThree(dataTwo);
-	makeChartCThree(dataThree);
-	makeChartCThree(dataFour);
-	makeChartCThree(dataFive);
+	var titletextOne = 'Energy Demand',
+		titletextTwo = 'Prediction',
+		titletextThree = 'Temperature',
+		titletextFour = 'Trend',
+		titletextFive = 'Random',
+		titletextSix = 'Seasonal',
+		textAxesOne = 'Dakar Daily Average Energy Demand (MW)',
+		textAxesTwo = 'Dakar Daily Average Energy 90-Day Forecast (MW)',
+		textAxesThree = 'Dakar Daily Average Temperature (C)',
+		textAxesFour = 'Trend Component',
+		textAxesFive = 'Random Component',
+		textAxesSix = 'Seasonal Component';
+
+		makeChartCThree(dataOne, titletextOne, textAxesOne);
+		makeChartCThree(dataSix, titletextTwo, textAxesTwo);
+		makeChartCThree(dataTwo, titletextThree, textAxesThree);
+		makeChartCThree(dataThree, titletextFour, textAxesFour);
+		makeChartCThree(dataFour, titletextFive, textAxesFive);
+		makeChartCThree(dataFive, titletextSix, textAxesSix);
 	});
 });
 

@@ -1,5 +1,8 @@
 function runCFive() {
-function addAxesAndLegendCFive (svg, xAxis, yAxis, margin, chartWidth, chartHeight) {
+	
+	var dateFirst = [];
+	var dataLast = [];
+function addAxesAndLegendCFive (svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes) {
 
 	var axes = svg.append('g')
 		.attr('clip-path', 'url(#axes-clip)');
@@ -14,15 +17,14 @@ function addAxesAndLegendCFive (svg, xAxis, yAxis, margin, chartWidth, chartHeig
 		.call(yAxis)
 		.append('text')
 			.attr('transform', 'rotate(-90)')
-			.attr('y', 6)
+			.attr('y', -50)
 			.attr('dy', '.71em')
 			.style('text-anchor', 'end')
-			.text('');
-
+			.text(textAxes);
 
 }
 
-function drawPathsCFive (svg, data, x, y) {
+function drawPathsCFive (svg, data, x, y, titletext) {
 var plotFig = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
@@ -30,13 +32,22 @@ var plotFig = d3.svg.line()
 	.y(function (d) { return y(d.dat); })
 	.defined(function(d) { return !isNaN(d.dat); });
 
-
 	svg.datum(data);
 
 	svg.append('path')
 		.attr('class', 'figure')
 		.attr('d', plotFig)
-		.attr('clip-path', 'url(#rect-clip)');
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "none")
+		.attr("stroke", "#d6aaea")
+		.attr("stroke-width", "2");
+
+	svg.append('text')
+		.attr('x', 750)
+		.attr('y', 30)
+		.attr('font-family', 'Open Sans')
+		.attr('font-size', '14px')
+		.text(titletext);
 
 }
 
@@ -46,9 +57,9 @@ function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 
 }
 
-function makeChartCFive (data) {
+function makeChartCFive (data, titletext, textAxes) {
 	var svgWidth  = 960,
-		svgHeight = 150,
+		svgHeight = 300,
 		margin = { top: 20, right: 20, bottom: 40, left: 60 },
 		chartWidth  = svgWidth  - margin.left - margin.right,
 		chartHeight = svgHeight - margin.top  - margin.bottom;
@@ -57,7 +68,7 @@ function makeChartCFive (data) {
 			.domain([dateFirst, dateLast]),
 		y = d3.scale.linear().range([chartHeight, 0])
 			.domain(d3.extent(data, function (d) { return d.dat; }));
-
+		
 	var xAxis = d3.svg.axis().scale(x).orient('bottom')
 				.innerTickSize(-chartHeight).outerTickSize(0).tickPadding(10),
 		yAxis = d3.svg.axis().scale(y).orient('left')
@@ -76,8 +87,8 @@ function makeChartCFive (data) {
 			.attr('width', 0)
 			.attr('height', chartHeight);
 
-	addAxesAndLegendCFive(svg, xAxis, yAxis, margin, chartWidth, chartHeight);
-	drawPathsCFive(svg, data, x, y);
+	addAxesAndLegendCFive(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
+	drawPathsCFive(svg, data, x, y, titletext);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
@@ -133,12 +144,25 @@ d3.csv('data/Tokyo-predict-90.csv', function (rawData) {
 			return d.date;
 		})[0]
 
-	makeChartCFive(dataOne);
-	makeChartCFive(dataSix);
-	makeChartCFive(dataTwo);
-	makeChartCFive(dataThree);
-	makeChartCFive(dataFour);
-	makeChartCFive(dataFive);
+	var titletextOne = 'Energy Demand',
+		titletextTwo = 'Prediction',
+		titletextThree = 'Temperature',
+		titletextFour = 'Trend',
+		titletextFive = 'Random',
+		titletextSix = 'Seasonal',
+		textAxesOne = 'Tokyo Daily Average Energy Demand (MW)',
+		textAxesTwo = 'Tokyo Daily Average Energy 90-Day Forecast (MW)',
+		textAxesThree = 'Tokyo Daily Average Temperature (C)',
+		textAxesFour = 'Trend Component',
+		textAxesFive = 'Random Component',
+		textAxesSix = 'Seasonal Component';
+
+		makeChartCFive(dataOne, titletextOne, textAxesOne);
+		makeChartCFive(dataSix, titletextTwo, textAxesTwo);
+		makeChartCFive(dataTwo, titletextThree, textAxesThree);
+		makeChartCFive(dataThree, titletextFour, textAxesFour);
+		makeChartCFive(dataFour, titletextFive, textAxesFive);
+		makeChartCFive(dataFive, titletextSix, textAxesSix);
 	});
 });
 

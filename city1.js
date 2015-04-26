@@ -2,7 +2,7 @@ function runCOne() {
 	
 	var dateFirst = [];
 	var dataLast = [];
-function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeight) {
+function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes) {
 	
 	var axes = svg.append('g')
 		.attr('clip-path', 'url(#axes-clip)');
@@ -17,14 +17,21 @@ function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeigh
 		.call(yAxis)
 		.append('text')
 			.attr('transform', 'rotate(-90)')
-			.attr('y', 6)
+			.attr('y', -46)
 			.attr('dy', '.71em')
 			.style('text-anchor', 'end')
-			.text('');
+			.text(textAxes);
 
 }
 
-function drawPathsCOne (svg, data, x, y) {
+function drawPathsCOne (svg, data, x, y, titletext) {
+var plotFig = d3.svg.line()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y(function (d) { return y(d.dat); })
+	.defined(function(d) { return !isNaN(d.dat); });
+
 var plotFig = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
@@ -37,8 +44,17 @@ var plotFig = d3.svg.line()
 	svg.append('path')
 		.attr('class', 'figure')
 		.attr('d', plotFig)
-		.attr('clip-path', 'url(#rect-clip)');
-
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "none")
+		.attr("stroke", "#abe3ce")
+		.attr("stroke-width", "2");
+		
+	svg.append('text')
+		.attr('x', 750)
+		.attr('y', 30)
+		.attr('font-family', 'Open Sans')
+		.attr('font-size', '14px')
+		.text(titletext);
 }
 
 function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
@@ -47,9 +63,9 @@ function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 
 }
 
-function makeChartCOne (data) {
+function makeChartCOne (data, titletext, textAxes) {
 	var svgWidth  = 960,
-		svgHeight = 150,
+		svgHeight = 300,
 		margin = { top: 20, right: 20, bottom: 40, left: 60 },
 		chartWidth  = svgWidth  - margin.left - margin.right,
 		chartHeight = svgHeight - margin.top  - margin.bottom;
@@ -77,8 +93,8 @@ function makeChartCOne (data) {
 			.attr('width', 0)
 			.attr('height', chartHeight);
 
-	addAxesAndLegendCOne(svg, xAxis, yAxis, margin, chartWidth, chartHeight);
-	drawPathsCOne(svg, data, x, y);
+	addAxesAndLegendCOne(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
+	drawPathsCOne(svg, data, x, y, titletext);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
@@ -133,13 +149,27 @@ d3.csv('data/Springfield-predict-90.csv', function (rawData) {
 		dateFirst = d3.extent(dataOne, function (d) {
 			return d.date;
 		})[0]
+		
+		var titletextOne = 'Energy Demand',
+			titletextTwo = 'Prediction',
+			titletextThree = 'Temperature',
+			titletextFour = 'Trend',
+			titletextFive = 'Random',
+			titletextSix = 'Seasonal',
+			textAxesOne = 'Springfield Daily Average Energy Demand (MW)',
+			textAxesTwo = 'Springfield Daily Average Energy 90-Day Forecast (MW)',
+			textAxesThree = 'Springfield Daily Average Temperature (C)',
+			textAxesFour = 'Trend Component',
+			textAxesFive = 'Random Component',
+			textAxesSix = 'Seasonal Component';
+		
 
-	makeChartCOne(dataOne);
-	makeChartCOne(dataSix);
-	makeChartCOne(dataTwo);
-	makeChartCOne(dataThree);
-	makeChartCOne(dataFour);
-	makeChartCOne(dataFive);
+	makeChartCOne(dataOne, titletextOne, textAxesOne);
+	makeChartCOne(dataSix, titletextTwo, textAxesTwo);
+	makeChartCOne(dataTwo, titletextThree, textAxesThree);
+	makeChartCOne(dataThree, titletextFour, textAxesFour);
+	makeChartCOne(dataFour, titletextFive, textAxesFive);
+	makeChartCOne(dataFive, titletextSix, textAxesSix);
 	});
 });
 
