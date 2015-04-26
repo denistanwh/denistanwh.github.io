@@ -36,8 +36,8 @@ var plotFigTwo = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return y(d.act); })
-	.defined(function(d) { return !isNaN(d.act); });
+	.y(function (d) { return y(d.for); })
+	.defined(function(d) { return !isNaN(d.for); });
 
 	svg.datum(data);
 
@@ -113,8 +113,8 @@ d3.csv('data/Springfield-predict-90.csv', function (rawData) {
 	var dataSix = rawData.map(function (d) {
 		return {
 			date: d3.time.format('%d/%m/%y').parse(d.Date),
-			act: Math.round(d.Actual),
-			dat: Math.round(d.Forecast),
+			for: Math.round(d.Forecast),
+			dat: Math.round(d.Actual),
 		};
 	});
 	
