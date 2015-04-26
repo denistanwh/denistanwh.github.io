@@ -32,21 +32,31 @@ var plotFig = d3.svg.line()
 	.y(function (d) { return y(d.dat); })
 	.defined(function(d) { return !isNaN(d.dat); });
 
-var plotFig = d3.svg.line()
+var plotFigTwo = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
 	.y(function (d) { return y(d.dat); })
-	.defined(function(d) { return !isNaN(d.dat); });
+	.defined(function(d) { return !isNaN(d.act); });
 
 	svg.datum(data);
 
 	svg.append('path')
-		.attr('class', 'figure')
+		.attr('class', 'One')
 		.attr('d', plotFig)
 		.attr('clip-path', 'url(#rect-clip)')
+		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
 		.attr("stroke", "#abe3ce")
+		.attr("stroke-width", "2");
+
+	svg.append('path')
+		.attr('class', 'Two')
+		.attr('d', plotFigTwo)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr('shape-rendering', "crispEdges")
+		.attr("fill", "none")
+		.attr("stroke", "#f4d984")
 		.attr("stroke-width", "2");
 		
 	svg.append('text')
@@ -105,6 +115,7 @@ d3.csv('data/Springfield-predict-90.csv', function (rawData) {
 	var dataSix = rawData.map(function (d) {
 		return {
 			date: parseDate(d.Date),
+			act: Math.round(d.Actual),
 			dat: Math.round(d.Forecast),
 		};
 	});
