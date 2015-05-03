@@ -43,7 +43,7 @@
 
 <p>One particular method of implementing cluster analysis is K-means clustering (Witten &amp; Hastie, 2014). It is a simple approach to group data into K distinct, non-overlapping clusters.</p>
 
-<p><img src="Table0.png" alt="image" /></p>
+<p><img src="paper/Table0.png" alt="image" /></p>
 
 <p>To implement cluster analysis, we implemented three steps: pre-processing, grouping, and analysis.</p>
 
@@ -51,11 +51,11 @@
 
 <p>Figure 1: Plot of 2013 normalized energy demand data from 30 cities</p>
 
-<p><img src="Fig1.png" alt="image" /></p>
+<p><img src="paper/Fig1.png" alt="image" /></p>
 
 <p>Figure 2: Data structure of first 15 of the 30 cities in trimmed data set</p>
 
-<p><img src="Fig2.png" alt="image" /></p>
+<p><img src="paper/Fig2.png" alt="image" /></p>
 
 <p>Second, we then proceed to group the data from 30 cities into four groups (clusters) using the K-means algorithm. Finally, we analysed the four groups (clusters). We did this by considering the geographic location and  local weather patterns of the various cities.</p>
 
@@ -73,29 +73,29 @@
 
 <p>Figure 3: Decomposition of Eugene daily energy demand</p>
 
-<p><img src="Fig3.png" alt="image" /></p>
+<p><img src="paper/Fig3.png" alt="image" /></p>
 
 <p>Figure 4: Decomposition of Dakar daily energy demand</p>
 
-<p><img src="Fig4.png" alt="image" /></p>
+<p><img src="paper/Fig4.png" alt="image" /></p>
 
 <p>Figure 5: Decomposition of Louisville daily energy demand</p>
 
-<p><img src="Fig5.png" alt="image" /></p>
+<p><img src="paper/Fig5.png" alt="image" /></p>
 
 <p>Figure 6: Decomposition of Sacramento daily energy demand</p>
 
-<p><img src="Fig6.png" alt="image" /></p>
+<p><img src="paper/Fig6.png" alt="image" /></p>
 
 <h4>Holt-Winters Times Series Forecasting Algoritm</h4>
 
 <p>Holt-Winters is a forecasting method for dealing with time series data with both trend and seasonal components (Chatfield &amp; Yar, 1998).  It is an extension of the Single Exponential Smoothing method (Johnson &amp; Montgomery, 1974).  The Holt-Winters method has two versions, additive and multiplicative, the use of which depends on the characteristics of the particular time series. For simplicity, we use the additive method. Holt-Winters predictions are obtained as a weighted average of past observed values where the weights decline exponentially so that the values of recent observations contribute to the forecast more than the values of earlier observations. The additive formula of this model is as follow:</p>
 
-<p><img src="FigX.png" alt="image" /></p>
+<p><img src="paper/FigX.png" alt="image" /></p>
 
 <p>where k is the time period. The prediction formula is as follows:</p>
 
-<p><img src="FigY.png" alt="image" /></p>
+<p><img src="paper/FigY.png" alt="image" /></p>
 
 <h3>Visualiation</h3>
 
@@ -111,17 +111,17 @@
 
 <p>Table 1: Results of k-means clustering</p>
 
-<p><img src="Table1.png" alt="image" /></p>
+<p><img src="paper/Table1.png" alt="image" /></p>
 
 <p>Figure 7: Visualization of the 4 clusters of cities</p>
 
-<p><img src="Fig7.png" alt="image" /></p>
+<p><img src="paper/Fig7.png" alt="image" /></p>
 
 <p>Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</p>
 
 <p>Figure 8: Geographic location of 30 cities</p>
 
-<p><img src="Fig8.png" alt="image" /></p>
+<p><img src="paper/Fig8.png" alt="image" /></p>
 
 <p>Note: Cluster1 cities are in green; Cluster 2 cities are in red; Cluster 3 cities are in purple; and Cluster 4 cities are yellow</p>
 
@@ -131,11 +131,11 @@
 
 <p>Figure 9: Cluster 1 energy demand plot</p>
 
-<p><img src="Fig9.png" alt="image" /></p>
+<p><img src="paper/Fig9.png" alt="image" /></p>
 
 <p>Table 2: Cluster 1 cities</p>
 
-<p><img src="Table2.png" alt="image" /></p>
+<p><img src="paper/Table2.png" alt="image" /></p>
 
 <p>In this cluster, yearly energy pattern turns out to be “U” style, with the peak in January (boreal winter, austral summer) and the smoothly valley in August (boreal summer, austral winter). Intuitively, this pattern should correspond with cities of one of two specifications:</p>
 
@@ -157,11 +157,11 @@
 
 <p>Figure 10: Cluster 2 energy demand plot</p>
 
-<p><img src="Fig10.png" alt="image" /></p>
+<p><img src="paper/Fig10.png" alt="image" /></p>
 
 <p>Table 3: Cluster 2 cities</p>
 
-<p><img src="Table3.png" alt="image" /></p>
+<p><img src="paper/Table3.png" alt="image" /></p>
 
 <p>In this cluster, the energy demand profile appears to be flat. In other words, the intra-year fluctuations in energy demand is much less pronounced. Intuitively, this patterns should correspond with cities with one of two specifications:</p>
 
@@ -179,11 +179,11 @@
 
 <p>Figure 11: Cluster 3 energy demand plot</p>
 
-<p><img src="Fig11.png" alt="image" /></p>
+<p><img src="paper/Fig11.png" alt="image" /></p>
 
 <p>Table 4: Cluster 3 cities</p>
 
-<p><img src="Table4.png" alt="image" /></p>
+<p><img src="paper/Table4.png" alt="image" /></p>
 
 <p>In this cluster, the energy demand profile appears to have 2 peaks, one during summer and one during winter. Intuitively, this pattern should correspond with cities need heating during winter and cooling during summer.</p>
 
@@ -195,11 +195,11 @@
 
 <p>Figure 12: Cluster 4 energy demand plot</p>
 
-<p><img src="Fig12.png" alt="image" /></p>
+<p><img src="paper/Fig12.png" alt="image" /></p>
 
 <p>Table 5: Cluster 4 cities</p>
 
-<p><img src="Table5.png" alt="image" /></p>
+<p><img src="paper/Table5.png" alt="image" /></p>
 
 <p>In this cluster, yearly energy pattern turns out to be “N” style, with the much less pronounced peak in January (boreal winter, austral summer) and a peak in August (boreal summer, austral winter). Intuitively, this pattern should correspond with cities of one of two specifications:</p>
 
@@ -217,13 +217,13 @@
 
 <p>Table 6: Summary of Box-Ljung test results</p>
 
-<p><img src="Table6.png" alt="image" /></p>
+<p><img src="paper/Table6.png" alt="image" /></p>
 
 <p>We present the forecasting results of each of the four cities separately, below. The first cluster’s representative, Abidjan, has a relatively flat, non-cyclical energy demand profile throughout the year with a distinct upward trend (see Figure 15).</p>
 
 <p>Figure 13: Holt-Winters forecast for Eugene (Cluster1)</p>
 
-<p><img src="Fig13.png" alt="image" /></p>
+<p><img src="paper/Fig13.png" alt="image" /></p>
 
 <p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Abidjan. Original data spanned 4 calendar years from 2010 to end of 2013.</p>
 
@@ -231,7 +231,7 @@
 
 <p>Figure 14: Holt-Winters forecast for Dakar (Cluster 2)</p>
 
-<p><img src="Fig14.png" alt="image" /></p>
+<p><img src="paper/Fig14.png" alt="image" /></p>
 
 <p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Dakar. Original data spanned 4 calendar years from 2011 to end of 2014.</p>
 
@@ -239,14 +239,14 @@
 
 <p>Figure 15: Holt-Winters forecast for Louisville (Cluster 3)</p>
 
-<p><img src="Fig15.png" alt="image" /></p>
+<p><img src="paper/Fig15.png" alt="image" /></p>
 
 <p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Springfield. Original data spanned 3 calendar years from 2011 to end of 2013.</p>
 
 <p>The fourth cluster’s representative, Sacramento, shows a large peak at its summer. Sacramento’s energy demand profile shows a slight downward trend from 2007 to 2013 (see Figure 18).
 Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 
-<p><img src="Fig16.png" alt="image" /></p>
+<p><img src="paper/Fig16.png" alt="image" /></p>
 
 <p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Sacramento. Original data spanned 7 calendar years from 2006 to end of 2013.</p>
 
@@ -254,7 +254,7 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 
 <p>Figure 17: Forecast errors</p>
 
-<p><img src="Fig17.png" alt="image" /></p>
+<p><img src="paper/Fig17.png" alt="image" /></p>
 
 <p>Note: Top left: forecast errors for Abidjan; top right: forecast errors for Dakar; bottom left: forecast errors for Springfield; bottom right: forecast errors for Sacramento</p>
 
@@ -264,7 +264,7 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 
 <p>Figure 18: Static screenshot of a single frame of the visualization</p>
 
-<p><img src="Fig18.png" alt="image" /></p>
+<p><img src="paper/Fig18.png" alt="image" /></p>
 
 <p>Note: Image zoomed in significantly to avoid truncation</p>
 
