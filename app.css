@@ -5,12 +5,6 @@
 	left: 100px;
 }
 
-path {
-	  stroke: white;
-	  stroke-width: 0.25px;
-	  fill: pink;
-	  }
-
 svg {
 	font: 9px 'Open Sans';
 }

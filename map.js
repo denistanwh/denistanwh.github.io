@@ -46,6 +46,9 @@ g.selectAll("path")
     .enter()
       .append("path")
       .attr("d", path)
+	  .style("stroke", "white")
+	  .style("stroke-width", "0.25px")
+	  .style("fill", "pink")
 });
 
 // zoom and pan
