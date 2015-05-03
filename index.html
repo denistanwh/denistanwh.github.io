@@ -5,11 +5,13 @@
 		<title>Trend Chart (Area + Line)</title>
 		<link rel="stylesheet" type"text/css" href="app.css">
 		<script type = "text/javascript" src="js/d3.v3.js"></script>
-		<script type = "text/javascript" src="topojson.v0.min.js"></script>	
+		<script type = "text/javascript" src="topojson.v0.min.js"></script>
+        <script src="./src/html-table-of-contents.js"
+              type="text/javascript">	
 	</head>
-
-	<body>
-		<script>
+<script>
+	<body onload="htmlTableOfContents();">
+		
 		function removedat() {
 			d3.selectAll("svg")
 				.remove();
@@ -19,6 +21,18 @@
 			<p>Energy demand from various cities around the world are grouped according to the similarity of their annual demand.</p>
 			
 			<!-- <img src="overview.jpg" width="800", height="500">-->
+			
+	        <h1>
+	            top heading 1
+	        </h1>
+
+	        <h2>
+	            second heading
+	        </h2>
+
+	        <h1>
+	            top heading 2
+	        </h1>
 			
 			<div id="option">
 				<button onclick="removedat();map();">
