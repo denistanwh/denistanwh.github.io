@@ -33,3 +33,9 @@ button {
         color: #ffffff;
         cursor: pointer;
       }
+	  
+path {
+	  stroke: white;
+	  stroke-width: 0.25px;
+	  fill: pink;
+	  }
