@@ -43,6 +43,7 @@ d3.csv("cities2.csv", function(error, data) {
        .attr("r", 8)
        //.style("fill", "red");
 	   .style("fill", function(d) { return colscale(d.cluster) })
+	   .on("click", runThree())
 	   .call(d3.helper.tooltip(
 	           function(d, i){
 	             return "<b>Cluster: "+d.cluster + "</b><br/>City: "+d.city;
