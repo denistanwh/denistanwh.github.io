@@ -22,9 +22,12 @@ function addAxesAndLegendFour (svg, xAxis, yAxis, margin, chartWidth, chartHeigh
 
 }
 
-var cityFourOne = "Abidjan";
+var cityFourOne = "City of North Little Rock";
 var cityFourTwo = "El Paso";
-var cityFourThree = "Singapore";
+var cityFourThree = "Los Angeles";
+var cityFourFour = "Memphis";
+var cityFourFive = "Sacramento";
+var cityFourSix = "Delhi - BRPL";
 
 function drawPathsFour (svg, data, x, y) {
 	var pathOne = d3.svg.line()
@@ -47,6 +50,27 @@ function drawPathsFour (svg, data, x, y) {
 		.defined(function(d) { if (d.city == cityFourThree) { return !isNaN(d.date); } })
 		.y(function (d) { if (d.city == cityFourThree) { return y(d.MW); } })
 		.defined(function(d) { if (d.city == cityFourThree) { return !isNaN(d.MW); } });
+		
+	var pathFour = d3.svg.line()
+		.interpolate('basis')
+		.x (function (d) { if (d.city == cityFourFour) { return x(d.date) || 1; } })
+		.defined(function(d) { if (d.city == cityFourFour) { return !isNaN(d.date); } })
+		.y(function (d) { if (d.city == cityFourFour) { return y(d.MW); } })
+		.defined(function(d) { if (d.city == cityFourFour) { return !isNaN(d.MW); } });
+
+	var pathFive = d3.svg.line()
+		.interpolate('basis')
+		.x (function (d) { if (d.city == cityFourFive) { return x(d.date) || 1; } })
+		.defined(function(d) { if (d.city == cityFourFive) { return !isNaN(d.date); } })
+		.y(function (d) { if (d.city == cityFourFive) { return y(d.MW); } })
+		.defined(function(d) { if (d.city == cityFourFive) { return !isNaN(d.MW); } });
+	
+	var pathSix = d3.svg.line()
+		.interpolate('basis')
+		.x(function (d) { if (d.city == cityFourSix) { return x(d.date); } })
+		.defined(function(d) { if (d.city == cityFourSix) { return !isNaN(d.date); } })
+		.y(function (d) { if (d.city == cityFourSix) { return y(d.MW); } })
+		.defined(function(d) { if (d.city == cityFourSix) { return !isNaN(d.MW); } });
 		
 	svg.datum(data);
 
@@ -71,6 +95,33 @@ function drawPathsFour (svg, data, x, y) {
 	svg.append('path')
 		.attr('class', 'Three')
 		.attr('d', pathThree)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr('shape-rendering', "crispEdges")
+		.attr("fill", "none")
+		.attr("stroke", "#fdb59c")
+		.attr("stroke-width", "2");
+		
+	svg.append('path')
+		.attr('class', 'Four')
+		.attr('d', pathFour)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr('shape-rendering', "crispEdges")
+		.attr("fill", "none")
+		.attr("stroke", "#d6aaea")
+		.attr("stroke-width", "2");
+
+	svg.append('path')
+		.attr('class', 'Five')
+		.attr('d', pathFive)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr('shape-rendering', "crispEdges")
+		.attr("fill", "none")
+		.attr("stroke", "#8ab2ea")
+		.attr("stroke-width", "2");
+		
+	svg.append('path')
+		.attr('class', 'Six')
+		.attr('d', pathSix)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")

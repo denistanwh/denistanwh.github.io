@@ -22,11 +22,13 @@ function addAxesAndLegendTwo (svg, xAxis, yAxis, margin, chartWidth, chartHeight
 
 }
 
-var cityTwoOne = "Amman";
-var cityTwoTwo = "City of North Little Rock";
-var cityTwoThree = "Honolulu";
-var cityTwoFour = "San Diego";
-var cityTwoFive = "Manila";
+var cityTwoOne = "Dakar";
+var cityTwoTwo = "Honolulu";
+var cityTwoThree = "Manila";
+var cityTwoFour = "Mbabane";
+var cityTwoFive = "Nairobi";
+var cityTwoSix = "Singapore";
+var cityTwoSeve = "Antigua";
 
 function drawPathsTwo (svg, data, x, y) {
 	var pathOne = d3.svg.line()
@@ -63,6 +65,20 @@ function drawPathsTwo (svg, data, x, y) {
 		.defined(function(d) { if (d.city == cityTwoFive) { return !isNaN(d.date); } })
 		.y(function (d) { if (d.city == cityTwoFive) { return y(d.MW); } })
 		.defined(function(d) { if (d.city == cityTwoFive) { return !isNaN(d.MW); } });
+		
+	var pathSix = d3.svg.line()
+		.interpolate('basis')
+		.x (function (d) { if (d.city == cityTwoSix) { return x(d.date) || 1; } })
+		.defined(function(d) { if (d.city == cityTwoSix) { return !isNaN(d.date); } })
+		.y(function (d) { if (d.city == cityTwoSix) { return y(d.MW); } })
+		.defined(function(d) { if (d.city == cityTwoSix) { return !isNaN(d.MW); } });
+
+	var pathSeven = d3.svg.line()
+		.interpolate('basis')
+		.x (function (d) { if (d.city == cityTwoSeve) { return x(d.date) || 1; } })
+		.defined(function(d) { if (d.city == cityTwoSeven) { return !isNaN(d.date); } })
+		.y(function (d) { if (d.city == cityTwoSeven) { return y(d.MW); } })
+		.defined(function(d) { if (d.city == cityTwoSeven) { return !isNaN(d.MW); } });
 		
 	svg.datum(data);
 
@@ -105,6 +121,24 @@ function drawPathsTwo (svg, data, x, y) {
 	svg.append('path')
 		.attr('class', 'Five')
 		.attr('d', pathFive)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr('shape-rendering', "crispEdges")
+		.attr("fill", "none")
+		.attr("stroke", "#8ab2ea")
+		.attr("stroke-width", "2");
+		
+	svg.append('path')
+		.attr('class', 'Six')
+		.attr('d', pathSix)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr('shape-rendering', "crispEdges")
+		.attr("fill", "none")
+		.attr("stroke", "#9c9c9c")
+		.attr("stroke-width", "2");
+	
+	svg.append('path')
+		.attr('class', 'Seve')
+		.attr('d', pathSeven)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")

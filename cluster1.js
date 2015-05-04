@@ -21,12 +21,10 @@ function addAxesAndLegendOne (svg, xAxis, yAxis, margin, chartWidth, chartHeight
 
 }
 
-var cityOneOne = "Tacoma";
-var cityOneTwo = "Springfield";
+var cityOneOne = "Abidjan";
+var cityOneTwo = "Tacoma";
 var cityOneThree = "Eugene";
-var cityOneFour = "Memphis";
-var cityOneFive = "Sacramento";
-var cityOneSix = "Nairobi";
+var cityOneFour = "Queensland";
 
 function drawPathsOne (svg, data, x, y) {
 	var pathOne = d3.svg.line()
@@ -56,20 +54,6 @@ function drawPathsOne (svg, data, x, y) {
 		.defined(function(d) { if (d.city == cityOneFour) { return !isNaN(d.date); } })
 		.y(function (d) { if (d.city == cityOneFour) { return y(d.MW); } })
 		.defined(function(d) { if (d.city == cityOneFour) { return !isNaN(d.MW); } });
-
-	var pathFive = d3.svg.line()
-		.interpolate('basis')
-		.x (function (d) { if (d.city == cityOneFive) { return x(d.date) || 1; } })
-		.defined(function(d) { if (d.city == cityOneFive) { return !isNaN(d.date); } })
-		.y(function (d) { if (d.city == cityOneFive) { return y(d.MW); } })
-		.defined(function(d) { if (d.city == cityOneFive) { return !isNaN(d.MW); } });
-		
-	var pathSix = d3.svg.line()
-		.interpolate('basis')
-		.x (function (d) { if (d.city == cityOneSix) { return x(d.date) || 1; } })
-		.defined(function(d) { if (d.city == cityOneSix) { return !isNaN(d.date); } })
-		.y(function (d) { if (d.city == cityOneSix) { return y(d.MW); } })
-		.defined(function(d) { if (d.city == cityOneSix) { return !isNaN(d.MW); } });
 		
 	svg.datum(data);
 
@@ -107,24 +91,7 @@ function drawPathsOne (svg, data, x, y) {
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
 		.attr("stroke", "#d6aaea");
-	
-	svg.append('path')
-		.attr('class', 'Five')
-		.attr('d', pathFive)
-		.attr('clip-path', 'url(#rect-clip)')
-		.attr('shape-rendering', "crispEdges")
-		.attr("fill", "none")
-		.attr("stroke", "#8ab2ea")
-		.attr("stroke-width", "2");
-		
-	svg.append('path')
-		.attr('class', 'Six')
-		.attr('d', pathSix)
-		.attr('clip-path', 'url(#rect-clip)')
-		.attr('shape-rendering', "crispEdges")
-		.attr("fill", "none")
-		.attr("stroke", "black")
-		.attr("stroke-width", "2");
+
 }
 
 function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
