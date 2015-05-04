@@ -42,7 +42,7 @@ d3.csv("cities.csv", function(error, data) {
        })
        .attr("r", 5)
        //.style("fill", "red");
-	   .style("fill", function(d) { return "rgb(" + Math.round(colscale(d.cities)) + "," + Math.round(colscale(d.cities)) + "," + Math.round(colscale(d.cities)) + ")"; });
+	   .style("fill", function(d) { return "rgb(" + Math.round(colscale(d.cluster)) + "," + Math.round(colscale(d.cluster)) + "," + Math.round(colscale(d.cluster)) + ")"; });
 });
 
 
