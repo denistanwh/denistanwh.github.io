@@ -1,5 +1,5 @@
 function map() {
-	var width = 960,
+	var width = 1280,
     height = 960;
 
 var projection = d3.geo.mercator()
