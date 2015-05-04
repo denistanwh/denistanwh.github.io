@@ -1,10 +1,10 @@
 function map() {
-	var width = 1100,
-    height = 800;
+	var width = 960,
+    height = 500;
 
 var projection = d3.geo.mercator()
     .center([0, 5 ])
-    .scale(200)
+    .scale(300)
     .rotate([-180,0]);
 
 var svg = d3.select("body").append("svg")
