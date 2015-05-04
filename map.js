@@ -17,9 +17,9 @@ var path = d3.geo.path()
 var g = svg.append("g");
 
 // create color scale
-var colscale = d3.scale.linear()
+var colscale = d3.scale.oridinal()
 	.domain([1, 4])
-	.range([0, 255]);
+	.range(["#abe3ce", "#f4d984", "#fdb59c", "#d6aaea"]);
 
 // load and display the World
 d3.json("world-110m2.json", function(error, topology) {	
@@ -42,7 +42,7 @@ d3.csv("cities2.csv", function(error, data) {
        })
        .attr("r", 5)
        //.style("fill", "red");
-	   .style("fill", function(d) { return "rgb(" + Math.round(colscale(d.cluster)) + "," + Math.round(colscale(d.cluster)) + "," + Math.round(colscale(d.cluster)) + ")"; });
+	   .style("fill", function(d) { return colscale(d.cluster) });
 });
 
 
