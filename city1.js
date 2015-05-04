@@ -106,7 +106,7 @@ function makeChartCOne (data, titletext, textAxes) {
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
-var parseDate  = d3.time.format('%Y-%m-%d').parse;
+var parseDate  = d3.time.format('%m/%d/%y').parse;
 
 d3.csv('data/Eugene-predict-365.csv', function (rawData) {
 
