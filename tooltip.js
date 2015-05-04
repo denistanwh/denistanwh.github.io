@@ -31,7 +31,8 @@ d3.helper.tooltip = function(accessor){
         .on("mouseout", function(d, i){
             // Remove tooltip
             tooltipDiv.remove();
-        });
+        })
+		.on("click", cityThree());
 
     };
 };
