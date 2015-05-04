@@ -17,7 +17,7 @@ var path = d3.geo.path()
 var g = svg.append("g");
 
 // create color scale
-var colscale = d3.scale.oridinal()
+var colscale = d3.scale.ordinal()
 	.domain([1, 4])
 	.range(["#abe3ce", "#f4d984", "#fdb59c", "#d6aaea"]);
 
