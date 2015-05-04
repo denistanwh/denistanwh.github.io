@@ -35,10 +35,10 @@ d3.csv("cities.csv", function(error, data) {
 				  )
        .append("circle")
        .attr("cx", function(d) {
-               return projection(d.lon);
+               return projection([d.LON, d.LAT])[0];
        })
        .attr("cy", function(d) {
-               return projection(d.lat);
+               return projection([d.LON, d.LAT])[1];
        })
        .attr("r", 5)
        //.style("fill", "red");
