@@ -107,7 +107,7 @@ function makeChartCTwo (data, titletext, textAxes) {
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
-var parseDate  = d3.time.format('%m/%d/%dy').parse;
+var parseDate  = d3.time.format('%m/%d/%y').parse;
 
 d3.csv('data/Dakar-predict-365.csv', function (rawData) {
 
