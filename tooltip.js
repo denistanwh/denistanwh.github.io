@@ -32,7 +32,7 @@ d3.helper.tooltip = function(accessor){
             // Remove tooltip
             tooltipDiv.remove();
         })
-		.on("click", cityThree());
+		.on("click", runThree());
 
     };
 };
