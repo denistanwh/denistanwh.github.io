@@ -4,7 +4,7 @@ function map() {
 
 var projection = d3.geo.mercator()
     .center([0, 5 ])
-    .scale(300)
+    .scale(100)
     .rotate([-180,0]);
 
 var svg = d3.select("body").append("svg")
