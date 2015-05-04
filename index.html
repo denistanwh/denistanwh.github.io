@@ -15,18 +15,17 @@
 	<body onload="htmlTableOfContents();">
         <p>
 			<br>
-            <b><font size="20">Contents</font></b>
+            <b><font size="20">Multi-City Energy Analysis</font></b>
+			<p>YiQian Jin, Denis Tan, Jing Ye</p>
 		</p>
 
         <div id="toc">
         </div>
 <br>
-<h1>Multi-City Energy Analysis</h1>
-<p>YiQian Jin, Denis Tan, Jing Ye</p>
 
 <!--<pre><code></code></pre>-->
 
-<h2>Motivation</h2>
+<h1>Motivation</h1>
 
 <p>Global energy demand is rising fast (USEIA, 2013), with cities absorbing most of the predicted demand expansion (The New Climate Economy, 2014). More specifically, much of the growth in energy demand will come from the growth of the middle class in emerging cities and economies. Each of these new middle-class individuals will make decentralized energy consumption decisions on a daily basis, with significant consequences for the aggregate consumption. Provision of information on energy demand may alter energy consumption decisions. Hence, there is tremendous value in understanding, projecting, and presenting information on  short-term energy demand forecasts.</p>
 
@@ -34,11 +33,11 @@
 
 <p>In this paper, bearing in mind the need to present information to a general audience of middle-class decision makers, we avoid the pitfalls of complex models but instead attempt to project and present energy demand forecasts in a digestible form.</p>
 
-<h2>Methodology</h2>
+<h1>Methodology</h1>
 
-<h3>Grouping of Cities</h3>
+<h2>Grouping of Cities</h2>
 
-<h4>Cluster Analysis &amp; K-means Algorithm</h4>
+<h3>Cluster Analysis &amp; K-means Algorithm</h3>
 
 <p>Cluster analysis, or clustering involves grouping objects in such a way that objects in the same group are more similar, by some pre-determined measure, to each other than to those in other groups. It is a main task of exploratory data mining, and a frequently used method for statistical data analysis, used in many fields, including machine learning and pattern recognition (Kaufman &amp; Rousseeuw, 2009).</p>
 
@@ -64,9 +63,9 @@
 
 <p>There are various limitations to our approach. First, we are aware that groups obtained using the k-means method represent the local optimum rather than  the global optimum. To reduce the impact of this limitation,, we chose to increase the number of iterations during computation computation to obtain stable clustering results. Specifically, we set the iteration count to be 20 and simulated 10 different starting points. In this approach, as in most clustering analyses, the number of clusters is pre-specified, so prior knowledge of the number of groups is required.</p>
 
-<h3>Forecasting Energy Demand</h3>
+<h2>Forecasting Energy Demand</h2>
 
-<h4>Overview of Energy Demand Data</h4>
+<h3>Overview of Energy Demand Data</h3>
 
 <p>After clustering the energy data into four groups, we turn to forecasting. For forecasting, we revert to the original full dataset before trimming to retain the 30 cities used in the clustering analysis. Hence, the dataset now has energy data for multiple years. We also aggregated the half-hourly data to the daily level.</p>
 
@@ -88,7 +87,7 @@
 
 <p><img src="paper/Fig6.png" alt="image" /></p>
 
-<h4>Holt-Winters Times Series Forecasting Algoritm</h4>
+<h3>Holt-Winters Times Series Forecasting Algoritm</h3>
 
 <p>Holt-Winters is a forecasting method for dealing with time series data with both trend and seasonal components (Chatfield &amp; Yar, 1998).  It is an extension of the Single Exponential Smoothing method (Johnson &amp; Montgomery, 1974).  The Holt-Winters method has two versions, additive and multiplicative, the use of which depends on the characteristics of the particular time series. For simplicity, we use the additive method. Holt-Winters predictions are obtained as a weighted average of past observed values where the weights decline exponentially so that the values of recent observations contribute to the forecast more than the values of earlier observations. The additive formula of this model is as follow:</p>
 
@@ -98,15 +97,15 @@
 
 <p><img src="paper/FigY.png" alt="image" /></p>
 
-<h3>Visualiation</h3>
+<h2>Visualiation</h2>
 
 <p>We visualized the data from the above cluster analysis and forecasting steps through a three step procedure using d3 (Bostock, 2013). First, we present a world map centered in the Pacific to depict the cities we considered for this project. Second, zoom in to the 4 groups of cities and present their average daily energy demand over a period of 365 days. Each group of cities are visualized in a Singapore chart. Third, we further zoom in to the city level and visualize the energy forecast for a typical city in each of the 4 groups.</p>
 
 <p>This cascade of visualizations emphasizes the “drill-down” technique espoused by Schneiderman (1996) in his seminal paper on the visual information seeking mantra. This way, the first visualization provides an overarching overview before the second and third visualization take reader into greater and greater detail. At the same time, we have kept the visualizations minimalist to maximize data-ink and minimize chart-junk (Tufte, 1983).</p>
 
-<h2>Results &amp; Discussion</h2>
+<h1>Results &amp; Discussion</h1>
 
-<h3>Grouping of Cities</h3>
+<h2>Grouping of Cities</h2>
 
 <p>Table 1 and Figure 7 shows the result of clustering. The map shows the geographical location of these 30 cities.</p>
 
@@ -126,7 +125,7 @@
 
 <p>Note: Cluster1 cities are in green; Cluster 2 cities are in red; Cluster 3 cities are in purple; and Cluster 4 cities are yellow</p>
 
-<h4>Cluster 1</h4>
+<h3>Cluster 1</h3>
 
 <p>Figure 9 depicts the energy demand profile for cluster 1 cities while Table 2 lists the four cluster 1 cities.</p>
 
@@ -152,7 +151,7 @@
 
 <p>Abidjan, however, seems to be an outlier. Abidjan is a tropical city which should not have a ‘U’ shaped energy demand profile. This could potentially have been caused by the similarity of ‘U’ shaped profiles and flat profiles, constituting a limitation to the k-means method of clustering cities.</p>
 
-<h4>Cluster 2</h4>
+<h3>Cluster 2</h3>
 
 <p>Figure 10 depicts the energy demand profile for cluster 2 cities while Table 3 lists the eight cluster 2 cities.</p>
 
@@ -174,7 +173,7 @@
 
 <p>Looking into the data, Singapore and Nairobi are equatorial cities consistently in need of cooling year round while the other 6 cities all located near the tropical zone and have little need for heating or cooling.</p>
 
-<h4>Cluster 3</h4>
+<h3>Cluster 3</h3>
 
 <p>Figure 11 depicts the energy demand profile for cluster 3 cities while Table 4 lists the 12 cluster 3 cities.</p>
 
@@ -190,7 +189,7 @@
 
 <p>All cities in this cluster are located between the 30 and 60 degree latitude lines. This supports the hypothesis that both heating and cooling is needed at different times of the year.</p>
 
-<h4>Cluster 4</h4>
+<h3>Cluster 4</h3>
 
 <p>Figure 12 depicts the energy demand profile for cluster 4 cities while Table 5 lists the eight cluster 4 cities.</p>
 
@@ -212,7 +211,7 @@
 
 <p>Geographically, North Little Rock, El Paso, Memphis, Sacramento and Los Angeles are all in the southern and western region of USA, which has the very favorable climate Mediterranean climate and subtropical climate with no severe cold winter there. The last one city Delhi, although located separated from other cities in this group, occupy a similar latitude and hence, has a similar climate. These cities all correspond to the second type.</p>
 
-<h3>Forecasting Energy Demand</h3>
+<h2>Forecasting Energy Demand</h2>
 
 <p>We picked Abidjan, Dakar, Springfield, and Sacramento to represent Cluster 1, 2, 3, and 4 respectively. Through application of the Holt-Winters forecasting algorithm, we obtained a model for each of the four cities. We then analyzed the model fit using the Box-Ljung residual test. The results are summarized in Table 6.</p>
 
@@ -259,7 +258,7 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 
 <p>Note: Top left: forecast errors for Abidjan; top right: forecast errors for Dakar; bottom left: forecast errors for Springfield; bottom right: forecast errors for Sacramento</p>
 
-<h3>Visualization</h3>
+<h2>Visualization</h2>
 
 <p>As mentioned, we implemented the visualizations using the cascade, “drill-down” approach. A static image of the visualization is provided in Figure 20. The interactive visualizations are available at http://denistanwh.github.io.</p>
 
@@ -269,7 +268,7 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 
 <p>Note: Image zoomed in significantly to avoid truncation</p>
 
-<h2>Conclusion</h2>
+<h1>Conclusion</h1>
 
 <p>Using energy demand data from 43 cities, we trimmed the data down to 30 cities and stratified them into 4 groups based on similarity in the shape of their energy demand curves. We then applied a Holt-Winters time-series algorithm to forecast the energy demand over a period of 365 days for each chosen city. Finally, we visualized the energy data and forecasts using a cascading “drill-down” approach. This approach allows us to first depict an overview of the data before zooming into the granular details, in line with Schneiderman’s visual information seeking mantra. We believe that this is an appropriate technique to present the energy information to an audience of disparate, middle-class energy consumption decision makers around the world. We hope that the access to this information will incrementally change the decentralized decisions made by all of these decision makers, arresting or slowing the projected explosion in global energy demand.</p>
 
@@ -282,9 +281,9 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 			
 			<!-- <img src="overview.jpg" width="800", height="500">-->
 			
-        <h2>
+        <h1>
             Visualization
-        </h2>
+        </h1>
 		
 			<div id="option">
 				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();map();">
