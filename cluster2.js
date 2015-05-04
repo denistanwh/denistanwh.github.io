@@ -28,7 +28,7 @@ var cityTwoThree = "Manila";
 var cityTwoFour = "Mbabane";
 var cityTwoFive = "Nairobi";
 var cityTwoSix = "Singapore";
-var cityTwoSeve = "Antigua";
+var cityTwoSeven = "Antigua";
 
 function drawPathsTwo (svg, data, x, y) {
 	var pathOne = d3.svg.line()
