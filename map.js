@@ -1,6 +1,6 @@
 function map() {
-	var width = 1280,
-    height = 960;
+	var width = 1100,
+    height = 800;
 
 var projection = d3.geo.mercator()
     .center([0, 5 ])
