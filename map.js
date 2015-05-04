@@ -30,9 +30,9 @@ d3.csv("cities2.csv", function(error, data) {
        .data(data)
        .enter()
        .append("a")
-				  //.attr("xlink:href", function(d) {
-					  //return "https://www.google.com/search?q="+d.city;}
-				  //)
+				  .attr("xlink:href", function(d) {
+					  return "https://www.google.com/search?q="+d.city;}
+				  )
        .append("circle")
        .attr("cx", function(d) {
                return projection([d.LON, d.LAT])[0];
@@ -43,7 +43,6 @@ d3.csv("cities2.csv", function(error, data) {
        .attr("r", 8)
        //.style("fill", "red");
 	   .style("fill", function(d) { return colscale(d.cluster) })
-	   .on("click", removedata();runThree();)
 	   .call(d3.helper.tooltip(
 	           function(d, i){
 	             return "<b>Cluster: "+d.cluster + "</b><br/>City: "+d.city;
