@@ -40,7 +40,7 @@ d3.csv("cities2.csv", function(error, data) {
        .attr("cy", function(d) {
                return projection([d.LON, d.LAT])[1];
        })
-       .attr("r", 15)
+       .attr("r", 8)
        //.style("fill", "red");
 	   .style("fill", function(d) { return colscale(d.cluster) })
 	   .call(d3.helper.tooltip(
