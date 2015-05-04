@@ -42,26 +42,7 @@ d3.csv("cities2.csv", function(error, data) {
        })
        .attr("r", 5)
        //.style("fill", "red");
-	   .style("fill", function(d) { return colscale(d.cluster) })
-	   .on("mouseover", function(d) {      
-		   d3.select("body").append("div")   
-    	   .attr("class", "tooltip")               
-    	   .style("opacity", 0).transition()        
-	                   .duration(200)      
-	                   .style("opacity", .9);      
-		   d3.select("body").append("div")   
-    	   .attr("class", "tooltip")               
-           .style("opacity", 0).html(d.city + "<br/>"  + d.cluster)  
-	                   .style("left", (d3.event.pageX) + "px")     
-	                   .style("top", (d3.event.pageY - 28) + "px");    
-	               })                  
-	    .on("mouseout", function(d) {       
-d3.select("body").append("div")   
-    .attr("class", "tooltip")               
-    .style("opacity", 0).transition()        
-	                   .duration(500)      
-	                   .style("opacity", 0);   
-	           });;
+	   .style("fill", function(d) { return colscale(d.cluster) });
 });
 
 
