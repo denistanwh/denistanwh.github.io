@@ -45,7 +45,7 @@ d3.csv("cities2.csv", function(error, data) {
 	   .style("fill", function(d) { return colscale(d.cluster) })
 	   .call(d3.helper.tooltip(
 	           function(d, i){
-	             return "<b>"+d.properties.name + "</b><br/>pop: "+d.properties.population;
+	             return "<b>"+d.cluster + "</b><br/>pop: "+d.city;
 	           }
 	           ));
 });
