@@ -41,8 +41,8 @@ d3.csv("cities.csv", function(error, data) {
                return projection([d.LON, d.LAT])[1];
        })
        .attr("r", 5)
-       //.style("fill", "red");
-	   .style("fill", function(d) { return "rgb(" + Math.round(colscale(d.cluster)) + "," + Math.round(colscale(d.cluster)) + "," + Math.round(colscale(d.cluster)) + ")"; });
+       .style("fill", "red");
+	   //.style("fill", function(d) { return "rgb(" + Math.round(colscale(d.cluster)) + "," + Math.round(colscale(d.cluster)) + "," + Math.round(colscale(d.cluster)) + ")"; });
 });
 
 
