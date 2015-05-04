@@ -75,7 +75,7 @@ function drawPathsTwo (svg, data, x, y) {
 
 	var pathSeven = d3.svg.line()
 		.interpolate('basis')
-		.x (function (d) { if (d.city == cityTwoSeve) { return x(d.date) || 1; } })
+		.x (function (d) { if (d.city == cityTwoSeven) { return x(d.date) || 1; } })
 		.defined(function(d) { if (d.city == cityTwoSeven) { return !isNaN(d.date); } })
 		.y(function (d) { if (d.city == cityTwoSeven) { return y(d.MW); } })
 		.defined(function(d) { if (d.city == cityTwoSeven) { return !isNaN(d.MW); } });
@@ -137,7 +137,7 @@ function drawPathsTwo (svg, data, x, y) {
 		.attr("stroke-width", "2");
 	
 	svg.append('path')
-		.attr('class', 'Seve')
+		.attr('class', 'Seven')
 		.attr('d', pathSeven)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr('shape-rendering', "crispEdges")
