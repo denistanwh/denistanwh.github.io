@@ -107,13 +107,13 @@ function makeChartCTwo (data, titletext, textAxes) {
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
-var parseDate  = d3.time.format('%Y-%m-%d').parse;
+var parseDate  = d3.time.format('%m/%d/%dy').parse;
 
 d3.csv('data/Dakar-predict-365.csv', function (rawData) {
 
 	var dataSix = rawData.map(function (d) {
 		return {
-			date: d3.time.format('%d/%m/%y').parse(d.Date),
+			date: d3.time.format('%m/%d/%y').parse(d.Date),
 			for: Math.round(d.Forecast),
 			dat: Math.round(d.Actual),
 		};

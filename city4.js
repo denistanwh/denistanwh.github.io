@@ -113,7 +113,7 @@ d3.csv('data/Sacramento-predict-365.csv', function (rawData) {
 
 	var dataSix = rawData.map(function (d) {
 		return {
-			date: d3.time.format('%d/%m/%y').parse(d.Date),
+			date: d3.time.format('%m/%d/%y').parse(d.Date),
 			for: Math.round(d.Forecast),
 			dat: Math.round(d.Actual),
 		};
