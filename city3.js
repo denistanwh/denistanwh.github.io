@@ -109,7 +109,7 @@ function makeChartCThree (data, titletext, textAxes) {
 
 var parseDate  = d3.time.format('%Y-%m-%d').parse;
 
-d3.csv('data/Dakar-predict-90.csv', function (rawData) {
+d3.csv('data/Louisville-predict-365.csv', function (rawData) {
 
 	var dataSix = rawData.map(function (d) {
 		return {
@@ -123,7 +123,7 @@ d3.csv('data/Dakar-predict-90.csv', function (rawData) {
 		return d.date;
 	})[1];
 
-	d3.csv('data/Dakar-original.csv', function (rawData) {
+	d3.csv('data/Louisville-original.csv', function (rawData) {
 
 		var dataOne = rawData.map(function (d) {
 			return {
@@ -166,9 +166,9 @@ d3.csv('data/Dakar-predict-90.csv', function (rawData) {
 		titletextFour = 'Trend',
 		titletextFive = 'Random',
 		titletextSix = 'Seasonal',
-		textAxesOne = 'Dakar Daily Average Energy Demand (MW)',
-		textAxesTwo = 'Dakar Daily Average Energy 90-Day Forecast (MW)',
-		textAxesThree = 'Dakar Daily Average Temperature (C)',
+		textAxesOne = 'Louisville Daily Average Energy Demand (MW)',
+		textAxesTwo = 'Louisville Daily Average Energy 365-Day Forecast (MW)',
+		textAxesThree = 'Louisville Daily Average Temperature (C)',
 		textAxesFour = 'Trend Component',
 		textAxesFive = 'Random Component',
 		textAxesSix = 'Seasonal Component';

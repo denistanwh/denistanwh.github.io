@@ -109,7 +109,7 @@ function makeChartCFour (data, titletext, textAxes) {
 
 var parseDate  = d3.time.format('%Y-%m-%d').parse;
 
-d3.csv('data/Abidjan-predict-90.csv', function (rawData) {
+d3.csv('data/Sacramento-predict-365.csv', function (rawData) {
 
 	var dataSix = rawData.map(function (d) {
 		return {
@@ -123,7 +123,7 @@ d3.csv('data/Abidjan-predict-90.csv', function (rawData) {
 		return d.date;
 	})[1];
 
-	d3.csv('data/Abidjan-original.csv', function (rawData) {
+	d3.csv('data/Sacramento-original.csv', function (rawData) {
 
 		var dataOne = rawData.map(function (d) {
 			return {
@@ -166,9 +166,9 @@ d3.csv('data/Abidjan-predict-90.csv', function (rawData) {
 		titletextFour = 'Trend',
 		titletextFive = 'Random',
 		titletextSix = 'Seasonal',
-		textAxesOne = 'Abidjan Daily Average Energy Demand (MW)',
-		textAxesTwo = 'Abidjan Daily Average Energy 90-Day Forecast (MW)',
-		textAxesThree = 'Abidjan Daily Average Temperature (C)',
+		textAxesOne = 'Sacramento Daily Average Energy Demand (MW)',
+		textAxesTwo = 'Sacramento Daily Average Energy 365-Day Forecast (MW)',
+		textAxesThree = 'Sacramento Daily Average Temperature (C)',
 		textAxesFour = 'Trend Component',
 		textAxesFive = 'Random Component',
 		textAxesSix = 'Seasonal Component';
