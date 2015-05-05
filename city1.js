@@ -102,9 +102,10 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
 	.attr("stroke", "rgba(100, 100, 100, 0.1)")
+	.data(dataTwo)
 	.call(d3.helper.tooltip(
        function(d, i){
-         return "<b>95th %: "+d.Hi95 + "<br/>80th %:"+d.Hi80 + "</b>";
+         return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
        }
        ));
 
