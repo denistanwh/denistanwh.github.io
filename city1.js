@@ -41,7 +41,7 @@ var upperInnerArea = d3.svg.area()
 	.defined(function(d) { return !isNaN(d.date); })
 	.y0(function (d) { return y(d.Hi80); })
 	.defined(function(d) { return !isNaN(d.Hi80); })
-	.y1(function (d) { return y(d.dat); })
+	.y1(function (d) { return y(d.for); })
 	.defined(function(d) { return !isNaN(d.dat); });
 	
 var plotFig = d3.svg.line()
@@ -62,7 +62,7 @@ var lowerInnerArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return y(d.dat); })
+	.y0(function (d) { return y(d.for); })
 	.defined(function(d) { return !isNaN(d.dat); })
 	.y1(function (d) { return y(d.Lo80); })
 	.defined(function(d) { return !isNaN(d.Lo80); });
