@@ -142,7 +142,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr("fill", "rgba(100, 100, 100, 0.4)")
 		.attr("stroke", "rgba(100, 100, 100, 0.4)").call(d3.helper.tooltip(
 		       function(d, i){
-		         return "<b>Upper 80th % <br>Confidence Interval</b>"
+		         return "<b>Lower 80th % <br>Confidence Interval</b>"
 				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
 		       }
 		   ));
@@ -153,7 +153,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
 		.attr("stroke", "#abe3ce")
-		.attr("stroke-width", "2");
+		   .attr("stroke-width", "2");
 		
 	svg.append('path')
 		.attr('class', 'figure')
@@ -162,7 +162,12 @@ var lowerOuterArea = d3.svg.area()
 		.attr("fill", "none")
 		.attr("stroke", "#abe3ce")
 		.attr("stroke-width", "2")
-		;
+		.call(d3.helper.tooltip(
+		       function(d, i){
+		         return "<b>Energy Demand</b>"
+				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+		       }
+		   ));
 		
 	svg.append('path')
 		.attr('class', 'figure')
@@ -173,7 +178,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr("stroke-width", "2")
 		.call(d3.helper.tooltip(
 		       function(d, i){
-		         return "<b><Raw Energy Demand Data/b>"
+		         return "<b>Holt-Winters <br>Mean Forecast</b>"
 				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
 		       }
 		   ));
