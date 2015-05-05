@@ -29,7 +29,7 @@ d3.csv("cities2.csv", function(error, data) {
     g.selectAll("circle")
        .data(data)
        .enter()
-       .append("a")
+       //.append("a")
 				  //.attr("xlink:href", function(d) {
 					  //return "https://www.google.com/search?q="+d.city;}
 				  //)

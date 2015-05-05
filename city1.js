@@ -94,18 +94,19 @@ var lowerOuterArea = d3.svg.area()
 	.y1(function (d) { return yTwo(d.Lo95); })
 	.defined(function(d) { return !isNaN(d.Lo95); });
 
-	svg.datum(data).call(d3.helper.tooltip(
-       function(d, i){
-         return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-       }
-       ));
+	svg.datum(data);
 		
-	svg.append('path')
+	svg..datum(data).enter().append('path')
 		.attr('class', 'area upper outer')
 		.attr('d', upperOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
-	.attr("stroke", "rgba(100, 100, 100, 0.1)");
+	.attr("stroke", "rgba(100, 100, 100, 0.1)")
+	.call(d3.helper.tooltip(
+	       function(d, i){
+	         return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+	       }
+	       ));
 
 	svg.append('path')
 		.attr('class', 'area lower outer')
@@ -263,7 +264,7 @@ d3.csv('data/Eugene-predict-365.csv', function (rawData) {
 		})[0]
 		
 		var titletextOne = 'Energy Demand',
-			titletextTwo = 'Energy Demand & Prediction',
+			titletextTwo = 'Demand & Prediction',
 			titletextThree = 'Temperature',
 			titletextFour = 'Trend',
 			titletextFive = 'Random',
