@@ -30,18 +30,18 @@ var upperOuterArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return y(d.Hi95); })
+	.y0(function (d) { return yTwo(d.Hi95); })
 	.defined(function(d) { return !isNaN(d.Hi95); })
-	.y1(function (d) { return y(d.Hi80); })
+	.y1(function (d) { return yTwo(d.Hi80); })
 	.defined(function(d) { return !isNaN(d.Hi80); });
 
 var upperInnerArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return y(d.Hi80); })
+	.y0(function (d) { return yTwo(d.Hi80); })
 	.defined(function(d) { return !isNaN(d.Hi80); })
-	.y1(function (d) { return y(d.for); })
+	.y1(function (d) { return yTwo(d.for); })
 	.defined(function(d) { return !isNaN(d.for); });
 	
 var plotFig = d3.svg.line()
@@ -51,29 +51,36 @@ var plotFig = d3.svg.line()
 	.y(function (d) { return y(d.dat); })
 	.defined(function(d) { return !isNaN(d.dat); });
 
+var plotFigHalf = d3.svg.line()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y(function (d) { return yTwo(d.act); })
+	.defined(function(d) { return !isNaN(d.act); });
+
 var plotFigTwo = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return y(d.for); })
+	.y(function (d) { return yTwo(d.for); })
 	.defined(function(d) { return !isNaN(d.for); });
 
 var lowerInnerArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return y(d.for); })
+	.y0(function (d) { return yTwo(d.for); })
 	.defined(function(d) { return !isNaN(d.for); })
-	.y1(function (d) { return y(d.Lo80); })
+	.y1(function (d) { return yTwo(d.Lo80); })
 	.defined(function(d) { return !isNaN(d.Lo80); });
 
 var lowerOuterArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return y(d.Lo80); })
+	.y0(function (d) { return yTwo(d.Lo80); })
 	.defined(function(d) { return !isNaN(d.Lo80); })
-	.y1(function (d) { return y(d.Lo95); })
+	.y1(function (d) { return yTwo(d.Lo95); })
 	.defined(function(d) { return !isNaN(d.Lo95); });
 
 	svg.datum(data);
@@ -116,6 +123,14 @@ var lowerOuterArea = d3.svg.area()
 		
 	svg.append('path')
 		.attr('class', 'figure')
+		.attr('d', plotFigHalf)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "none")
+		.attr("stroke", "#abe3ce")
+		.attr("stroke-width", "2");
+		
+	svg.append('path')
+		.attr('class', 'figure')
 		.attr('d', plotFigTwo)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
@@ -146,6 +161,8 @@ function makeChartCOne (data, titletext, textAxes) {
 	var x = d3.time.scale().range([0, chartWidth])
 			.domain([dateFirst, dateLast]),
 		y = d3.scale.linear().range([chartHeight, 0])
+			.domain(d3.extent(data, function (d) { return d.dat; })),
+		yTwo = d3.scale.linear().range([chartHeight, 0])
 			.domain([d3.extent(data, function (d) { return d.Lo95; })[0],d3.extent(data, function (d) { return d.Hi95; })[1]]);
 
 	var xAxis = d3.svg.axis().scale(x).orient('bottom')
@@ -167,7 +184,7 @@ function makeChartCOne (data, titletext, textAxes) {
 			.attr('height', chartHeight);
 
 	addAxesAndLegendCOne(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
-	drawPathsCOne(svg, data, x, y, titletext);
+	drawPathsCOne(svg, data, x, y, yTwo, titletext);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
@@ -179,7 +196,7 @@ d3.csv('data/Eugene-predict-365.csv', function (rawData) {
 		return {
 			date: d3.time.format('%d/%m/%y').parse(d.Date),
 			for: Math.round(d.Forecast),
-			dat: Math.round(d.Actual),
+			act: Math.round(d.Actual),
 			Lo80: Math.round(d.Lo80),
 			Lo95: Math.round(d.Lo95),
 			Hi80: Math.round(d.Hi80),
