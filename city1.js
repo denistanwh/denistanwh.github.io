@@ -258,7 +258,7 @@ d3.csv('data/Eugene-predict-365.csv', function (rawData) {
 		})[0]
 		
 		var titletextOne = 'Energy Demand',
-			titletextTwo = 'Prediction',
+			titletextTwo = 'Energy Demand & Prediction',
 			titletextThree = 'Temperature',
 			titletextFour = 'Trend',
 			titletextFive = 'Random',
