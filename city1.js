@@ -43,7 +43,12 @@ var upperOuterArea = d3.svg.area()
 	.y0(function (d) { return yTwo(d.Hi95); })
 	.defined(function(d) { return !isNaN(d.Hi95); })
 	.y1(function (d) { return yTwo(d.Hi80); })
-	.defined(function(d) { return !isNaN(d.Hi80); });
+	.defined(function(d) { return !isNaN(d.Hi80); })
+	.call(d3.helper.tooltip(
+       function(d, i){
+         return "<b>95th %: "+d.Hi95 + "</b><br/><b>80th %: </b>"+d.Hi80;
+       }
+       ));
 
 var upperInnerArea = d3.svg.area()
 	.interpolate('basis')
@@ -100,12 +105,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', upperOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
-	.attr("stroke", "rgba(100, 100, 100, 0.1)")
-	.call(d3.helper.tooltip(
-       function(d, i){
-         return "<b>95th %: "+d.Hi95 + "</b><br/><b>80th %: "+d.Hi80;
-       }
-       ));
+	.attr("stroke", "rgba(100, 100, 100, 0.1)");
 
 	svg.append('path')
 		.attr('class', 'area lower outer')
