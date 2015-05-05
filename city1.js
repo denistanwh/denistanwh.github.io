@@ -146,7 +146,7 @@ function makeChartCOne (data, titletext, textAxes) {
 	var x = d3.time.scale().range([0, chartWidth])
 			.domain([dateFirst, dateLast]),
 		y = d3.scale.linear().range([chartHeight, 0])
-			.domain(d3.extent(data, function (d) { return d.dat; }));
+			.domain([d3.extent(data, function (d) { return d.Lo95; })[0],d3.extent(data, function (d) { return d.Hi95; })[1]]);
 
 	var xAxis = d3.svg.axis().scale(x).orient('bottom')
 				.innerTickSize(-chartHeight).outerTickSize(0).tickPadding(10),
