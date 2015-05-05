@@ -25,19 +25,6 @@ function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeigh
 }
 
 function drawPathsCOne (svg, data, x, y, titletext) {
-var plotFig = d3.svg.line()
-	.interpolate('basis')
-	.x (function (d) { return x(d.date) || 1; })
-	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return y(d.dat); })
-	.defined(function(d) { return !isNaN(d.dat); });
-
-var plotFigTwo = d3.svg.line()
-	.interpolate('basis')
-	.x (function (d) { return x(d.date) || 1; })
-	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return y(d.for); })
-	.defined(function(d) { return !isNaN(d.for); });
 	
 var upperOuterArea = d3.svg.area()
 	.interpolate('basis')
@@ -56,6 +43,20 @@ var upperInnerArea = d3.svg.area()
 	.defined(function(d) { return !isNaN(d.Hi80); })
 	.y1(function (d) { return y(d.dat); })
 	.defined(function(d) { return !isNaN(d.dat); });
+	
+var plotFig = d3.svg.line()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y(function (d) { return y(d.dat); })
+	.defined(function(d) { return !isNaN(d.dat); });
+
+var plotFigTwo = d3.svg.line()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y(function (d) { return y(d.for); })
+	.defined(function(d) { return !isNaN(d.for); });
 
 var lowerInnerArea = d3.svg.area()
 	.interpolate('basis')
@@ -76,22 +77,6 @@ var lowerOuterArea = d3.svg.area()
 	.defined(function(d) { return !isNaN(d.Lo95); });
 
 	svg.datum(data);
-
-	svg.append('path')
-		.attr('class', 'figure')
-		.attr('d', plotFig)
-		.attr('clip-path', 'url(#rect-clip)')
-		.attr("fill", "none")
-		.attr("stroke", "#abe3ce")
-		.attr("stroke-width", "2");
-		
-	svg.append('path')
-		.attr('class', 'figure')
-		.attr('d', plotFigTwo)
-		.attr('clip-path', 'url(#rect-clip)')
-		.attr("fill", "none")
-		.attr("stroke", "#000000")
-		.attr("stroke-width", "2");
 		
 	svg.append('path')
 		.attr('class', 'area upper outer')
@@ -120,6 +105,22 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.8)")
 		.attr("stroke", "rgba(100, 100, 100, 0.8)");
+		
+	svg.append('path')
+		.attr('class', 'figure')
+		.attr('d', plotFig)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "none")
+		.attr("stroke", "#abe3ce")
+		.attr("stroke-width", "2");
+		
+	svg.append('path')
+		.attr('class', 'figure')
+		.attr('d', plotFigTwo)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "none")
+		.attr("stroke", "#000000")
+		.attr("stroke-width", "2");
 		
 	svg.append('text')
 		.attr('x', 750)
@@ -179,6 +180,10 @@ d3.csv('data/Eugene-predict-365.csv', function (rawData) {
 			date: d3.time.format('%d/%m/%y').parse(d.Date),
 			for: Math.round(d.Forecast),
 			dat: Math.round(d.Actual),
+			Lo80: Math.round(d.Lo80),
+			Lo95: Math.round(d.Lo95),
+			Hi80: Math.round(d.Hi80),
+			Hi95: Math.round(d.Hi95),
 		};
 	});
 	
