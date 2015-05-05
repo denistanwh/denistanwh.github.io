@@ -38,6 +38,42 @@ var plotFigTwo = d3.svg.line()
 	.defined(function(d) { return !isNaN(d.date); })
 	.y(function (d) { return y(d.for); })
 	.defined(function(d) { return !isNaN(d.for); });
+	
+var upperOuterArea = d3.svg.area()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y0(function (d) { return y(d.Hi95); })
+	.defined(function(d) { return !isNaN(d.Hi95); })
+	.y1(function (d) { return y(d.Hi80); })
+	.defined(function(d) { return !isNaN(d.Hi80); });
+
+var upperInnerArea = d3.svg.area()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y0(function (d) { return y(d.Hi80); })
+	.defined(function(d) { return !isNaN(d.Hi80); })
+	.y1(function (d) { return y(d.dat); })
+	.defined(function(d) { return !isNaN(d.dat); });
+
+var lowerInnerArea = d3.svg.area()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y0(function (d) { return y(d.dat); })
+	.defined(function(d) { return !isNaN(d.dat); })
+	.y1(function (d) { return y(d.Lo80); })
+	.defined(function(d) { return !isNaN(d.Lo80); });
+
+var lowerOuterArea = d3.svg.area()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y0(function (d) { return y(d.Lo80); })
+	.defined(function(d) { return !isNaN(d.Lo80); })
+	.y1(function (d) { return y(d.Lo95); })
+	.defined(function(d) { return !isNaN(d.Lo95); });
 
 	svg.datum(data);
 
@@ -56,6 +92,34 @@ var plotFigTwo = d3.svg.line()
 		.attr("fill", "none")
 		.attr("stroke", "#000000")
 		.attr("stroke-width", "2");
+		
+	svg.append('path')
+		.attr('class', 'area upper outer')
+		.attr('d', upperOuterArea)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "rgba(100, 200, 100, 0.8)")
+		.attr("stroke", "rgba(100, 200, 100, 0.8)");
+
+	svg.append('path')
+		.attr('class', 'area lower outer')
+		.attr('d', lowerOuterArea)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "rgba(100, 200, 100, 0.8)")
+		.attr("stroke", "rgba(100, 200, 100, 0.8)");
+
+	svg.append('path')
+		.attr('class', 'area upper inner')
+		.attr('d', upperInnerArea)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "rgba(100, 100, 100, 0.8)")
+		.attr("stroke", "rgba(100, 100, 100, 0.8)");
+
+	svg.append('path')
+		.attr('class', 'area lower inner')
+		.attr('d', lowerInnerArea)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "rgba(100, 100, 100, 0.8)")
+		.attr("stroke", "rgba(100, 100, 100, 0.8)");
 		
 	svg.append('text')
 		.attr('x', 750)
