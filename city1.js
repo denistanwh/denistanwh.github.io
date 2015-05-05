@@ -24,24 +24,24 @@ function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeigh
 
 }
 
-function drawPathsCOne (svg, data, x, y, yTwo, titletext) {
+function drawPathsCOne (svg, data, x, y, titletext) {
 	
 var upperOuterArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return yTwo(d.Hi95); })
+	.y0(function (d) { return y(d.Hi95); })
 	.defined(function(d) { return !isNaN(d.Hi95); })
-	.y1(function (d) { return yTwo(d.Hi80); })
+	.y1(function (d) { return y(d.Hi80); })
 	.defined(function(d) { return !isNaN(d.Hi80); });
 
 var upperInnerArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return yTwo(d.Hi80); })
+	.y0(function (d) { return y(d.Hi80); })
 	.defined(function(d) { return !isNaN(d.Hi80); })
-	.y1(function (d) { return yTwo(d.for); })
+	.y1(function (d) { return y(d.for); })
 	.defined(function(d) { return !isNaN(d.for); });
 	
 var plotFig = d3.svg.line()
@@ -55,25 +55,25 @@ var plotFigTwo = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return yTwo(d.for); })
+	.y(function (d) { return y(d.for); })
 	.defined(function(d) { return !isNaN(d.for); });
 
 var lowerInnerArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return yTwo(d.for); })
+	.y0(function (d) { return y(d.for); })
 	.defined(function(d) { return !isNaN(d.for); })
-	.y1(function (d) { return yTwo(d.Lo80); })
+	.y1(function (d) { return y(d.Lo80); })
 	.defined(function(d) { return !isNaN(d.Lo80); });
 
 var lowerOuterArea = d3.svg.area()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y0(function (d) { return yTwo(d.Lo80); })
+	.y0(function (d) { return y(d.Lo80); })
 	.defined(function(d) { return !isNaN(d.Lo80); })
-	.y1(function (d) { return yTwo(d.Lo95); })
+	.y1(function (d) { return y(d.Lo95); })
 	.defined(function(d) { return !isNaN(d.Lo95); });
 
 	svg.datum(data);
@@ -145,10 +145,8 @@ function makeChartCOne (data, titletext, textAxes) {
 
 	var x = d3.time.scale().range([0, chartWidth])
 			.domain([dateFirst, dateLast]),
-		yTwo = d3.scale.linear().range([chartHeight, 0])
-			.domain([d3.extent(data, function (d) { return d.Lo95; })[0],d3.extent(data, function (d) { return d.Hi95; })[1]]),
 		y = d3.scale.linear().range([chartHeight, 0])
-			.domain(d3.extent(data, function (d) { return d.dat; }));
+			.domain([d3.extent(data, function (d) { return d.Lo95; })[0],d3.extent(data, function (d) { return d.Hi95; })[1]]);
 
 	var xAxis = d3.svg.axis().scale(x).orient('bottom')
 				.innerTickSize(-chartHeight).outerTickSize(0).tickPadding(10),
@@ -169,7 +167,7 @@ function makeChartCOne (data, titletext, textAxes) {
 			.attr('height', chartHeight);
 
 	addAxesAndLegendCOne(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
-	drawPathsCOne(svg, data, x, y, yTwo, titletext);
+	drawPathsCOne(svg, data, x, y, titletext);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
