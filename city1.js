@@ -24,7 +24,7 @@ function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeigh
 
 }
 
-function drawPathsCOne (svg, data, x, y, titletext) {
+function drawPathsCOne (svg, data, x, y, yTwo, titletext) {
 	
 var upperOuterArea = d3.svg.area()
 	.interpolate('basis')
