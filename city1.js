@@ -101,9 +101,8 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', upperOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
-	.attr("stroke", "rgba(100, 100, 100, 0.1)");
-		   
-	svg.selectAll("circle")
+	.attr("stroke", "rgba(100, 100, 100, 0.1)")
+	.selectAll("circle")
     	.data(data)
   		.enter().append("circle")
     	.attr("r", 5)
