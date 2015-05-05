@@ -102,11 +102,12 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
 	.attr("stroke", "rgba(100, 100, 100, 0.1)")
-	.call(d3.helper.tooltip("<b>95 % Confidence Interval</b>"));
-	       //function(d, i){
-	         //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-	       //}
-	       //));
+	.call(d3.helper.tooltip(
+	       function(d, i){
+	         return "<b>95th % <br>Confidence Interval</b>"
+			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+	       }
+	   ));
 
 	svg.append('path')
 		.attr('class', 'area lower outer')
