@@ -94,21 +94,18 @@ var lowerOuterArea = d3.svg.area()
 	.y1(function (d) { return yTwo(d.Lo95); })
 	.defined(function(d) { return !isNaN(d.Lo95); });
 
-	svg.datum(data);
+	svg.datum(data).call(d3.helper.tooltip(
+       function(d, i){
+         return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+       }
+       ));
 		
 	svg.append('path')
 		.attr('class', 'area upper outer')
 		.attr('d', upperOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
-	.attr("stroke", "rgba(100, 100, 100, 0.1)")
-	.data(data)
-	.enter()
-	.call(d3.helper.tooltip(
-       function(d, i){
-         return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-       }
-       ));
+	.attr("stroke", "rgba(100, 100, 100, 0.1)");
 
 	svg.append('path')
 		.attr('class', 'area lower outer')
