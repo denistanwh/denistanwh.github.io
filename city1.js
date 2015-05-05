@@ -99,29 +99,29 @@ var lowerOuterArea = d3.svg.area()
 		.attr('class', 'area upper outer')
 		.attr('d', upperOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
-		.attr("fill", "rgba(100, 200, 100, 0.8)")
-		.attr("stroke", "rgba(100, 200, 100, 0.8)");
+		.attr("fill", "rgba(100, 200, 100, 0.6)")
+		.attr("stroke", "rgba(100, 200, 100, 0.6)");
 
 	svg.append('path')
 		.attr('class', 'area lower outer')
 		.attr('d', lowerOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
-		.attr("fill", "rgba(100, 200, 100, 0.8)")
-		.attr("stroke", "rgba(100, 200, 100, 0.8)");
+		.attr("fill", "rgba(100, 200, 100, 0.6)")
+		.attr("stroke", "rgba(100, 200, 100, 0.6)");
 
 	svg.append('path')
 		.attr('class', 'area upper inner')
 		.attr('d', upperInnerArea)
 		.attr('clip-path', 'url(#rect-clip)')
-		.attr("fill", "rgba(100, 100, 100, 0.8)")
-		.attr("stroke", "rgba(100, 100, 100, 0.8)");
+		.attr("fill", "rgba(100, 100, 100, 0.3)")
+		.attr("stroke", "rgba(100, 100, 100, 0.3)");
 
 	svg.append('path')
 		.attr('class', 'area lower inner')
 		.attr('d', lowerInnerArea)
 		.attr('clip-path', 'url(#rect-clip)')
-		.attr("fill", "rgba(100, 100, 100, 0.8)")
-		.attr("stroke", "rgba(100, 100, 100, 0.8)");
+		.attr("fill", "rgba(100, 100, 100, 0.3)")
+		.attr("stroke", "rgba(100, 100, 100, 0.3)");
 		
 	svg.append('path')
 		.attr('class', 'figure')
