@@ -2,7 +2,7 @@ function runCOne() {
 	
 	var dateFirst = [];
 	var dataLast = [];
-function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes) {
+function addAxesAndLegendCOne (svg, xAxis, yAxis, yAxisTwo, margin, chartWidth, chartHeight, textAxes) {
 	
 	var axes = svg.append('g')
 		.attr('clip-path', 'url(#axes-clip)');
@@ -15,6 +15,16 @@ function addAxesAndLegendCOne (svg, xAxis, yAxis, margin, chartWidth, chartHeigh
 	axes.append('g')
 		.attr('class', 'y axis')
 		.call(yAxis)
+		.append('text')
+			.attr('transform', 'rotate(-90)')
+			.attr('y', -46)
+			.attr('dy', '.71em')
+			.style('text-anchor', 'end')
+			.text(textAxes);
+			
+	axes.append('g')
+		.attr('class', 'y axis')
+		.call(yAxisTwo)
 		.append('text')
 			.attr('transform', 'rotate(-90)')
 			.attr('y', -46)
@@ -168,7 +178,9 @@ function makeChartCOne (data, titletext, textAxes) {
 	var xAxis = d3.svg.axis().scale(x).orient('bottom')
 				.innerTickSize(-chartHeight).outerTickSize(0).tickPadding(10),
 		yAxis = d3.svg.axis().scale(y).orient('left')
-				.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10);
+				.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10),
+		yAxisTwo = d3.svg.axis().scale(yTwo).orient('left')
+			.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10);
 
 	var svg = d3.select('body').append('svg')
 		.attr('width',  svgWidth)
@@ -183,7 +195,7 @@ function makeChartCOne (data, titletext, textAxes) {
 			.attr('width', 0)
 			.attr('height', chartHeight);
 
-	addAxesAndLegendCOne(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
+	addAxesAndLegendCOne(svg, xAxis, yAxis, yAxisTwo, margin, chartWidth, chartHeight, textAxes);
 	drawPathsCOne(svg, data, x, y, yTwo, titletext);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
