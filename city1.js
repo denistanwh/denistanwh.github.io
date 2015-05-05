@@ -169,7 +169,7 @@ function makeChartCOne (data, titletext, textAxes) {
 			.attr('height', chartHeight);
 
 	addAxesAndLegendCOne(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
-	drawPathsCOne(svg, data, x, y, titletext);
+	drawPathsCOne(svg, data, x, y, yTwo, titletext);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
