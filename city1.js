@@ -96,7 +96,7 @@ var lowerOuterArea = d3.svg.area()
 
 	svg.datum(data);
 		
-	svg.data(data).enter().append('path')
+	svg.data(data).append('path')
 		.attr('class', 'area upper outer')
 		.attr('d', upperOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
