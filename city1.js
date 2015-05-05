@@ -271,9 +271,9 @@ d3.csv('data/Eugene-predict-365.csv', function (rawData) {
 			textAxesSix = 'Seasonal Component';
 		
 
-	makeChartCOne(dataOne, titletextOne, textAxesOne);
+	//makeChartCOne(dataOne, titletextOne, textAxesOne);
 	makeChartCOne(dataSix, titletextTwo, textAxesTwo);
-	makeChartCOne(dataTwo, titletextThree, textAxesThree);
+	//makeChartCOne(dataTwo, titletextThree, textAxesThree);
 	makeChartCOne(dataThree, titletextFour, textAxesFour);
 	makeChartCOne(dataFour, titletextFive, textAxesFive);
 	makeChartCOne(dataFive, titletextSix, textAxesSix);
