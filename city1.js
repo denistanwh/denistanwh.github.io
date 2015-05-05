@@ -104,7 +104,7 @@ var lowerOuterArea = d3.svg.area()
 	.attr("stroke", "rgba(100, 100, 100, 0.1)")
 	.call(d3.helper.tooltip(
 	       function(d, i){
-	         return "<b>95th % <br>Confidence Interval</b>"
+	         return "<b>Upper 95th % <br>Confidence Interval</b>"
 			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
 	       }
 	   ));
@@ -114,21 +114,38 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', lowerOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
-		.attr("stroke", "rgba(100, 100, 100, 0.1)");
+		.attr("stroke", "rgba(100, 100, 100, 0.1)")
+   	.call(d3.helper.tooltip(
+   	       function(d, i){
+   	         return "<b>Lower 95th % <br>Confidence Interval</b>"
+   			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+   	       }
+   	   ));
 
 	svg.append('path')
 		.attr('class', 'area upper inner')
 		.attr('d', upperInnerArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.4)")
-		.attr("stroke", "rgba(100, 100, 100, 0.4)");
+		.attr("stroke", "rgba(100, 100, 100, 0.4)")
+	.call(d3.helper.tooltip(
+	       function(d, i){
+	         return "<b>Upper 80th % <br>Confidence Interval</b>"
+			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+	       }
+	   ));
 
 	svg.append('path')
 		.attr('class', 'area lower inner')
 		.attr('d', lowerInnerArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.4)")
-		.attr("stroke", "rgba(100, 100, 100, 0.4)");
+		.attr("stroke", "rgba(100, 100, 100, 0.4)").call(d3.helper.tooltip(
+		       function(d, i){
+		         return "<b>Upper 80th % <br>Confidence Interval</b>"
+				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+		       }
+		   ));
 		
 	svg.append('path')
 		.attr('class', 'figure')
@@ -144,7 +161,8 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
 		.attr("stroke", "#abe3ce")
-		.attr("stroke-width", "2");
+		.attr("stroke-width", "2")
+		;
 		
 	svg.append('path')
 		.attr('class', 'figure')
@@ -152,14 +170,26 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
 		.attr("stroke", "#000000")
-		.attr("stroke-width", "2");
+		.attr("stroke-width", "2")
+		.call(d3.helper.tooltip(
+		       function(d, i){
+		         return "<b><Raw Energy Demand Data/b>"
+				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+		       }
+		   ));
 		
 	svg.append('text')
 		.attr('x', 750)
 		.attr('y', 30)
 		.attr('font-family', 'Open Sans')
 		.attr('font-size', '14px')
-		.text(titletext);
+		.text(titletext)
+	   	.call(d3.helper.tooltip(
+	   	       function(d, i){
+	   	         return "<b>Lower 95th % <br>Confidence Interval</b>"
+	   			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
+	   	       }
+	   	   ));
 }
 
 function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
