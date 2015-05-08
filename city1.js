@@ -113,8 +113,8 @@ svg.selectAll("dot")
         .data(data)			
     .enter().append("circle")								
         .attr("r", 5)		
-        .attr("cx", function(d) { return x(d.date); }).defined(function(d) { return !isNaN(d.date); })		 
-        .attr("cy", function(d) { return y(d.act); }).defined(function(d) { return !isNaN(d.act); })		
+        .attr("cx", function(d) { return x(d.date); })		 
+        .attr("cy", function(d) { return y(d.act); })		
 	.call(d3.helper.tooltip(
 	       function(d, i){
 	         //return "<b>Energy Demand</b>"
