@@ -177,7 +177,7 @@ var lowerOuterArea = d3.svg.area()
 	           .attr("r", 5)		
 	           .attr("cx", function(d) { return x(d.date); })		 
 	           .attr("cy", function(d) { return yTwo(d.act); })
-	   	   	//.style("fill", "none")
+	   	   	.style("fill", "transparent")
 	   	.call(d3.helper.tooltip(
 	   	       function(d, i){
 	   	         //return "<b>Energy Demand</b>"
