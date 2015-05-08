@@ -108,19 +108,6 @@ var lowerOuterArea = d3.svg.area()
 			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
 	       }
 	   ));
-	   
-svg.selectAll("dot")	
-        .data(data)			
-    .enter().append("circle")								
-        .attr("r", 5)		
-        .attr("cx", function(d) { return x(d.date); })		 
-        .attr("cy", function(d) { return y(d.act); })		
-	.call(d3.helper.tooltip(
-	       function(d, i){
-	         //return "<b>Energy Demand</b>"
-			 return "<b>Energy Demand: <br>"+d.act + " MW </b>";
-	       }
-	   ));
 
 	svg.append('path')
 		.attr('class', 'area lower outer')
