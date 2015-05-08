@@ -112,9 +112,11 @@ var lowerOuterArea = d3.svg.area()
 svg.selectAll("dot")	
         .data(data)			
     .enter().append("circle")								
-        .attr("r", 0)		
+        .attr("r", 5)		
         .attr("cx", function(d) { return x(d.date); })		 
-        .attr("cy", function(d) { return yTwo(d.act); })		
+        .attr("cy", function(d) { return yTwo(d.act); })
+	   	.style("fill", "none")
+	    .style("stroke", "none")
 	.call(d3.helper.tooltip(
 	       function(d, i){
 	         //return "<b>Energy Demand</b>"
@@ -174,13 +176,13 @@ svg.selectAll("dot")
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
 		.attr("stroke", "#abe3ce")
-		.attr("stroke-width", "2")
-		.call(d3.helper.tooltip(
-		       function(d, i){
-		         return "<b>Energy Demand</b>"
+		   .attr("stroke-width", "2");
+		//.call(d3.helper.tooltip(
+		  //     function(d, i){
+		    //     return "<b>Energy Demand</b>"
 				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-		       }
-		   ));
+		      // }
+		   //));
 		
 	svg.append('path')
 		.attr('class', 'figure')
