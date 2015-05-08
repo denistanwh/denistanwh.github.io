@@ -115,8 +115,7 @@ svg.selectAll("dot")
         .attr("r", 5)		
         .attr("cx", function(d) { return x(d.date); })		 
         .attr("cy", function(d) { return yTwo(d.act); })
-	   	.style("fill", "none")
-	    .style("stroke", "none")
+	   	//.style("fill", "none")
 	.call(d3.helper.tooltip(
 	       function(d, i){
 	         //return "<b>Energy Demand</b>"
@@ -204,12 +203,7 @@ svg.selectAll("dot")
 		.attr('font-family', 'Open Sans')
 		.attr('font-size', '14px')
 		.text(titletext)
-	   	.call(d3.helper.tooltip(
-	   	       function(d, i){
-	   	         return "<b>Lower 95th % <br>Confidence Interval</b>"
-	   			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-	   	       }
-	   	   ));
+
 }
 
 function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
