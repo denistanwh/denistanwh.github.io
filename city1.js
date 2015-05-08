@@ -112,9 +112,9 @@ var lowerOuterArea = d3.svg.area()
 svg.selectAll("dot")	
         .data(data)			
     .enter().append("circle")								
-        .attr("r", 5)		
+        .attr("r", 0)		
         .attr("cx", function(d) { return x(d.date); })		 
-        .attr("cy", function(d) { return y(d.act); })		
+        .attr("cy", function(d) { return yTwo(d.act); })		
 	.call(d3.helper.tooltip(
 	       function(d, i){
 	         //return "<b>Energy Demand</b>"
