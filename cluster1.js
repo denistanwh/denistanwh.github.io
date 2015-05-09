@@ -95,10 +95,10 @@ function drawPathsOne (svg, data, x, y) {
 	   svg.selectAll("dot")	
 	           .data(data)			
 	       .enter().append("circle")								
-	           .attr("r", 1.5)		
+	           .attr("r", 3)		
 	           .attr("cx", function(d) { return x(d.date); })		 
 	           .attr("cy", function(d) { return y(d.MW); })
-	   	   	.style("fill", "white")
+	   	   	.style("fill", "transparent")
 	   	.call(d3.helper.tooltip(
 	   	       function(d, i){
 	   	         //return "<b>Energy Demand</b>"
