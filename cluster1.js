@@ -92,7 +92,7 @@ function drawPathsOne (svg, data, x, y) {
 		.attr("fill", "none")
 		.attr("stroke", "#d6aaea");
 		
-	 svg.selectAll("dot")	
+	   svg.selectAll("dot")	
 	           .data(data)			
 	       .enter().append("circle")								
 	           .attr("r", 5)		
@@ -102,7 +102,7 @@ function drawPathsOne (svg, data, x, y) {
 	   	.call(d3.helper.tooltip(
 	   	       function(d, i){
 	   	         //return "<b>Energy Demand</b>"
-	   			 return "<b>Normalized Demand: <br>"+Math.round(d.MW, -2)</b>";
+	   			 return "<b>Normalized Demand: <br>"+Math.Round(d.MW,-2) + "</b>";
 	   	       }
 	   	   ));
 
