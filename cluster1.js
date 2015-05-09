@@ -102,7 +102,7 @@ function drawPathsOne (svg, data, x, y) {
 	   	.call(d3.helper.tooltip(
 	   	       function(d, i){
 	   	         //return "<b>Energy Demand</b>"
-	   			 return "<b>City: "+d.city+"</b><br>Normalized Demand: "+Math.round(d.MW*100)/100;
+	   			 return "<b>City: "+d.city+"</b><br>Norm. Demand: "+Math.round(d.MW*100)/100;
 	   	       }
 	   	   ));
 
