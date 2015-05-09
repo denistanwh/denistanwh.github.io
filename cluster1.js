@@ -98,7 +98,7 @@ function drawPathsOne (svg, data, x, y) {
 	           .attr("r", 3)		
 	           .attr("cx", function(d) { return x(d.date); })		 
 	           .attr("cy", function(d) { return y(d.MW); })
-	   	   	.style("fill", "transparent")
+	   	   	.style("fill", "grey")
 	   	.call(d3.helper.tooltip(
 	   	       function(d, i){
 	   	         //return "<b>Energy Demand</b>"
