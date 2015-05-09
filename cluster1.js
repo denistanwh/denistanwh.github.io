@@ -110,7 +110,7 @@ function drawPathsOne (svg, data, x, y) {
 
 function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 	rectClip
-		.transition().duration(30000).attr('width', chartWidth);
+		.transition().duration(0).attr('width', chartWidth);
 }
 
 function makeChart (data) {
