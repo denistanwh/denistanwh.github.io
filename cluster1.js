@@ -76,7 +76,7 @@ function drawPathsOne (svg, data, x, y) {
 	   	.call(d3.helper.tooltip(
 	   	       function(d, i){
 	   	         //return "<b>Energy Demand</b>"
-	   			 return "<b>Energy Demand: <br>"+Math.round(d.MW) + " MW </b>";
+	   			 return "<b>Normalized Demand: <br>"+Math.round(d.MW, -2)</b>";
 	   	       }
 	   	   ));
 
