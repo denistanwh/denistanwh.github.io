@@ -128,11 +128,25 @@ function drawPathsFour (svg, data, x, y) {
 		.attr("stroke", "black")
 		.attr("stroke-width", "2");
 		
+	   svg.selectAll("dot")	
+	           .data(data)			
+	       .enter().append("circle")								
+	           .attr("r", 3)		
+	           .attr("cx", function(d) { return x(d.date); })		 
+	           .attr("cy", function(d) { return y(d.MW); })
+	   	   	.style("fill", "transparent")
+	   	.call(d3.helper.tooltip(
+	   	       function(d, i){
+	   	         //return "<b>Energy Demand</b>"
+	   			 return "<b>City: "+d.city+"</b><br>Norm. Demand: "+Math.round(d.MW*100)/100;
+	   	       }
+	   	   ));
+
 }
 
 function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 	rectClip
-		.transition().duration(30000).attr('width', chartWidth);
+		.transition().duration(0).attr('width', chartWidth);
 }
 
 function makeChart (data) {
