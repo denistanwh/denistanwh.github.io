@@ -65,20 +65,6 @@ function drawPathsOne (svg, data, x, y) {
 		.attr("fill", "none")
 		.attr("stroke", "#abe3ce")
 		.attr("stroke-width", "2");
-		
-	   svg.selectAll("dot")	
-	           .data(data)			
-	       .enter().append("circle")								
-	           .attr("r", 5)		
-	           .attr("cx", function(d) { return x(d.date); })		 
-	           .attr("cy", function(d) { return y(d.MW); })
-	   	   	.style("fill", "transparent")
-	   	.call(d3.helper.tooltip(
-	   	       function(d, i){
-	   	         //return "<b>Energy Demand</b>"
-	   			 return "<b>Normalized Demand: <br>"+Math.round(d.MW, -2)</b>";
-	   	       }
-	   	   ));
 
 	svg.append('path')
 		.attr('class', 'Two')
@@ -105,6 +91,20 @@ function drawPathsOne (svg, data, x, y) {
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
 		.attr("stroke", "#d6aaea");
+		
+	 svg.selectAll("dot")	
+	           .data(data)			
+	       .enter().append("circle")								
+	           .attr("r", 5)		
+	           .attr("cx", function(d) { return x(d.date); })		 
+	           .attr("cy", function(d) { return y(d.MW); })
+	   	   	.style("fill", "transparent")
+	   	.call(d3.helper.tooltip(
+	   	       function(d, i){
+	   	         //return "<b>Energy Demand</b>"
+	   			 return "<b>Normalized Demand: <br>"+Math.round(d.MW, -2)</b>";
+	   	       }
+	   	   ));
 
 }
 
