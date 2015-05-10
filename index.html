@@ -124,8 +124,9 @@
 <p>Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</p>
 
 <p>Figure 8: Geographic location of 30 cities</p>
-
-<p><img src="paper/Fig8.png" alt="image" /></p>
+<div id="Map"> 
+	<script type = "text/javascript"src="map.js"></script>
+</div>
 
 <p>Note: Cluster1 cities are in green; Cluster 2 cities are in red; Cluster 3 cities are in purple; and Cluster 4 cities are yellow</p>
 
@@ -280,14 +281,6 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
         <h1>
             Visualization
         </h1>
-		
-			<div id="option">
-				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();map();">
-				        Show Overview
-				    </button> 
-				<script type = "text/javascript" src="overview.js"></script>
-				<script type = "text/javascript"src="map.js"></script>
-			</div>
 				<div id="option">
 				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCOne()">
 				        Show Cluster 1 City
