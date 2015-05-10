@@ -130,7 +130,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 <div id="grouping-of-cities-1" class="section level3">
 <h3>Grouping of Cities</h3>
 
-<p>Table 1 and Figure 4 shows the result of clustering. The map shows the geographical location of these 29 cities.</p>
+<p>Table 1 and Figure 4 shows the result of clustering.</p>
 
 <table>
 <thead>
@@ -272,6 +272,9 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 <p>Figure 4 is visualized using the following code:</p>
 <pre class="r"><code>ggplot(data=data.7, aes(x=day, y=MW, color=city))+geom_line()+
   facet_wrap(~cluster, scales=&quot;free&quot;)</code></pre>
+
+<p>The map in Figure 5 shows the geographical location of these 29 cities.</p>
+
 <p><b>Figure 5: Geographic location of 29 cities</b><br />
 <div id="Map"> 
 	<script type = "text/javascript"src="map.js"></script>
