@@ -97,7 +97,7 @@ function drawPathsOne (svg, data, x, y) {
 	   svg.selectAll("dot")	
 	           .data(data)			
 	       .enter().append("circle")								
-	           .attr("r", 3)		
+	           .attr("r", 5)		
 	           .attr("cx", function(d) { return x(d.date); })		 
 	           .attr("cy", function(d) { return y(d.MW); })
 	   	   	.style("fill", "transparent")
