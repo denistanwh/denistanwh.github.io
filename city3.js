@@ -259,7 +259,7 @@ function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 }
 
 function makeChartCThree (data, titletext, textAxes, onoff) {
-	var svgWidth  = 860,
+	var svgWidth  = 840,
 		svgHeight = 300,
 		margin = { top: 20, right: 20, bottom: 40, left: 60 },
 		chartWidth  = svgWidth  - margin.left - margin.right,

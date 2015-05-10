@@ -14,7 +14,7 @@
    version="1.1"
    id="svg2"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="eu4.svg">
+   sodipodi:docname="Fig17.svg">
   <metadata
      id="metadata462">
     <rdf:RDF>
@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1394,7 +1394,7 @@
   </defs>
   <g
      id="surface56"
-     transform="matrix(0.93870968,0,0,0.93870968,14.593548,27.380645)">
+     transform="matrix(0.93870968,0,0,0.93870968,14.593548,19.380645)">
     <rect
        x="0"
        y="0"
@@ -2363,7 +2363,7 @@
   </g>
   <g
      id="surface61"
-     transform="matrix(0.94001477,0,0,0.94001477,357.64905,29.283871)">
+     transform="matrix(0.94001477,0,0,0.94001477,357.64905,21.283871)">
     <rect
        id="rect4411"
        style="fill:#ffffff;fill-opacity:1;stroke:none"
@@ -5342,46 +5342,48 @@
   </g>
   <text
      xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="148.18063"
-     y="32.309677"
+     style="font-style:normal;font-weight:normal;font-size:22px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="165.01935"
+     y="33.432259"
      id="text7432"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
        id="tspan7434"
-       x="148.18063"
-       y="32.309677">Eugene</tspan></text>
+       x="165.01935"
+       y="33.432259">Eugene</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="495.05811"
+     x="514.14197"
      y="33.432259"
      id="text7436"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
        id="tspan7438"
-       x="495.05811"
-       y="33.432259">Dakar</tspan></text>
+       x="514.14197"
+       y="33.432259"
+       style="font-size:22px">Dakar</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="141.44516"
-     y="294.99356"
+     x="156.03871"
+     y="292.74841"
      id="text7440"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
        id="tspan7442"
-       x="141.44516"
-       y="294.99356">Louisville</tspan></text>
+       x="156.03871"
+       y="292.74841"
+       style="font-size:22px">Louisville</tspan></text>
   <text
      xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="449.03229"
+     style="font-style:normal;font-weight:normal;font-size:22px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="488.3226"
      y="292.74841"
      id="text7444"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
        id="tspan7446"
-       x="449.03229"
+       x="488.3226"
        y="292.74841">Sacramento</tspan></text>
 </svg>

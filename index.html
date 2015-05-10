@@ -65,7 +65,7 @@
 <p>One particular method of implementing cluster analysis is K-means clustering (Witten &amp; Hastie, 2014). It is a simple approach to group data into K distinct, non-overlapping clusters. We used the following algorithm for clustering:</p>
 <p>To implement cluster analysis, we implemented three steps: pre-processing, grouping, and analysis.</p>
 <p>First, we trimmed the raw dataset from an unbalanced panel of energy demand data of 43 cities to a dataset with just a single year of energy demand. We do this by dropping cities with less than a full calendar year of energy data, or has a visually obvious amount of zero-value data. The trimmed dataset has 29 cities remaining. The energy demand data, in MW, was also aggregated from the half-hourly level to the daily level to reduce the size of the dataset for quick computations. Data at the half-hourly level is unnecessarily granular for cluster analysis that spans a full calendar year. We then normalized energy demand data by subtracting the mean and using the standard deviation as a divisor. This normalization ensures that data from all cities are have zero for mean and one for standard deviation, making it possible for fair comparison. The trimmed dataset is depicted below in Figures 1.</p>
-<p>Figure 1: Plot of 2013 Normalized Energy Demand Data from 29 Cities<br /><img src="paper/Fig1.png" alt="image" width="860"/></p>
+<p>Figure 1: Plot of 2013 Normalized Energy Demand Data from 29 Cities<br /><img src="paper/Fig1.png" alt="image" width="840"/></p>
 
 <p>Figure 1 is visualized with the following code in R:</p>
 <pre class="r"><code>ggplot(data=sub, aes(x=day, y=MW, color=city))+geom_line()+
@@ -95,7 +95,7 @@ last_plot()+scale_x_datetime(labels = date_format(&quot;%b&quot;))</code></pre>
 <h4>Overview of Energy Demand Data</h4>
 <p>After clustering energy data into four groups, we turn to forecasting. For forecasting, we trim the original dataset to the 29 cities used in the clustering analysis. Hence, the dataset now has energy data for multiple years. We also aggregated the half-hourly data to the daily level to remove unnecessary granularity.</p>
 <p>The energy demand data shows periodicity and can be said to have three components: trend, seasonal and random component. Seasonality is defined as the tendency of time-series data to exhibit behavior that repeats itself in regular intervals. If the seasonal component is present, it can be additive (where the size of the seasonal component is constant) or multiplicative (where the size of the seasonal component is proportionate to the level of the trend). The random component is the residual after trend and seasonality have been removed. Using R, we applied decompose() function to a sample city from each of the four clusters and plotted the outcome in Figure 3.</p>
-<p>Figure 3: Decomposition of Daily Energy Demand of Eugenia, Dakar, Louisville, and Sacramento<br /><img src="paper/Fig3.svg" alt="image" width="860"/></p>
+<p>Figure 3: Decomposition of Daily Energy Demand of Eugenia, Dakar, Louisville, and Sacramento<br /><img src="paper/Fig3.svg" alt="image" width="840"/></p>
 </div>
 <div id="holt-winters-times-series-forecasting-algoritm" class="section level4">
 <h4>Holt-Winters Times Series Forecasting Algoritm</h4>
@@ -253,7 +253,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 <td>Colorado Springs</td>
 <td>2</td>
 <td>29</td>
-<td>Delhi - BRPL<>/td>
+<td>Delhi - BRPL</td>
 <td>4</td>
 </tr>
 <tr>
@@ -268,7 +268,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 </table>
 </p>
 
-<p>Figure 4: Visualization of the 4 Clusters of Cities<br /><img src="paper/Fig7.png" alt="image" width = "860"/><br />Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</p>
+<p>Figure 4: Visualization of the 4 Clusters of Cities<br /><img src="paper/Fig7.png" alt="image" width = "840"/><br />Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</p>
 <p>Figure 4 is visualized using the following code:</p>
 <pre class="r"><code>ggplot(data=data.7, aes(x=day, y=MW, color=city))+geom_line()+
   facet_wrap(~cluster, scales=&quot;free&quot;)</code></pre>
@@ -397,7 +397,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 
 <p>We present the forecasting results of each of the four cities separately, below. The first cluster’s representative, Eugene, has a relatively flat, non-cyclical energy demand profile throughout the year with a distinct upward trend (see Figure 10).</p>
 <p>Figure 10: Holt-Winters Forecast for Eugene (Cluster1)<br />
-<img src="paper/Fig13.svg" alt="image" width = "860"/>
+<img src="paper/Fig13.svg" alt="image" width = "840"/>
 
 <br />Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Eugene. Original data spanned 4 calendar years from 2010 to end of 2013. Interact with the data by clicking below:</p>
 
@@ -411,7 +411,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 
 <p>The second cluster’s representative, Dakar, has both a general upward trend and a seasonal (cyclical) pattern that reaches its highest point in the middle of the year before declining towards end of the year.</p>
 <p>Figure 11: Holt-Winters Forecast for Dakar (Cluster 2)<br />
-<img src="paper/Fig14.svg" alt="image" width="860"/>
+<img src="paper/Fig14.svg" alt="image" width="840"/>
 
 <br />Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Dakar. Original data spanned 4 calendar years from 2011 to end of 2014. Interact with the data by clicking below:</p>
 
@@ -426,7 +426,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 <p>The third cluster’s representative, Louisville, has significant periodicity on a yearly basis (see Figure 12). As is the case for cities in Cluster 3, Louisville has two energy demand peaks, a more pronounced peak in the summer and a less pronounced peak in the winter.</p>
 <p>Figure 12: Holt-Winters Forecast for Louisville (Cluster 3)<br />
 
-<img src="paper/Fig15.svg" alt="image" width = "860"/><br />
+<img src="paper/Fig15.svg" alt="image" width = "840"/><br />
 Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Louisville. Original data spanned 3 calendar years from 2011 to end of 2013. Interact with the data by clicking below:</p>
 
 				<div id="City3">
@@ -439,7 +439,7 @@ Note: Left chart depicts comparison between model (red) and original data (black
 <p>The fourth cluster’s representative, Sacramento, shows a large peak at its summer. Sacramento’s energy demand profile shows a slight downward trend from 2007 to 2013 (see Figure 13).</p>
 <p>Figure 13: Holt-Winters Forecast for Sacramento (Cluster 4)<br />
 
-<img src="paper/Fig16.svg" alt="image" width="860"/><br/>
+<img src="paper/Fig16.svg" alt="image" width="840"/><br/>
 
 Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Sacramento. Original data spanned 7 calendar years from 2006 to end of 2013.Interact with the data by clicking below:</p>
 
@@ -454,7 +454,7 @@ Note: Left chart depicts comparison between model (red) and original data (black
 <p>We also verified that the forecast errors obtained by deducting the fitted data from the original data are normally distributed (see Figure 14).</p>
 <p>Figure 14: Forecast errors<br />
 
-<img src="paper/Fig17.svg" alt="image" width="860"/><br />
+<img src="paper/Fig17.svg" alt="image" width="840"/><br />
 
 Note: Top left: forecast errors for Eugene; top right: forecast errors for Dakar; bottom left: forecast errors for Louisville; bottom right: forecast errors for Sacramento</p>
 
