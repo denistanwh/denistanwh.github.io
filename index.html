@@ -103,13 +103,6 @@
 
 <h2>Visualiation</h2>
 
-<div id="ClusterViz">
-	<script type = "text/javascript"src="cluster1.js"></script>
-	<script type = "text/javascript"src="cluster2.js"></script>
-	<script type = "text/javascript"src="cluster3.js"></script>
-	<script type = "text/javascript"src="cluster4.js"></script>
-</div>
-
 <p>We visualized the data from the above cluster analysis and forecasting steps through a three step procedure using d3 (Bostock, 2013). First, we present a world map centered in the Pacific to depict the cities we considered for this project. Second, zoom in to the 4 groups of cities and present their average daily energy demand over a period of 365 days. Each group of cities are visualized in a Singapore chart. Third, we further zoom in to the city level and visualize the energy forecast for a typical city in each of the 4 groups.</p>
 
 <p>This cascade of visualizations emphasizes the “drill-down” technique espoused by Schneiderman (1996) in his seminal paper on the visual information seeking mantra. This way, the first visualization provides an overarching overview before the second and third visualization take reader into greater and greater detail. At the same time, we have kept the visualizations minimalist to maximize data-ink and minimize chart-junk (Tufte, 1983).</p>
@@ -142,11 +135,9 @@
 
 <p>Figure 9: Cluster 1 energy demand plot</p>
 
-<p><img src="paper/Fig9.png" alt="image" /></p>
-
-<p>Table 2: Cluster 1 cities</p>
-
-<p><img src="paper/Table2.png" alt="image" /></p>
+<div id="ClusterViz1">
+	<script type = "text/javascript"src="cluster1.js"></script>
+</div>
 
 <p>In this cluster, yearly energy pattern turns out to be “U” style, with the peak in January (boreal winter, austral summer) and the smoothly valley in August (boreal summer, austral winter). Intuitively, this pattern should correspond with cities of one of two specifications:</p>
 
@@ -168,11 +159,9 @@
 
 <p>Figure 10: Cluster 2 energy demand plot</p>
 
-<p><img src="paper/Fig10.png" alt="image" /></p>
-
-<p>Table 3: Cluster 2 cities</p>
-
-<p><img src="paper/Table3.png" alt="image" /></p>
+<div id="ClusterViz2">
+	<script type = "text/javascript"src="cluster2.js"></script>
+</div>
 
 <p>In this cluster, the energy demand profile appears to be flat. In other words, the intra-year fluctuations in energy demand is much less pronounced. Intuitively, this patterns should correspond with cities with one of two specifications:</p>
 
@@ -190,11 +179,9 @@
 
 <p>Figure 11: Cluster 3 energy demand plot</p>
 
-<p><img src="paper/Fig11.png" alt="image" /></p>
-
-<p>Table 4: Cluster 3 cities</p>
-
-<p><img src="paper/Table4.png" alt="image" /></p>
+<div id="ClusterViz3">
+	<script type = "text/javascript"src="cluster3.js"></script>
+</div>
 
 <p>In this cluster, the energy demand profile appears to have 2 peaks, one during summer and one during winter. Intuitively, this pattern should correspond with cities need heating during winter and cooling during summer.</p>
 
@@ -206,11 +193,9 @@
 
 <p>Figure 12: Cluster 4 energy demand plot</p>
 
-<p><img src="paper/Fig12.png" alt="image" /></p>
-
-<p>Table 5: Cluster 4 cities</p>
-
-<p><img src="paper/Table5.png" alt="image" /></p>
+<div id="ClusterViz4">
+	<script type = "text/javascript"src="cluster4.js"></script>
+</div>
 
 <p>In this cluster, yearly energy pattern turns out to be “N” style, with the much less pronounced peak in January (boreal winter, austral summer) and a peak in August (boreal summer, austral winter). Intuitively, this pattern should correspond with cities of one of two specifications:</p>
 

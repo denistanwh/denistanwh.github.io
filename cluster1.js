@@ -132,7 +132,7 @@ function makeChart (data) {
 		yAxis = d3.svg.axis().scale(y).orient('left')
 				.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10);
 
-	var svg = d3.select("#ClusterViz").append('svg')
+	var svg = d3.select("#ClusterViz1").append('svg')
 		.attr('width',  svgWidth)
 		.attr('height', svgHeight)
 		.append('g')
