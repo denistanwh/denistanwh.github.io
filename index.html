@@ -62,7 +62,7 @@
 <p>One particular method of implementing cluster analysis is K-means clustering (Witten &amp; Hastie, 2014). It is a simple approach to group data into K distinct, non-overlapping clusters. We used the following algorithm for clustering:</p>
 <p>To implement cluster analysis, we implemented three steps: pre-processing, grouping, and analysis.</p>
 <p>First, we trimmed the raw dataset from an unbalanced panel of energy demand data of 43 cities to a dataset with just a single year of energy demand. We do this by dropping cities with less than a full calendar year of energy data, or has a visually obvious amount of zero-value data. The trimmed dataset has 29 cities remaining. The energy demand data, in MW, was also aggregated from the half-hourly level to the daily level to reduce the size of the dataset for quick computations. Data at the half-hourly level is unnecessarily granular for cluster analysis that spans a full calendar year. We then normalized energy demand data by subtracting the mean and using the standard deviation as a divisor. This normalization ensures that data from all cities are have zero for mean and one for standard deviation, making it possible for fair comparison. The trimmed dataset is depicted below in Figures 1.</p>
-<p>Figure 1: Plot of 2013 Normalized Energy Demand Data from 29 Cities<br /><img src="paper/Fig1.png" alt="image" /></p>
+<p>Figure 1: Plot of 2013 Normalized Energy Demand Data from 29 Cities<br /><img src="paper/Fig1.png" alt="image" width="860"/></p>
 
 <p>Figure 1 is visualized with the following code in R:</p>
 <pre class="r"><code>ggplot(data=sub, aes(x=day, y=MW, color=city))+geom_line()+
