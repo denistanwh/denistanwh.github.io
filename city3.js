@@ -279,7 +279,7 @@ function makeChartCThree (data, titletext, textAxes, onoff) {
 		yAxisTwo = d3.svg.axis().scale(yTwo).orient('left')
 			.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10);
 
-	var svg = d3.select('body').append('svg')
+	var svg = d3.select('#City3').append('svg')
 		.attr('width',  svgWidth)
 		.attr('height', svgHeight)
 		.append('g')

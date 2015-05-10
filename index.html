@@ -224,6 +224,12 @@
 
 <p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Abidjan. Original data spanned 4 calendar years from 2010 to end of 2013.</p>
 
+				<div id="City1">
+				<button onclick="runCOne()">
+				        Visualize
+				    </button>
+				</div>	
+
 <p>The second cluster’s representative, Dakar, has both a general upward trend and a seasonal (cyclical) pattern that reaches its highest point in the middle of the year before declining towards end of the year.</p>
 
 <p>Figure 14: Holt-Winters forecast for Dakar (Cluster 2)</p>
@@ -231,6 +237,12 @@
 <p><img src="paper/Fig14.png" alt="image" /></p>
 
 <p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Dakar. Original data spanned 4 calendar years from 2011 to end of 2014.</p>
+
+				<div id="City2">
+				<button onclick="runCTwo()">
+				        Visualize
+				    </button>
+				</div>	
 
 <p>The third cluster’s representative, Springfield, has significant periodicity on a yearly basis (see Figure 17). As is the case for cities in Cluster 3, Springfield has two energy demand peaks, a more pronounced peak in the summer and a less pronounced peak in the winter.</p>
 
@@ -240,12 +252,24 @@
 
 <p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Springfield. Original data spanned 3 calendar years from 2011 to end of 2013.</p>
 
+				<div id="City3">
+				<button onclick="runCThree()">
+				        Visualize
+				    </button>
+				</div>	
+
 <p>The fourth cluster’s representative, Sacramento, shows a large peak at its summer. Sacramento’s energy demand profile shows a slight downward trend from 2007 to 2013 (see Figure 18).
 Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 
 <p><img src="paper/Fig16.png" alt="image" /></p>
 
 <p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Sacramento. Original data spanned 7 calendar years from 2006 to end of 2013.</p>
+
+				<div id="City4">
+				<button onclick="runCFour()">
+				        Visualize
+				    </button>
+				</div>	
 
 <p>We also verified that the forecast errors obtained by deducting the fitted data from the original data are normally distributed (see Figure 19).</p>
 
@@ -277,25 +301,21 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 		</script>
 			
 			<!-- <img src="overview.jpg" width="800", height="500">-->
-			
-        <h1>
-            Visualization
-        </h1>
 				<div id="option">
 				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCOne()">
-				        Show Cluster 1 City
+				        Visualize
 				    </button>
 				<script type = "text/javascript"src="city1.js"></script>
 				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCTwo()">
-				        Show Cluster 2 City
+				        Visualize
 				    </button>
 				<script type = "text/javascript"src="city2.js"></script>
 				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCThree()">
-				        Show Cluster 3 City
+				        Visualize
 				    </button>
 				<script type = "text/javascript"src="city3.js"></script>
 				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCFour()">
-				        Show Cluster 4 City
+				        Visualize
 				    </button>
 				<script type = "text/javascript"src="city4.js"></script>
 			</div>	

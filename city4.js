@@ -279,7 +279,7 @@ function makeChartCFour (data, titletext, textAxes, onoff) {
 		yAxisTwo = d3.svg.axis().scale(yTwo).orient('left')
 			.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10);
 
-	var svg = d3.select('body').append('svg')
+	var svg = d3.select('#City4').append('svg')
 		.attr('width',  svgWidth)
 		.attr('height', svgHeight)
 		.append('g')
@@ -331,7 +331,7 @@ d3.csv('data/Sacramento-predict-365.csv', function (rawData) {
 				dat: Math.round(d.Temp),
 			};
 		});
-		var dataFour = rawData.map(function (d) {
+		var dataThree = rawData.map(function (d) {
 			return {
 				date: parseDate(d.day),
 				dat: Math.round(d.Trend),
