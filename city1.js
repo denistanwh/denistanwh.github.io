@@ -170,8 +170,7 @@ var lowerOuterArea = d3.svg.area()
 				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
 		      // }
 		   //));
-		   if (onoff == 1) {
-
+	if (onoff == 1) {
 	   svg.selectAll("dot")	
 	           .data(data)			
 	       .enter().append("circle")								
@@ -185,7 +184,36 @@ var lowerOuterArea = d3.svg.area()
 	   			 return "<b>Energy Demand: <br>"+d.act + " MW </b>";
 	   	       }
 	   	   ));
+		  
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.for); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   	   	         //return "<b>Energy Demand</b>"
+   	   			 return "<b>Energy Forecast: <br>"+d.for + " MW </b>";
+   	   	       }
+   	   	   ));
+		   
 	   };
+	   
+   svg.selectAll("dot")	
+           .data(data)			
+       .enter().append("circle")								
+           .attr("r", 5)		
+           .attr("cx", function(d) { return x(d.date); })		 
+           .attr("cy", function(d) { return y(d.dat); })
+   	   	.style("fill", "transparent")
+   	.call(d3.helper.tooltip(
+   	       function(d, i){
+   	         //return "<b>Energy Demand</b>"
+   			 return "<b>Component: <br>"+d.dat + "</b>";
+   	       }
+   	   ));
 		
 	svg.append('path')
 		.attr('class', 'figure')
@@ -194,12 +222,12 @@ var lowerOuterArea = d3.svg.area()
 		.attr("fill", "none")
 		.attr("stroke", "#000000")
 		.attr("stroke-width", "2")
-		.call(d3.helper.tooltip(
-		       function(d, i){
-		         return "<b>Holt-Winters <br>Mean Forecast</b>"
+		//.call(d3.helper.tooltip(
+		  //     function(d, i){
+		    //     return "<b>Holt-Winters <br>Mean Forecast</b>"
 				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-		       }
-		   ));
+		      // }
+		   //));
 		
 	svg.append('text')
 		.attr('x', 750)
