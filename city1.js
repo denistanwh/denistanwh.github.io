@@ -242,13 +242,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
 		.attr("stroke", "#000000")
-		.attr("stroke-width", "2")
-		//.call(d3.helper.tooltip(
-		  //     function(d, i){
-		    //     return "<b>Holt-Winters <br>Mean Forecast</b>"
-				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-		      // }
-		   //));
+	   .attr("stroke-width", "2");
 		
 	svg.append('text')
 		.attr('x', 620)

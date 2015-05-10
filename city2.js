@@ -102,7 +102,6 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
 	.attr("stroke", "rgba(100, 100, 100, 0.1)");
-	   
 
 
 	svg.append('path')
@@ -131,7 +130,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', plotFig)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
-		.attr("stroke", "#abe3ce")
+		.attr("stroke", "#f4d984")
 		   .attr("stroke-width", "2");
 		
 	svg.append('path')
@@ -139,7 +138,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', plotFigHalf)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
-		.attr("stroke", "#abe3ce")
+		.attr("stroke", "#f4d984")
 		   .attr("stroke-width", "2");
 	
 	if (onoff == 1) {
@@ -242,13 +241,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
 		.attr("stroke", "#000000")
-		.attr("stroke-width", "2")
-		//.call(d3.helper.tooltip(
-		  //     function(d, i){
-		    //     return "<b>Holt-Winters <br>Mean Forecast</b>"
-				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-		      // }
-		   //));
+	   .attr("stroke-width", "2");
 		
 	svg.append('text')
 		.attr('x', 620)
@@ -311,7 +304,7 @@ d3.csv('data/Dakar-predict-365.csv', function (rawData) {
 
 	var dataSix = rawData.map(function (d) {
 		return {
-			date: d3.time.format('%d/%m/%y').parse(d.Date),
+			date: d3.time.format('%m/%d/%y').parse(d.Date),
 			for: Math.round(d.Forecast),
 			act: Math.round(d.Actual),
 			Lo80: Math.round(d.Lo80),
