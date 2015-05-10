@@ -75,7 +75,7 @@ last_plot()+scale_x_datetime(labels = date_format(&quot;%b&quot;))</code></pre>
 <p>We implemented all steps in the cluster analysis using the default kmeans() function in the {stat} package of the open-sourced statistical software, R (version 3.0.2).</p>
 <p>We note various issues associated with the method we applied. First, we are aware that groups obtained using the k-means method represent the local optimum rather than the global optimum. To reduce the impact of this limitation, we chose to increase the number of iterations during computation computation to obtain stable clustering results. Specifically, we set the iteration count to be 20 and simulated 10 different starting points. And the reslut is convergent as expected. Secondly, in this approach, as in most clustering analyses, the number of clusters is pre-specified, so prior knowledge of the number of groups is required. Mathematically, there are multiple tests that could determine the optimal number of clusters, with different methods providing slightly different results.</p>
 <p>In this paper, we use the R function <em>NbClust</em> from package <em>{NbClust}</em> to obtain the optimal number of clusters by computing the Hubert Statistic for the clusters as well as the second differences. The Hubert Statistic is a similarity function used to determine effectiveness of clustering (Zaki, 2012). The results of the NbClust analysis is provided in figure 2. From the test results, the Hubert Statistic performance is acceptable with three or more clusters. We visually inspect the data and settled on four clusters.</p>
-<p>Figure 2: Results of NbClust Test<br /><img src="paper/NbClust.png" alt="image" width = "400"/></p>
+<p>Figure 2: Results of NbClust Test<br /><img src="paper/NbClust.png" alt="image" width = "600"/></p>
 <p>Figure 2 is visualized with the following code in R:</p>
 <pre class="r"><code>res&lt;-NbClust(data.6, diss=NULL, distance = &quot;euclidean&quot;, min.nc=2, max.nc=10, method = &quot;kmeans&quot;, index = &quot;hubert&quot;)</code></pre>
 <p>Finally, we analysed the four groups (clusters). We did this by considering the geographic location and local weather patterns of the various cities. This will be discussed in the Result &amp; Discussion section.</p>
@@ -258,7 +258,7 @@ $$</p>
 <p>Figure 10: Holt-Winters Forecast for Eugene (Cluster1)<br />
 <img src="paper/Fig13.svg" alt="image" width = "860"/>
 
-<br />Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Eugene. Original data spanned 4 calendar years from 2010 to end of 2013.</p>
+<br />Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Eugene. Original data spanned 4 calendar years from 2010 to end of 2013. Interact with the data by clicking below:</p>
 
 				<div id="City1">
 				<button onclick="runCOne()">
@@ -272,7 +272,7 @@ $$</p>
 <p>Figure 11: Holt-Winters Forecast for Dakar (Cluster 2)<br />
 <img src="paper/Fig14.svg" alt="image" width="860"/>
 
-<br />Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Dakar. Original data spanned 4 calendar years from 2011 to end of 2014.</p>
+<br />Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Dakar. Original data spanned 4 calendar years from 2011 to end of 2014. Interact with the data by clicking below:</p>
 
 				<div id="City2">
 				<button onclick="runCTwo()">
@@ -285,8 +285,8 @@ $$</p>
 <p>The third cluster’s representative, Louisville, has significant periodicity on a yearly basis (see Figure 12). As is the case for cities in Cluster 3, Louisville has two energy demand peaks, a more pronounced peak in the summer and a less pronounced peak in the winter.</p>
 <p>Figure 12: Holt-Winters Forecast for Louisville (Cluster 3)<br />
 
-<img src="paper/Fig15.svg" alt="image" /><br />
-Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Louisville. Original data spanned 3 calendar years from 2011 to end of 2013.</p>
+<img src="paper/Fig15.svg" alt="image" width = "860"/><br />
+Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Louisville. Original data spanned 3 calendar years from 2011 to end of 2013. Interact with the data by clicking below:</p>
 
 				<div id="City3">
 				<button onclick="runCThree()">
@@ -300,7 +300,7 @@ Note: Left chart depicts comparison between model (red) and original data (black
 
 <img src="paper/Fig16.svg" alt="image" width="860"/><br/>
 
-Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Sacramento. Original data spanned 7 calendar years from 2006 to end of 2013.</p>
+Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Sacramento. Original data spanned 7 calendar years from 2006 to end of 2013.Interact with the data by clicking below:</p>
 
 				<div id="City4">
 				<button onclick="runCFour()">
@@ -317,6 +317,7 @@ Note: Left chart depicts comparison between model (red) and original data (black
 
 Note: Top left: forecast errors for Eugene; top right: forecast errors for Dakar; bottom left: forecast errors for Louisville; bottom right: forecast errors for Sacramento</p>
 
+<div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
 <p>Using energy demand data from 43 cities, we trimmed the data down to 30 cities and stratified them into 4 groups based on similarity in the shape of their energy demand curves. We then applied a Holt-Winters time-series algorithm to forecast the energy demand over a period of 365 days for each chosen city. Finally, we visualized the energy data and forecasts using a cascading “drill-down” approach. This approach allows us to first depict an overview of the data before zooming into the granular details, in line with Schneiderman’s visual information seeking mantra. This paper introduces a data-driven method to group cities based on their energy demand profile to make cross-city collaboration on energy demand management more effective.</p>
 </div>
