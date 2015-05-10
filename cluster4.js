@@ -83,7 +83,7 @@ function drawPathsFour (svg, data, x, y) {
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
 		.attr("stroke", "#abe3ce")
-		.attr("stroke-width", "2");
+		.attr("stroke-width", "2.5");
 
 	svg.append('path')
 		.attr('class', 'Two')
@@ -92,7 +92,7 @@ function drawPathsFour (svg, data, x, y) {
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
 		.attr("stroke", "#fdb59c")
-		.attr("stroke-width", "2");
+		.attr("stroke-width", "2.5");
 		
 	svg.append('path')
 		.attr('class', 'Three')
@@ -101,7 +101,7 @@ function drawPathsFour (svg, data, x, y) {
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
 		.attr("stroke", "#fdb59c")
-		.attr("stroke-width", "2");
+		.attr("stroke-width", "2.5");
 		
 	svg.append('path')
 		.attr('class', 'Four')
@@ -110,7 +110,7 @@ function drawPathsFour (svg, data, x, y) {
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
 		.attr("stroke", "#d6aaea")
-		.attr("stroke-width", "2");
+		.attr("stroke-width", "2.5");
 
 	svg.append('path')
 		.attr('class', 'Five')
@@ -119,7 +119,7 @@ function drawPathsFour (svg, data, x, y) {
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
 		.attr("stroke", "#8ab2ea")
-		.attr("stroke-width", "2");
+		.attr("stroke-width", "2.5");
 		
 	svg.append('path')
 		.attr('class', 'Six')
@@ -127,8 +127,8 @@ function drawPathsFour (svg, data, x, y) {
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
-		.attr("stroke", "black")
-		.attr("stroke-width", "2");
+		.attr("stroke", "grey")
+		.attr("stroke-width", "2.5");
 		
 	   svg.selectAll("dot")	
 	           .data(data)			
