@@ -251,7 +251,7 @@ var lowerOuterArea = d3.svg.area()
 		   //));
 		
 	svg.append('text')
-		.attr('x', 600)
+		.attr('x', 620)
 		.attr('y', 30)
 		.attr('font-family', 'Open Sans')
 		.attr('font-size', '14px')
