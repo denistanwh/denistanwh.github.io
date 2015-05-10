@@ -376,12 +376,12 @@ d3.csv('data/Dakar-predict-365.csv', function (rawData) {
 		textAxesSix = 'Seasonal Component';
 	
 
-//makeChartCOne(dataOne, titletextOne, textAxesOne);
-makeChartCOne(dataSix, titletextTwo, textAxesTwo, 1);
-//makeChartCOne(dataTwo, titletextThree, textAxesThree);
-makeChartCOne(dataThree, titletextFour, textAxesFour, 0);
-makeChartCOne(dataFour, titletextFive, textAxesFive, 0);
-makeChartCOne(dataFive, titletextSix, textAxesSix, 0);
+//makeChartCTwo(dataOne, titletextOne, textAxesOne);
+makeChartCTwo(dataSix, titletextTwo, textAxesTwo, 1);
+//makeChartCTwo(dataTwo, titletextThree, textAxesThree);
+makeChartCTwo(dataThree, titletextFour, textAxesFour, 0);
+makeChartCTwo(dataFour, titletextFive, textAxesFive, 0);
+makeChartCTwo(dataFive, titletextSix, textAxesSix, 0);
 });
 });
 
