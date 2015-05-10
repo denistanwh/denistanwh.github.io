@@ -1,4 +1,3 @@
-function runOne() {
 function addAxesAndLegendOne (svg, xAxis, yAxis, margin, chartWidth, chartHeight) {
 	
 	var axes = svg.append('g')
@@ -162,4 +161,3 @@ d3.csv('data/data_cluster1.csv', function (rawData) {
 
 makeChart(data);
 });
-}

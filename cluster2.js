@@ -1,4 +1,3 @@
-function runTwo() {
 function addAxesAndLegendTwo (svg, xAxis, yAxis, margin, chartWidth, chartHeight) {
 	
 	var axes = svg.append('g')
@@ -231,4 +230,3 @@ function removeAll() {
 	d3.select('body').selectAll("polygon")
 		.remove();
 	
-}

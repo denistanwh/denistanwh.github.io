@@ -1,4 +1,3 @@
-function runFour() {
 function addAxesAndLegendFour (svg, xAxis, yAxis, margin, chartWidth, chartHeight) {
 
 	var axes = svg.append('g')
@@ -214,4 +213,3 @@ function removeAll() {
 	d3.select('body').selectAll("polygon")
 		.remove();
 	
-}
