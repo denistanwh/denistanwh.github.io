@@ -124,7 +124,141 @@ $$</p>
 
 <p>Table 1 and Figure 4 shows the result of clustering. The map shows the geographical location of these 29 cities.</p>
 
-<p>Table 1: Results of K-means Clustering<br><img src="paper/Table1.png" alt="image" width="600"/></p>
+table>
+<thead>
+<tr>
+<th>No.</th>
+<th>City</th>
+<th>Cluster</th>
+<th>No.</th>
+<th>City</th>
+<th>Cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Abidjan</td>
+<td>1</td>
+<td>16</td>
+<td>Louisville</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Eugene</td>
+<td>1</td>
+<td>17</td>
+<td>New York</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Tacoma</td>
+<td>1</td>
+<td>18</td>
+<td>Omaha</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Queensland</td>
+<td>1</td>
+<td>19</td>
+<td>Springfield</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Dakar</td>
+<td>2</td>
+<td>20</td>
+<td>Tokyo</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Honolulu</td>
+<td>2</td>
+<td>21</td>
+<td>Detroit</td>
+<td>3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Manila</td>
+<td>2</td>
+<td>22</td>
+<td>Indianapolis</td>
+<td>3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Mbabane</td>
+<td>2</td>
+<td>23</td>
+<td>Philadelphia</td>
+<td>3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Nairobi</td>
+<td>2</td>
+<td>24</td>
+<td>North Little Rock</td>
+<td>4</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Singapore</td>
+<td>2</td>
+<td>25</td>
+<td>El Paso</td>
+<td>4</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Antigua</td>
+<td>2</td>
+<td>26</td>
+<td>Los Angeles</td>
+<td>4</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Amman/td>
+<td>2</td>
+<td>27</td>
+<td>Memphis</td>
+<td>4</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Chattanooga</td>
+<td>2</td>
+<td>28</td>
+<td>Sacramento</td>
+<td>4</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Colorado Springs</td>
+<td>2</td>
+<td>29</td>
+<td>Delhi - BRPL<>/td>
+<td>4</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Kansas City</td>
+<td>2</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</p>
 
 <p>Figure 4: Visualization of the 4 Clusters of Cities<br /><img src="paper/Fig7.png" alt="image" width = "860"/><br />Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</p>
 <p>Figure 4 is visualized using the following code:</p>
@@ -214,37 +348,37 @@ $$</p>
 <table>
 <thead>
 <tr>
-<th>City.name     </th>
+<th>City</th>
 <th>Cluster</th>
 <th>X-squared</th>
-<th>df</th>
-<th>p-value</th>
+<th>Degree of Freedom</th>
+<th>P-value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Eugene        </td>
+<td>Eugene</td>
 <td>1</td>
 <td> 1365.707 </td>
 <td>20</td>
 <td>2.2e-16</td>
 </tr>
 <tr>
-<td>Dakar         </td>
+<td>Dakar</td>
 <td>2</td>
 <td> 1171.423 </td>
 <td>20</td>
 <td>2.2e-16</td>
 </tr>
 <tr>
-<td>Louisvill     </td>
+<td>Louisville<>/td>
 <td>3</td>
 <td> 1926.477 </td>
 <td>20</td>
 <td>2.2e-16</td>
 </tr>
 <tr>
-<td>Sacramento    </td>
+<td>Sacramento</td>
 <td>4</td>
 <td> 915.5914 </td>
 <td>20</td>
