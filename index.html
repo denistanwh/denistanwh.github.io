@@ -103,7 +103,15 @@
 
 <h2>Visualiation</h2>
 
-<div id="testViz" onload="runOne();"></div>
+<div id="ClusterViz">
+	<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runOne();runTwo();runThree();runFour()">
+	        Show Clusters
+	    </button>
+	<script type = "text/javascript"src="cluster1.js"></script>
+	<script type = "text/javascript"src="cluster2.js"></script>
+	<script type = "text/javascript"src="cluster3.js"></script>
+	<script type = "text/javascript"src="cluster4.js"></script>
+</div>
 
 <p>We visualized the data from the above cluster analysis and forecasting steps through a three step procedure using d3 (Bostock, 2013). First, we present a world map centered in the Pacific to depict the cities we considered for this project. Second, zoom in to the 4 groups of cities and present their average daily energy demand over a period of 365 days. Each group of cities are visualized in a Singapore chart. Third, we further zoom in to the city level and visualize the energy forecast for a typical city in each of the 4 groups.</p>
 
@@ -297,15 +305,6 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 				    </button> 
 				<script type = "text/javascript" src="overview.js"></script>
 				<script type = "text/javascript"src="map.js"></script>
-			</div>
-			<div id="option">
-				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runOne();runTwo();runThree();runFour()">
-				        Show Clusters
-				    </button>
-				<script type = "text/javascript"src="cluster1.js"></script>
-				<script type = "text/javascript"src="cluster2.js"></script>
-				<script type = "text/javascript"src="cluster3.js"></script>
-				<script type = "text/javascript"src="cluster4.js"></script>
 			</div>
 				<div id="option">
 				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCOne()">
