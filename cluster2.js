@@ -215,8 +215,6 @@ d3.csv('data/data_cluster2.csv', function (rawData) {
 makeChart(data);
 });
 
-};
-
 function removeAll() {
 	d3.select('body').selectAll("g")
 		.remove();
@@ -229,4 +227,4 @@ function removeAll() {
 		
 	d3.select('body').selectAll("polygon")
 		.remove();
-	
+	}
