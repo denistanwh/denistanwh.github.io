@@ -101,13 +101,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', upperOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
-	.attr("stroke", "rgba(100, 100, 100, 0.1)")
-	.call(d3.helper.tooltip(
-	       function(d, i){
-	         return "<b>Upper 95th % <br>Confidence Interval</b>"
-			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-	       }
-	   ));
+	.attr("stroke", "rgba(100, 100, 100, 0.1)");
 	   
 
 
@@ -116,38 +110,21 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', lowerOuterArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.1)")
-		.attr("stroke", "rgba(100, 100, 100, 0.1)")
-   	.call(d3.helper.tooltip(
-   	       function(d, i){
-   	         return "<b>Lower 95th % <br>Confidence Interval</b>"
-   			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-   	       }
-   	   ));
+	.attr("stroke", "rgba(100, 100, 100, 0.1)");
 
 	svg.append('path')
 		.attr('class', 'area upper inner')
 		.attr('d', upperInnerArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.4)")
-		.attr("stroke", "rgba(100, 100, 100, 0.4)")
-	.call(d3.helper.tooltip(
-	       function(d, i){
-	         return "<b>Upper 80th % <br>Confidence Interval</b>"
-			 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-	       }
-	   ));
+	.attr("stroke", "rgba(100, 100, 100, 0.4)");
 
 	svg.append('path')
 		.attr('class', 'area lower inner')
 		.attr('d', lowerInnerArea)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "rgba(100, 100, 100, 0.4)")
-		.attr("stroke", "rgba(100, 100, 100, 0.4)").call(d3.helper.tooltip(
-		       function(d, i){
-		         return "<b>Lower 80th % <br>Confidence Interval</b>"
-				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-		       }
-		   ));
+		.attr("stroke", "rgba(100, 100, 100, 0.4)");
 		
 	svg.append('path')
 		.attr('class', 'figure')
@@ -164,12 +141,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr("fill", "none")
 		.attr("stroke", "#abe3ce")
 		   .attr("stroke-width", "2");
-		//.call(d3.helper.tooltip(
-		  //     function(d, i){
-		    //     return "<b>Energy Demand</b>"
-				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
-		      // }
-		   //));
+	
 	if (onoff == 1) {
 	   svg.selectAll("dot")	
 	           .data(data)			
@@ -180,8 +152,7 @@ var lowerOuterArea = d3.svg.area()
 	   	   	.style("fill", "transparent")
 	   	.call(d3.helper.tooltip(
 	   	       function(d, i){
-	   	         //return "<b>Energy Demand</b>"
-	   			 return "<b>Energy Demand: <br>"+d.act + " MW </b>";
+				   return "<b>Energy Demand: <br>"+d.act + " MW </b>";
 	   	       }
 	   	   ));
 		  
@@ -194,8 +165,59 @@ var lowerOuterArea = d3.svg.area()
    	   	   	.style("fill", "transparent")
    	   	.call(d3.helper.tooltip(
    	   	       function(d, i){
-   	   	         //return "<b>Energy Demand</b>"
-   	   			 return "<b>Energy Forecast: <br>"+d.for + " MW </b>";
+				   return "<b>Energy Forecast: <br>"+d.for + " MW </b>";
+   	   	       }
+   	   	   ));
+
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.Lo80); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   				   return "<b>80% Confidence: <br>"+d.Lo80 + " MW </b>";
+   	   	       }
+   	   	   ));	   
+      	  
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.Hi80); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   				   return "<b>80% Confidence: <br>"+d.Hi80 + " MW </b>";
+   	   	       }
+   	   	   ));		   
+
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.Lo95); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   				   return "<b>95% Confidence: <br>"+d.Lo95 + " MW </b>";
+   	   	       }
+   	   	   ));		   
+
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.Hi95); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   				   return "<b>95% Confidence: <br>"+d.Hi95 + " MW </b>";
    	   	       }
    	   	   ));
 		   
@@ -210,8 +232,7 @@ var lowerOuterArea = d3.svg.area()
    	   	.style("fill", "transparent")
    	.call(d3.helper.tooltip(
    	       function(d, i){
-   	         //return "<b>Energy Demand</b>"
-   			 return "<b>Component: <br>"+d.dat + "</b>";
+			   return "<b>Component value: <br>"+d.dat + "</b>";
    	       }
    	   ));
 		
