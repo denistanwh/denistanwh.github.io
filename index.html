@@ -96,7 +96,23 @@ last_plot()+scale_x_datetime(labels = date_format(&quot;%b&quot;))</code></pre>
 </div>
 <div id="holt-winters-times-series-forecasting-algoritm" class="section level4">
 <h4>Holt-Winters Times Series Forecasting Algoritm</h4>
-<p>—For Ye Jing—</p>
+<p>Holt-Winters is a forecasting method for dealing with time series data with both trend and seasonal components. It is an extension of the Single Exponential Smoothing method. The Holt-Winters method has two versions, additive and multiplicative, the use of which depends on the characteristics of the particular time series. For simplicity, we use the additive method. Holt-Winters predictions are obtained as a weighted average of past observed values where the weights decline exponentially so that the values of recent observations contribute to the forecast more than the values of earlier observations. The additive formula of this model is as follow:</p>
+
+<p>$$
+\begin{align}
+&amp; s<em>{i}=\alpha(x</em>{i}-p<em>{i-k})+(1-\alpha)(s</em>{i-1}+t<em>{i-1}) \
+&amp; t</em>{i}=\beta(s<em>{i}-s</em>{i-1})+(1-\beta)t<em>{i-1} \
+&amp; p</em>{i}=\gamma(x<em>{i}-s</em>{i})+(1-\gamma)p_{i-k} \
+\end{align}
+$$</p>
+
+<p>Here $$\alpha, \beta, \gamma $$ represent data smoothing factor, trend smoothing factor, seasonal change smoothing factor separately and their values are between 0 to 1; k is the time period. Initially, we set$$s<em>{0}=x</em>{0}$$,  $$t<em>{0}=x</em>{1}-x_{0}$$.The prediction formula follows:</p>
+
+<p>$$
+\begin{align}
+x<em>{i+h}=s</em>{i}+ht<em>{i}+p</em>{i-k+(h\,mod\,k)}
+\end{align}
+$$</p>
 </div>
 </div>
 <div id="visualiation" class="section level3">
