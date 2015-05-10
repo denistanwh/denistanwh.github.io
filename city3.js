@@ -130,7 +130,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', plotFig)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
-		.attr("stroke", "#f4d984")
+		.attr("stroke", "#fdb59c")
 		   .attr("stroke-width", "2");
 		
 	svg.append('path')
@@ -138,7 +138,7 @@ var lowerOuterArea = d3.svg.area()
 		.attr('d', plotFigHalf)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
-		.attr("stroke", "#f4d984")
+		.attr("stroke", "#fdb59c")
 		   .attr("stroke-width", "2");
 	
 	if (onoff == 1) {
