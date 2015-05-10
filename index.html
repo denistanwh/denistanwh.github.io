@@ -300,33 +300,6 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 <h1>Conclusion</h1>
 
 <p>Using energy demand data from 43 cities, we trimmed the data down to 30 cities and stratified them into 4 groups based on similarity in the shape of their energy demand curves. We then applied a Holt-Winters time-series algorithm to forecast the energy demand over a period of 365 days for each chosen city. Finally, we visualized the energy data and forecasts using a cascading “drill-down” approach. This approach allows us to first depict an overview of the data before zooming into the granular details, in line with Schneiderman’s visual information seeking mantra. We believe that this is an appropriate technique to present the energy information to an audience of disparate, middle-class energy consumption decision makers around the world. We hope that the access to this information will incrementally change the decentralized decisions made by all of these decision makers, arresting or slowing the projected explosion in global energy demand.</p>
-
-		<script>
-		function removedat() {
-			d3.selectAll("svg")
-				.remove();
-			};
-		</script>
-			
-			<!-- <img src="overview.jpg" width="800", height="500">-->
-				<div id="option">
-				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCOne()">
-				        Visualize
-				    </button>
-				<script type = "text/javascript"src="city1.js"></script>
-				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCTwo()">
-				        Visualize
-				    </button>
-				<script type = "text/javascript"src="city2.js"></script>
-				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCThree()">
-				        Visualize
-				    </button>
-				<script type = "text/javascript"src="city3.js"></script>
-				<button href="http://denistanwh.github.io/#toc18" onclick="removedat();runCFour()">
-				        Visualize
-				    </button>
-				<script type = "text/javascript"src="city4.js"></script>
-			</div>	
 		
 	</body>
 </html>
