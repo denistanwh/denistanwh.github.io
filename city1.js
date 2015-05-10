@@ -170,6 +170,7 @@ var lowerOuterArea = d3.svg.area()
 				 //return "<b>95th %: "+d.Hi95 + "<br/>80th %: "+d.Hi80 + "</b>";
 		      // }
 		   //));
+		   if (onoff == 1) {
 
 	   svg.selectAll("dot")	
 	           .data(data)			
@@ -184,6 +185,7 @@ var lowerOuterArea = d3.svg.area()
 	   			 return "<b>Energy Demand: <br>"+d.act + " MW </b>";
 	   	       }
 	   	   ));
+	   };
 		
 	svg.append('path')
 		.attr('class', 'figure')
@@ -214,7 +216,7 @@ function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 
 }
 
-function makeChartCOne (data, titletext, textAxes) {
+function makeChartCOne (data, titletext, textAxes, onoff) {
 	var svgWidth  = 960,
 		svgHeight = 300,
 		margin = { top: 20, right: 20, bottom: 40, left: 60 },
@@ -249,7 +251,7 @@ function makeChartCOne (data, titletext, textAxes) {
 			.attr('height', chartHeight);
 
 	addAxesAndLegendCOne(svg, xAxis, yAxis, yAxisTwo, margin, chartWidth, chartHeight, textAxes);
-	drawPathsCOne(svg, data, x, y, yTwo, titletext);
+	drawPathsCOne(svg, data, x, y, yTwo, titletext, onoff);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
 
@@ -325,11 +327,11 @@ d3.csv('data/Eugene-predict-365.csv', function (rawData) {
 		
 
 	//makeChartCOne(dataOne, titletextOne, textAxesOne);
-	makeChartCOne(dataSix, titletextTwo, textAxesTwo);
+	makeChartCOne(dataSix, titletextTwo, textAxesTwo, 1);
 	//makeChartCOne(dataTwo, titletextThree, textAxesThree);
-	makeChartCOne(dataThree, titletextFour, textAxesFour);
-	makeChartCOne(dataFour, titletextFive, textAxesFive);
-	makeChartCOne(dataFive, titletextSix, textAxesSix);
+	makeChartCOne(dataThree, titletextFour, textAxesFour, 0);
+	makeChartCOne(dataFour, titletextFive, textAxesFive, 0);
+	makeChartCOne(dataFive, titletextSix, textAxesSix, 0);
 	});
 });
 
