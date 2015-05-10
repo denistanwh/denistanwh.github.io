@@ -80,7 +80,7 @@ last_plot()+scale_x_datetime(labels = date_format(&quot;%b&quot;))</code></pre>
 <p>We implemented all steps in the cluster analysis using the default kmeans() function in the {stat} package of the open-sourced statistical software, R (version 3.0.2).</p>
 <p>We note various issues associated with the method we applied. First, we are aware that groups obtained using the k-means method represent the local optimum rather than the global optimum. To reduce the impact of this limitation, we chose to increase the number of iterations during computation computation to obtain stable clustering results. Specifically, we set the iteration count to be 20 and simulated 10 different starting points. And the reslut is convergent as expected. Secondly, in this approach, as in most clustering analyses, the number of clusters is pre-specified, so prior knowledge of the number of groups is required. Mathematically, there are multiple tests that could determine the optimal number of clusters, with different methods providing slightly different results.</p>
 <p>In this paper, we use the R function <em>NbClust</em> from package <em>{NbClust}</em> to obtain the optimal number of clusters by computing the Hubert Statistic for the clusters as well as the second differences. The Hubert Statistic is a similarity function used to determine effectiveness of clustering (Zaki, 2012). The results of the NbClust analysis is provided in figure 2. From the test results, the Hubert Statistic performance is acceptable with three or more clusters. We visually inspect the data and settled on four clusters.</p>
-<p>Figure 2: Results of NbClust Test<br /><img src="paper/NbClust.png" alt="image" /></p>
+<p>Figure 2: Results of NbClust Test<br /><img src="paper/NbClust.png" alt="image" width = "400"/></p>
 <p>Figure 2 is visualized with the following code in R:</p>
 <pre class="r"><code>res&lt;-NbClust(data.6, diss=NULL, distance = &quot;euclidean&quot;, min.nc=2, max.nc=10, method = &quot;kmeans&quot;, index = &quot;hubert&quot;)</code></pre>
 <p>Finally, we analysed the four groups (clusters). We did this by considering the geographic location and local weather patterns of the various cities. This will be discussed in the Result &amp; Discussion section.</p>
@@ -92,7 +92,7 @@ last_plot()+scale_x_datetime(labels = date_format(&quot;%b&quot;))</code></pre>
 <h4>Overview of Energy Demand Data</h4>
 <p>After clustering energy data into four groups, we turn to forecasting. For forecasting, we trim the original dataset to the 29 cities used in the clustering analysis. Hence, the dataset now has energy data for multiple years. We also aggregated the half-hourly data to the daily level to remove unnecessary granularity.</p>
 <p>The energy demand data shows periodicity and can be said to have three components: trend, seasonal and random component. Seasonality is defined as the tendency of time-series data to exhibit behavior that repeats itself in regular intervals. If the seasonal component is present, it can be additive (where the size of the seasonal component is constant) or multiplicative (where the size of the seasonal component is proportionate to the level of the trend). The random component is the residual after trend and seasonality have been removed. Using R, we applied decompose() function to a sample city from each of the four clusters and plotted the outcome in Figure 3.</p>
-<p>Figure 3: Decomposition of Daily Energy Demand of Eugenia, Dakar, Louisville, and Sacramento<br /><img src="paper/Fig3.svg" alt="image" /></p>
+<p>Figure 3: Decomposition of Daily Energy Demand of Eugenia, Dakar, Louisville, and Sacramento<br /><img src="paper/Fig3.svg" alt="image" width="860"/></p>
 </div>
 <div id="holt-winters-times-series-forecasting-algoritm" class="section level4">
 <h4>Holt-Winters Times Series Forecasting Algoritm</h4>
@@ -113,6 +113,7 @@ $$</p>
 x<em>{i+h}=s</em>{i}+ht<em>{i}+p</em>{i-k+(h\,mod\,k)}
 \end{align}
 $$</p>
+
 </div>
 </div>
 <div id="visualiation" class="section level3">
@@ -215,7 +216,48 @@ $$</p>
 <p>We picked Eugene, Dakar, Louisville, and Sacramento to represent Cluster 1, 2, 3, and 4 respectively. Through application of the Holt-Winters forecasting algorithm, we obtained a model for each of the four cities. We then analyzed the model fit using the Box-Ljung residual test. The results are summarized in Table 2.</p>
 <p>Table 2: Summary of Box-Ljung test results<br />
 
-<p><img src="paper/Table6.png" alt="image" /></p>
+<table>
+<thead>
+<tr>
+<th>City.name     </th>
+<th>Cluster</th>
+<th>X-squared</th>
+<th>df</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eugene        </td>
+<td>1</td>
+<td> 1365.707 </td>
+<td>20</td>
+<td>2.2e-16</td>
+</tr>
+<tr>
+<td>Dakar         </td>
+<td>2</td>
+<td> 1171.423 </td>
+<td>20</td>
+<td>2.2e-16</td>
+</tr>
+<tr>
+<td>Louisvill     </td>
+<td>3</td>
+<td> 1926.477 </td>
+<td>20</td>
+<td>2.2e-16</td>
+</tr>
+<tr>
+<td>Sacramento    </td>
+<td>4</td>
+<td> 915.5914 </td>
+<td>20</td>
+<td>2.2e-16</td>
+</tr>
+</tbody>
+</table>
+</p>
 
 <p>We present the forecasting results of each of the four cities separately, below. The first cluster’s representative, Abidjan, has a relatively flat, non-cyclical energy demand profile throughout the year with a distinct upward trend (see Figure 15).</p>
 
