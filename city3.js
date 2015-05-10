@@ -2,8 +2,8 @@ function runCThree() {
 	
 	var dateFirst = [];
 	var dataLast = [];
-function addAxesAndLegendCThree (svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes) {
-
+function addAxesAndLegendCThree (svg, xAxis, yAxis, yAxisTwo, margin, chartWidth, chartHeight, textAxes) {
+	
 	var axes = svg.append('g')
 		.attr('clip-path', 'url(#axes-clip)');
 
@@ -21,10 +21,40 @@ function addAxesAndLegendCThree (svg, xAxis, yAxis, margin, chartWidth, chartHei
 			.attr('dy', '.71em')
 			.style('text-anchor', 'end')
 			.text(textAxes);
+			
+	axes.append('g')
+		.attr('class', 'y axis')
+		.call(yAxisTwo)
+		.append('text')
+			.attr('transform', 'rotate(-90)')
+			.attr('y', -46)
+			.attr('dy', '.71em')
+			.style('text-anchor', 'end')
+			.text(textAxes);
 
 }
 
-function drawPathsCThree (svg, data, x, y, titletext) {
+function drawPathsCThree (svg, data, x, y, yTwo, titletext, onoff) {
+	
+var upperOuterArea = d3.svg.area()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y0(function (d) { return yTwo(d.Hi95); })
+	.defined(function(d) { return !isNaN(d.Hi95); })
+	.y1(function (d) { return yTwo(d.Hi80); })
+	.defined(function(d) { return !isNaN(d.Hi80); })
+	;
+
+var upperInnerArea = d3.svg.area()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y0(function (d) { return yTwo(d.Hi80); })
+	.defined(function(d) { return !isNaN(d.Hi80); })
+	.y1(function (d) { return yTwo(d.for); })
+	.defined(function(d) { return !isNaN(d.for); });
+	
 var plotFig = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
@@ -32,22 +62,178 @@ var plotFig = d3.svg.line()
 	.y(function (d) { return y(d.dat); })
 	.defined(function(d) { return !isNaN(d.dat); });
 
+var plotFigHalf = d3.svg.line()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y(function (d) { return yTwo(d.act); })
+	.defined(function(d) { return !isNaN(d.act); });
+
 var plotFigTwo = d3.svg.line()
 	.interpolate('basis')
 	.x (function (d) { return x(d.date) || 1; })
 	.defined(function(d) { return !isNaN(d.date); })
-	.y(function (d) { return y(d.for); })
+	.y(function (d) { return yTwo(d.for); })
 	.defined(function(d) { return !isNaN(d.for); });
 
-	svg.datum(data);
+var lowerInnerArea = d3.svg.area()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y0(function (d) { return yTwo(d.for); })
+	.defined(function(d) { return !isNaN(d.for); })
+	.y1(function (d) { return yTwo(d.Lo80); })
+	.defined(function(d) { return !isNaN(d.Lo80); });
 
+var lowerOuterArea = d3.svg.area()
+	.interpolate('basis')
+	.x (function (d) { return x(d.date) || 1; })
+	.defined(function(d) { return !isNaN(d.date); })
+	.y0(function (d) { return yTwo(d.Lo80); })
+	.defined(function(d) { return !isNaN(d.Lo80); })
+	.y1(function (d) { return yTwo(d.Lo95); })
+	.defined(function(d) { return !isNaN(d.Lo95); });
+
+	svg.datum(data);
+		
+	svg.append('path')
+		.attr('class', 'area upper outer')
+		.attr('d', upperOuterArea)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "rgba(100, 100, 100, 0.1)")
+	.attr("stroke", "rgba(100, 100, 100, 0.1)");
+
+
+	svg.append('path')
+		.attr('class', 'area lower outer')
+		.attr('d', lowerOuterArea)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "rgba(100, 100, 100, 0.1)")
+	.attr("stroke", "rgba(100, 100, 100, 0.1)");
+
+	svg.append('path')
+		.attr('class', 'area upper inner')
+		.attr('d', upperInnerArea)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "rgba(100, 100, 100, 0.4)")
+	.attr("stroke", "rgba(100, 100, 100, 0.4)");
+
+	svg.append('path')
+		.attr('class', 'area lower inner')
+		.attr('d', lowerInnerArea)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "rgba(100, 100, 100, 0.4)")
+		.attr("stroke", "rgba(100, 100, 100, 0.4)");
+		
 	svg.append('path')
 		.attr('class', 'figure')
 		.attr('d', plotFig)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
-		.attr("stroke", "#fdb59c")
-		.attr("stroke-width", "2");
+		.attr("stroke", "#f4d984")
+		   .attr("stroke-width", "2");
+		
+	svg.append('path')
+		.attr('class', 'figure')
+		.attr('d', plotFigHalf)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr("fill", "none")
+		.attr("stroke", "#f4d984")
+		   .attr("stroke-width", "2");
+	
+	if (onoff == 1) {
+	   svg.selectAll("dot")	
+	           .data(data)			
+	       .enter().append("circle")								
+	           .attr("r", 5)		
+	           .attr("cx", function(d) { return x(d.date); })		 
+	           .attr("cy", function(d) { return yTwo(d.act); })
+	   	   	.style("fill", "transparent")
+	   	.call(d3.helper.tooltip(
+	   	       function(d, i){
+				   return "<b>Energy Demand: <br>"+d.act + " MW </b>";
+	   	       }
+	   	   ));
+		  
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.for); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+				   return "<b>Energy Forecast: <br>"+d.for + " MW </b>";
+   	   	       }
+   	   	   ));
+
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.Lo80); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   				   return "<b>80% Confidence: <br>"+d.Lo80 + " MW </b>";
+   	   	       }
+   	   	   ));	   
+      	  
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.Hi80); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   				   return "<b>80% Confidence: <br>"+d.Hi80 + " MW </b>";
+   	   	       }
+   	   	   ));		   
+
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.Lo95); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   				   return "<b>95% Confidence: <br>"+d.Lo95 + " MW </b>";
+   	   	       }
+   	   	   ));		   
+
+   	   svg.selectAll("dot")	
+   	           .data(data)			
+   	       .enter().append("circle")								
+   	           .attr("r", 5)		
+   	           .attr("cx", function(d) { return x(d.date); })		 
+   	           .attr("cy", function(d) { return yTwo(d.Hi95); })
+   	   	   	.style("fill", "transparent")
+   	   	.call(d3.helper.tooltip(
+   	   	       function(d, i){
+   				   return "<b>95% Confidence: <br>"+d.Hi95 + " MW </b>";
+   	   	       }
+   	   	   ));
+		   
+	   };
+	   
+   svg.selectAll("dot")	
+           .data(data)			
+       .enter().append("circle")								
+           .attr("r", 5)		
+           .attr("cx", function(d) { return x(d.date); })		 
+           .attr("cy", function(d) { return y(d.dat); })
+   	   	.style("fill", "transparent")
+   	.call(d3.helper.tooltip(
+   	       function(d, i){
+			   return "<b>Component value: <br>"+d.dat + "</b>";
+   	       }
+   	   ));
 		
 	svg.append('path')
 		.attr('class', 'figure')
@@ -55,14 +241,14 @@ var plotFigTwo = d3.svg.line()
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr("fill", "none")
 		.attr("stroke", "#000000")
-		.attr("stroke-width", "2");
-
+	   .attr("stroke-width", "2");
+		
 	svg.append('text')
-		.attr('x', 750)
+		.attr('x', 620)
 		.attr('y', 30)
 		.attr('font-family', 'Open Sans')
 		.attr('font-size', '14px')
-		.text(titletext);
+		.text(titletext)
 
 }
 
@@ -72,7 +258,7 @@ function startTransitions (svg, chartWidth, chartHeight, rectClip, x) {
 
 }
 
-function makeChartCThree (data, titletext, textAxes) {
+function makeChartCThree (data, titletext, textAxes, onoff) {
 	var svgWidth  = 960,
 		svgHeight = 300,
 		margin = { top: 20, right: 20, bottom: 40, left: 60 },
@@ -82,12 +268,16 @@ function makeChartCThree (data, titletext, textAxes) {
 	var x = d3.time.scale().range([0, chartWidth])
 			.domain([dateFirst, dateLast]),
 		y = d3.scale.linear().range([chartHeight, 0])
-			.domain(d3.extent(data, function (d) { return d.dat; }));
-		
+			.domain(d3.extent(data, function (d) { return d.dat; })),
+		yTwo = d3.scale.linear().range([chartHeight, 0])
+			.domain([d3.extent(data, function (d) { return d.Lo95; })[0],d3.extent(data, function (d) { return d.Hi95; })[1]]);
+
 	var xAxis = d3.svg.axis().scale(x).orient('bottom')
 				.innerTickSize(-chartHeight).outerTickSize(0).tickPadding(10),
 		yAxis = d3.svg.axis().scale(y).orient('left')
-				.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10);
+				.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10),
+		yAxisTwo = d3.svg.axis().scale(yTwo).orient('left')
+			.innerTickSize(-chartWidth).outerTickSize(0).tickPadding(10);
 
 	var svg = d3.select('body').append('svg')
 		.attr('width',  svgWidth)
@@ -102,10 +292,12 @@ function makeChartCThree (data, titletext, textAxes) {
 			.attr('width', 0)
 			.attr('height', chartHeight);
 
-	addAxesAndLegendCThree(svg, xAxis, yAxis, margin, chartWidth, chartHeight, textAxes);
-	drawPathsCThree(svg, data, x, y, titletext);
+	addAxesAndLegendCThree(svg, xAxis, yAxis, yAxisTwo, margin, chartWidth, chartHeight, textAxes);
+	drawPathsCThree(svg, data, x, y, yTwo, titletext, onoff);
 	startTransitions(svg, chartWidth, chartHeight, rectClip, x);
 }
+
+
 
 var parseDate  = d3.time.format('%Y-%m-%d').parse;
 
@@ -115,7 +307,11 @@ d3.csv('data/Louisville-predict-365.csv', function (rawData) {
 		return {
 			date: d3.time.format('%d/%m/%y').parse(d.Date),
 			for: Math.round(d.Forecast),
-			dat: Math.round(d.Actual),
+			act: Math.round(d.Actual),
+			Lo80: Math.round(d.Lo80),
+			Lo95: Math.round(d.Lo95),
+			Hi80: Math.round(d.Hi80),
+			Hi95: Math.round(d.Hi95),
 		};
 	});
 	
@@ -161,7 +357,7 @@ d3.csv('data/Louisville-predict-365.csv', function (rawData) {
 		})[0]
 
 	var titletextOne = 'Energy Demand',
-		titletextTwo = 'Prediction',
+		titletextTwo = 'Demand & Prediction',
 		titletextThree = 'Temperature',
 		titletextFour = 'Trend',
 		titletextFive = 'Random',
@@ -172,14 +368,14 @@ d3.csv('data/Louisville-predict-365.csv', function (rawData) {
 		textAxesFour = 'Trend Component',
 		textAxesFive = 'Random Component',
 		textAxesSix = 'Seasonal Component';
+	
 
-		makeChartCThree(dataOne, titletextOne, textAxesOne);
-		makeChartCThree(dataSix, titletextTwo, textAxesTwo);
-		makeChartCThree(dataTwo, titletextThree, textAxesThree);
-		makeChartCThree(dataThree, titletextFour, textAxesFour);
-		makeChartCThree(dataFour, titletextFive, textAxesFive);
-		makeChartCThree(dataFive, titletextSix, textAxesSix);
-	});
+//makeChartCThree(dataOne, titletextOne, textAxesOne);
+makeChartCThree(dataSix, titletextTwo, textAxesTwo, 1);
+//makeChartCThree(dataTwo, titletextThree, textAxesThree);
+makeChartCThree(dataThree, titletextFour, textAxesFour, 0);
+makeChartCThree(dataFour, titletextFive, textAxesFive, 0);
+makeChartCThree(dataFive, titletextSix, textAxesSix, 0);
 });
-
+});
 };
