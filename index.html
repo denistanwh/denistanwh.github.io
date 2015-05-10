@@ -129,9 +129,9 @@ $$</p>
 
 <p>Table 1 and Figure 4 shows the result of clustering. The map shows the geographical location of these 29 cities.</p>
 
-<p>Table 1: Results of K-means Clustering<br><img src="paper/Table1.png" alt="image" /></p>
+<p>Table 1: Results of K-means Clustering<br><img src="paper/Table1.png" alt="image" width="600"/></p>
 
-<p>Figure 4: Visualization of the 4 Clusters of Cities<br /><img src="paper/Fig7.png" alt="image" /><br />Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</p>
+<p>Figure 4: Visualization of the 4 Clusters of Cities<br /><img src="paper/Fig7.png" alt="image" width = "860"/><br />Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</p>
 <p>Figure 4 is visualized using the following code:</p>
 <pre class="r"><code>ggplot(data=data.7, aes(x=day, y=MW, color=city))+geom_line()+
   facet_wrap(~cluster, scales=&quot;free&quot;)</code></pre>
@@ -259,13 +259,11 @@ $$</p>
 </table>
 </p>
 
-<p>We present the forecasting results of each of the four cities separately, below. The first cluster’s representative, Abidjan, has a relatively flat, non-cyclical energy demand profile throughout the year with a distinct upward trend (see Figure 15).</p>
+<p>We present the forecasting results of each of the four cities separately, below. The first cluster’s representative, Eugene, has a relatively flat, non-cyclical energy demand profile throughout the year with a distinct upward trend (see Figure 10).</p>
+<p>Figure 10: Holt-Winters Forecast for Eugene (Cluster1)<br />
+<img src="paper/Fig13.svg" alt="image" width = "860"/>
 
-<p>Figure 13: Holt-Winters forecast for Eugene (Cluster1)</p>
-
-<p><img src="paper/Fig13.png" alt="image" /></p>
-
-<p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Abidjan. Original data spanned 4 calendar years from 2010 to end of 2013.</p>
+<br />Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Eugene. Original data spanned 4 calendar years from 2010 to end of 2013.</p>
 
 				<div id="City1">
 				<button onclick="runCOne()">
@@ -276,12 +274,10 @@ $$</p>
 				<br>
 
 <p>The second cluster’s representative, Dakar, has both a general upward trend and a seasonal (cyclical) pattern that reaches its highest point in the middle of the year before declining towards end of the year.</p>
+<p>Figure 11: Holt-Winters Forecast for Dakar (Cluster 2)<br />
+<img src="paper/Fig14.svg" alt="image" width="860"/>
 
-<p>Figure 14: Holt-Winters forecast for Dakar (Cluster 2)</p>
-
-<p><img src="paper/Fig14.png" alt="image" /></p>
-
-<p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Dakar. Original data spanned 4 calendar years from 2011 to end of 2014.</p>
+<br />Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Dakar. Original data spanned 4 calendar years from 2011 to end of 2014.</p>
 
 				<div id="City2">
 				<button onclick="runCTwo()">
@@ -291,13 +287,11 @@ $$</p>
 				</div>
 				<br>
 
-<p>The third cluster’s representative, Springfield, has significant periodicity on a yearly basis (see Figure 17). As is the case for cities in Cluster 3, Springfield has two energy demand peaks, a more pronounced peak in the summer and a less pronounced peak in the winter.</p>
+<p>The third cluster’s representative, Louisville, has significant periodicity on a yearly basis (see Figure 12). As is the case for cities in Cluster 3, Louisville has two energy demand peaks, a more pronounced peak in the summer and a less pronounced peak in the winter.</p>
+<p>Figure 12: Holt-Winters Forecast for Louisville (Cluster 3)<br />
 
-<p>Figure 15: Holt-Winters forecast for Louisville (Cluster 3)</p>
-
-<p><img src="paper/Fig15.png" alt="image" /></p>
-
-<p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Springfield. Original data spanned 3 calendar years from 2011 to end of 2013.</p>
+<img src="paper/Fig15.svg" alt="image" /><br />
+Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Louisville. Original data spanned 3 calendar years from 2011 to end of 2013.</p>
 
 				<div id="City3">
 				<button onclick="runCThree()">
@@ -306,13 +300,12 @@ $$</p>
 					<script type = "text/javascript"src="city3.js"></script>
 				</div>	
 				<br>
+<p>The fourth cluster’s representative, Sacramento, shows a large peak at its summer. Sacramento’s energy demand profile shows a slight downward trend from 2007 to 2013 (see Figure 13).</p>
+<p>Figure 13: Holt-Winters Forecast for Sacramento (Cluster 4)<br />
 
-<p>The fourth cluster’s representative, Sacramento, shows a large peak at its summer. Sacramento’s energy demand profile shows a slight downward trend from 2007 to 2013 (see Figure 18).
-Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
+<img src="paper/Fig16.svg" alt="image" width="860"/><br/>
 
-<p><img src="paper/Fig16.png" alt="image" /></p>
-
-<p>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Sacramento. Original data spanned 7 calendar years from 2006 to end of 2013.</p>
+Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Sacramento. Original data spanned 7 calendar years from 2006 to end of 2013.</p>
 
 				<div id="City4">
 				<button onclick="runCFour()">
@@ -322,27 +315,54 @@ Figure 16: Holt-Winters forecast for Sacramento (Cluster 4)</p>
 				</div>	
 				<br>
 
-<p>We also verified that the forecast errors obtained by deducting the fitted data from the original data are normally distributed (see Figure 19).</p>
+<p>We also verified that the forecast errors obtained by deducting the fitted data from the original data are normally distributed (see Figure 14).</p>
+<p>Figure 14: Forecast errors<br />
 
-<p>Figure 17: Forecast errors</p>
+<img src="paper/Fig17.svg" alt="image" width="860"/><br />
 
-<p><img src="paper/Fig17.png" alt="image" /></p>
+Note: Top left: forecast errors for Eugene; top right: forecast errors for Dakar; bottom left: forecast errors for Louisville; bottom right: forecast errors for Sacramento</p>
 
-<p>Note: Top left: forecast errors for Abidjan; top right: forecast errors for Dakar; bottom left: forecast errors for Springfield; bottom right: forecast errors for Sacramento</p>
+<h2>Conclusion</h2>
+<p>Using energy demand data from 43 cities, we trimmed the data down to 30 cities and stratified them into 4 groups based on similarity in the shape of their energy demand curves. We then applied a Holt-Winters time-series algorithm to forecast the energy demand over a period of 365 days for each chosen city. Finally, we visualized the energy data and forecasts using a cascading “drill-down” approach. This approach allows us to first depict an overview of the data before zooming into the granular details, in line with Schneiderman’s visual information seeking mantra. This paper introduces a data-driven method to group cities based on their energy demand profile to make cross-city collaboration on energy demand management more effective.</p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Bostock, M. (2013). Data-driven Documents. Retrieved January 10, 2015, from: <a href="http://d3js.org/"><a href="http://d3js.org/">http://d3js.org/</a></a></p>
+<p>Chatfield, C., &amp; Yar, M. (1988). Holt-Winters forecasting: some practical issues. <em>The Statistician</em>, 129-140.</p>
+<p>c40. (n.d.). Why Cities? Ending Climate Change Begins in the City. Retrieved May 01, 2015, from: <a href="www.c40.org/ending-climate-change-begins-in-the-city">www.c40.org/ending-climate-change-begins-in-the-city</a></p>
+<p>International Energy Agency. (2014). World Energy Outlook 2014 Executive Summary. Retrieved May 01, 2015, from: <a href="http://www.worldenergyoutlook.org/publications/weo-2014/"><a href="http://www.worldenergyoutlook.org/publications/weo-2014/">http://www.worldenergyoutlook.org/publications/weo-2014/</a></a>.</p>
+<p>James, G., Witten, D., &amp; Hastie, T. (2014). An Introduction to Statistical Learning: With Applications in R.</p>
+<p>Johnson, L. A., &amp; Montgomery, D. C. (1974). Operations research in production planning, scheduling, and inventory control (Vol. 6). <em>New York: Wiley, Chicago.</em></p>
+<p>Kaufman, L., &amp; Rousseeuw, P. J. (2009). Finding groups in data: an introduction to cluster analysis (Vol. 344). <em>John Wiley &amp; Sons.</em></p>
+<p>Shneiderman, B. (1996, September). The eyes have it: A task by data type taxonomy for information visualizations. <em>In Visual Languages, 1996. Proceedings., IEEE Symposium on (pp. 336-343).</em> IEEE. Chicago. Retrieved April 1, 2015, from: <a href="http://drum.lib.umd.edu/bitstream/1903/5784/1/TR_96-66.pdf"><a href="http://drum.lib.umd.edu/bitstream/1903/5784/1/TR_96-66.pdf">http://drum.lib.umd.edu/bitstream/1903/5784/1/TR_96-66.pdf</a></a></p>
+<p>The New Climate Economy. (2014). Cities: Engines of National and Global Growth. Retrieved April 20, 2015. from: <a href="http://newclimateeconomy.report/cities/"><a href="http://newclimateeconomy.report/cities/">http://newclimateeconomy.report/cities/</a></a></p>
+<p>Tufte, E. R., &amp; Graves-Morris, P. R. (1983). The visual display of quantitative information (Vol. 2). <em>Cheshire, CT: Graphics press.</em></p>
+<p>World Economic Forum. (2012). What lessons can China learn from Singapore. Retrieved May 05, 2015, from: <a href="https://agenda.weforum.org/2012/11/what-lessons-can-china-learn-from-singapore/"><a href="https://agenda.weforum.org/2012/11/what-lessons-can-china-learn-from-singapore/">https://agenda.weforum.org/2012/11/what-lessons-can-china-learn-from-singapore/</a></a></p>
+<p>Zaki, M. (2012). Chapter 18: Clustering Validation. <em>Cambridge University Press.</em> Retrieved May 05, 2015, from: <a href="http://www.cs.rpi.edu/~zaki/www-new/uploads/Dmcourse/Main/chap18.pdf"><a href="http://www.cs.rpi.edu/~zaki/www-new/uploads/Dmcourse/Main/chap18.pdf">http://www.cs.rpi.edu/~zaki/www-new/uploads/Dmcourse/Main/chap18.pdf</a></a></p>
+</div>
 
-<h2>Visualization</h2>
 
-<p>As mentioned, we implemented the visualizations using the cascade, “drill-down” approach. A static image of the visualization is provided in Figure 20. The interactive visualizations are available at http://denistanwh.github.io.</p>
+</div>
 
-<p>Figure 18: Static screenshot of a single frame of the visualization</p>
+<script>
 
-<p><img src="paper/Fig18.png" alt="image" /></p>
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
 
-<p>Note: Image zoomed in significantly to avoid truncation</p>
+</script>
 
-<h1>Conclusion</h1>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
-<p>Using energy demand data from 43 cities, we trimmed the data down to 30 cities and stratified them into 4 groups based on similarity in the shape of their energy demand curves. We then applied a Holt-Winters time-series algorithm to forecast the energy demand over a period of 365 days for each chosen city. Finally, we visualized the energy data and forecasts using a cascading “drill-down” approach. This approach allows us to first depict an overview of the data before zooming into the granular details, in line with Schneiderman’s visual information seeking mantra. We believe that this is an appropriate technique to present the energy information to an audience of disparate, middle-class energy consumption decision makers around the world. We hope that the access to this information will incrementally change the decentralized decisions made by all of these decision makers, arresting or slowing the projected explosion in global energy demand.</p>
 		
 	</body>
 </html>
