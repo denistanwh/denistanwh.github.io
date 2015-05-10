@@ -46,30 +46,22 @@
 </ul>
 </div>
 
-<h1>Motivation</h1>
-
-<p>Global energy demand is rising fast (USEIA, 2013), with cities absorbing most of the predicted demand expansion (The New Climate Economy, 2014). More specifically, much of the growth in energy demand will come from the growth of the middle class in emerging cities and economies. Each of these new middle-class individuals will make decentralized energy consumption decisions on a daily basis, with significant consequences for the aggregate consumption. Provision of information on energy demand may alter energy consumption decisions. Hence, there is tremendous value in understanding, projecting, and presenting information on  short-term energy demand forecasts.</p>
-
-<p>Energy demand is a function of many variables, including demographics, climate, and development stage. Much work has been done on energy demand forecasting over time, resulting in more and more realistic but complex models. There is an inherent trade-off between sophistication and complexity. Complex models are different to grasp and cognitively out of reach of the layperson.</p>
-
-<p>In this paper, bearing in mind the need to present information to a general audience of middle-class decision makers, we avoid the pitfalls of complex models but instead attempt to project and present energy demand forecasts in a digestible form.</p>
-
-<h1>Methodology</h1>
-
-<h2>Grouping of Cities</h2>
-
-<h3>Cluster Analysis &amp; K-means Algorithm</h3>
-
-<p>Cluster analysis, or clustering involves grouping objects in such a way that objects in the same group are more similar, by some pre-determined measure, to each other than to those in other groups. It is a main task of exploratory data mining, and a frequently used method for statistical data analysis, used in many fields, including machine learning and pattern recognition (Kaufman &amp; Rousseeuw, 2009).</p>
-
-<p>One particular method of implementing cluster analysis is K-means clustering (Witten &amp; Hastie, 2014). It is a simple approach to group data into K distinct, non-overlapping clusters.</p>
-
-<p><img src="paper/Table0.png" alt="image" /></p>
-
+<div id="motivation" class="section level2">
+<h2>Motivation</h2>
+<p>Global energy demand is expected to rise by 37% from 2014 to 2040 (IEA, 2014), with cities absorbing most of the predicted demand expansion (The New Climate Economy, 2014). Moreover, three quarters of the global energy supply in 2040 will still be fossil-based (IEA, 2014), exacerbating anthropogenic climate change. Cities can be leading advocates on reducing per capita energy use and mitigating climate change (c40, n.d.). To this end, there are numerous global and regional city-networks that brings together city policy makers to facilitate sharing of best practices.</p>
+<p>However, cross-city collaboration on reducing enegy demand tends to be politically- and economically-driven rather than data-driven. For instance, Chinese cities, despite having vastly different climate, have been gleaning best practices from Singapore in the energy domain (WEF, 2012). Best practices gleaned from political and economic partners may be ineffective due to the intrinsic differences in factors driving energy demand in different cities. Thus, there is value in identifying clusters of cities with similar energy demand patterns to make the sharing of best practices more efficient.</p>
+<p>Energy demand is a function of many variables, including demographics, climate, and development stage. Much work has been done on energy demand forecasting over time, resulting in more and more realistic but complex models. This paper presents a data-driven approach to identifying groups of cities with similar demand pattern to optimize collaboration as well as forecasts and visualizes the short-term energy demand for one city from each of the groups. Our approach is agnostic to the underlying factors driving demand and deals only with the empirical demand pattern, using a simple but relatively underused clustering method for grouping and time-series method for forecasting.</p>
+</div>
+<div id="methodology" class="section level2">
+<h2>Methodology</h2>
+<div id="grouping-of-cities" class="section level3">
+<h3>Grouping of Cities</h3>
+<div id="cluster-analysis-k-means-algorithm" class="section level4">
+<h4>Cluster Analysis &amp; K-means Algorithm</h4>
+<p>To group cities, we apple cluster analysis. Cluster analysis, or clustering involves grouping objects in such a way that objects in the same group are more similar, by some pre-determined measure, to each other than to those in other groups. It is a main task of exploratory data mining, and a frequently used method for statistical data analysis, used in many fields, including machine learning and pattern recognition (Kaufman &amp; Rousseeuw, 2009).</p>
+<p>One particular method of implementing cluster analysis is K-means clustering (Witten &amp; Hastie, 2014). It is a simple approach to group data into K distinct, non-overlapping clusters. We used the following algorithm for clustering:</p>
 <p>To implement cluster analysis, we implemented three steps: pre-processing, grouping, and analysis.</p>
-
-<p>First, we trimmed the raw dataset from an unbalanced panel of energy demand data of 43 cities to a dataset with just a single year of energy demand (2013). We selected 2013 as it maximizes the number of cities (30) that can be retained in the dataset. The energy demand data, in MW, was also aggregated from the half-hourly level to the daily level to reduce the size of the dataset for quick computations. Data at the half-hourly level is unnecessarily granular for cluster analysis that spans a full calendar year. We then normalized energy demand data by subtracting the mean and using the standard deviation as a divisor. This normalization ensures that data from all cities are have zero for mean and one for standard deviation. The trimmed dataset is depicted below in Figures 1 and 2.</p>
-
+<p>First, we trimmed the raw dataset from an unbalanced panel of energy demand data of 43 cities to a dataset with just a single year of energy demand. We do this by dropping cities with less than a full calendar year of energy data, or has a visually obvious amount of zero-value data. The trimmed dataset has 29 cities remaining. The energy demand data, in MW, was also aggregated from the half-hourly level to the daily level to reduce the size of the dataset for quick computations. Data at the half-hourly level is unnecessarily granular for cluster analysis that spans a full calendar year. We then normalized energy demand data by subtracting the mean and using the standard deviation as a divisor. This normalization ensures that data from all cities are have zero for mean and one for standard deviation, making it possible for fair comparison. The trimmed dataset is depicted below in Figures 1.</p>
 <p>Figure 1: Plot of 2013 normalized energy demand data from 30 cities</p>
 
 <p><img src="paper/Fig1.png" alt="image" /></p>
