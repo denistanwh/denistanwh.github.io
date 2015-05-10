@@ -10,6 +10,7 @@
 		</script>
 		<script type="text/javascript" src="./tooltip.js"></script>
 		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	
 	</head>
 
@@ -343,7 +344,7 @@ table>
 <div id="forecasting-energy-demand-1" class="section level3">
 <h3>Forecasting Energy Demand</h3>
 <p>We picked Eugene, Dakar, Louisville, and Sacramento to represent Cluster 1, 2, 3, and 4 respectively. Through application of the Holt-Winters forecasting algorithm, we obtained a model for each of the four cities. We then analyzed the model fit using the Box-Ljung residual test. The results are summarized in Table 2.</p>
-<p>Table 2: Summary of Box-Ljung test results<br />
+<p>Table 2: Summary of Box-Ljung test results</p>
 
 <table>
 <thead>
@@ -371,7 +372,7 @@ table>
 <td>2.2e-16</td>
 </tr>
 <tr>
-<td>Louisville<>/td>
+<td>Louisville</td>
 <td>3</td>
 <td> 1926.477 </td>
 <td>20</td>
@@ -386,7 +387,6 @@ table>
 </tr>
 </tbody>
 </table>
-</p>
 
 <p>We present the forecasting results of each of the four cities separately, below. The first cluster’s representative, Eugene, has a relatively flat, non-cyclical energy demand profile throughout the year with a distinct upward trend (see Figure 10).</p>
 <p>Figure 10: Holt-Winters Forecast for Eugene (Cluster1)<br />
