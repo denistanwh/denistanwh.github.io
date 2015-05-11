@@ -10,8 +10,8 @@ d3.helper.tooltip = function(accessor){
             // Append tooltip
             tooltipDiv = d3.select('body').append('div').attr('class', 'tooltip');
             var absoluteMousePos = d3.mouse(bodyNode);
-            tooltipDiv.style('left', (d3.event.pageX + 10)+'px')
-                .style('top', (d3.event.pageY - 15)+'px')
+            tooltipDiv.style('left', (d3.event.pageX)+'px')
+                .style('top', (d3.event.pageY)+'px')
                 .style('position', 'absolute') 
                 .style('z-index', 1001);
             // Add text using the accessor function
@@ -23,8 +23,8 @@ d3.helper.tooltip = function(accessor){
         .on('mousemove', function(d, i) {
             // Move tooltip
             var absoluteMousePos = d3.mouse(bodyNode);
-            tooltipDiv.style('left', (d3.event.pageX + 10)+'px')
-                .style('top', (d3.event.pageY - 15)+'px');
+            tooltipDiv.style('left', (d3.event.pageX)+'px')
+                .style('top', (d3.event.pageY)+'px');
             var tooltipText = accessor(d, i) || '';
             tooltipDiv.html(tooltipText);
         })
