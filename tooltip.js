@@ -10,7 +10,7 @@ d3.helper.tooltip = function(accessor){
             // Append tooltip
             tooltipDiv = d3.select('body').append('div').attr('class', 'tooltip');
             var absoluteMousePos = d3.mouse(bodyNode);
-            tooltipDiv.style('left', (absoluteMousePos[0] + 10)+'px')
+            tooltipDiv.style('left', (absoluteMousePos[0])+'px')
                 .style('top', (absoluteMousePos[1] - 15)+'px')
                 .style('position', 'absolute') 
                 .style('z-index', 1001);
