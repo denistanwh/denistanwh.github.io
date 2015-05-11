@@ -268,7 +268,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 </table>
 </p>
 
-<p><b>Figure 4: Visualization of the 4 Clusters of Cities</b><br /><img src="paper/Fig7.png" alt="image" width = "840"/><br />Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</p>
+<p><b>Figure 4: Visualization of the 4 Clusters of Cities</b><br /><img src="paper/Fig7.png" alt="image" width = "840"/><br /><i>Note: From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear have the opposite trend from cluster 1 cities, peaking in August but troughing in January.</i></p>
 <p>Figure 4 is visualized using the following code:</p>
 <pre class="r"><code>ggplot(data=data.7, aes(x=day, y=MW, color=city))+geom_line()+
   facet_wrap(~cluster, scales=&quot;free&quot;)</code></pre>
@@ -279,7 +279,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 <div id="Map"> 
 	<script type = "text/javascript"src="map.js"></script>
 </div>
-<br />Note: Cluster1 cities are in green; Cluster 2 cities are in purple; Cluster 3 cities are in red; and Cluster 4 cities are yellow</p>
+<br /><i>Note: Cluster1 cities are in green; Cluster 2 cities are in purple; Cluster 3 cities are in red; and Cluster 4 cities are yellow</i></p>
 
 <div id="cluster-1" class="section level4">
 <h4>Cluster 1</h4>
