@@ -97,7 +97,7 @@
 									</p>
 									<pre class="r">
 										<code>
-											ggplot(data = sub, aes(x = day, y = MW, color = city)) + geom_line() + facet_wrap(~city, scales = &quot;free&quot;)
+ggplot(data = sub, aes(x = day, y = MW, color = city)) + geom_line() + facet_wrap(~city, scales = &quot;free&quot;)
 last_plot() + scale_x_datetime(labels = date_format(&quot;%b&quot;))
 </code>
 									</pre>
@@ -113,7 +113,8 @@ last_plot() + scale_x_datetime(labels = date_format(&quot;%b&quot;))
 									<p>Figure 2 is visualized with the following code in R:
 									</p>
 									<pre class="r">
-										<code>res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 2, max.nc = 10, method = &quot;kmeans&quot;, index = &quot;hubert&quot;)
+										<code>
+res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 2, max.nc = 10, method = &quot;kmeans&quot;, index = &quot;hubert&quot;)
 										</code>
 									</pre>
 									<p>
@@ -129,7 +130,7 @@ last_plot() + scale_x_datetime(labels = date_format(&quot;%b&quot;))
 										After clustering energy data into four groups, we turn to forecasting. For forecasting, we trim the original dataset to the 29 cities used in the clustering analysis but retain multiple years of energy data for all cities. We also aggregated the half-hourly data to the daily level to remove unnecessary granularity.
 									</p>
 									<p>
-										The energy demand data shows periodicity and can be said to have three components: seasonal, trend, and random component. Seasonality is defined as the tendency of time-series data to exhibit behavior that repeats itself in regular intervals. If the seasonal component is present, it can be additive (where the size of the seasonal component is constant) or multiplicative (where the size of the seasonal component is proportionate to the level of the trend). Visual inspection seems to indicate additive seasonablity. Trend represents the non-cyclical pattern of the data. The random component is the residual after seasonality and trend have been removed. Using R, we applied the <em>decompose()<em> function to a sample city from each of the four clusters and plotted the outcome in Figure 3.
+										The energy demand data shows periodicity and can be said to have three components: seasonal, trend, and random component. Seasonality is defined as the tendency of time-series data to exhibit behavior that repeats itself in regular intervals. If the seasonal component is present, it can be additive (where the size of the seasonal component is constant) or multiplicative (where the size of the seasonal component is proportionate to the level of the trend). Visual inspection seems to indicate additive seasonablity. Trend represents the non-cyclical pattern of the data. The random component is the residual after seasonality and trend have been removed. Using R, we applied the <em>decompose()</em> function to a sample city from each of the four clusters and plotted the outcome in Figure 3.
 									</p>
 									<p>
 										<b>Figure 3: Decomposition of Daily Energy Demand of Eugenia, Dakar, Louisville, and Sacramento</b><br /><img src="paper/Fig3.svg" alt="image" width="640"/>
@@ -317,7 +318,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 								<p>Figure 4 is visualized using the following code:</p>
 								<pre class="r">
 									<code>
-										ggplot(data = data.7, aes(x = day, y = MW, color = city)) + geom_line() + facet_wrap(~cluster, scales=&quot;free&quot;)
+ggplot(data = data.7, aes(x = day, y = MW, color = city)) + geom_line() + facet_wrap(~cluster, scales=&quot;free&quot;)
 									</code>
 								</pre>
 								<p>The map in Figure 5 shows the geographical location of these 29 cities.</p>
