@@ -62,7 +62,7 @@
 						Our approach is agnostic to the underlying structural factors driving demand and deals only with the empirical demand pattern, using a simple clustering method for grouping and well-cited time-series method for forecasting. This project builds upon the work of Cohen, Torbey, Piccirilli, Tian, & Modi (2015) on global trends in urban heating and cooling at <a href="http://sel.columbia.edu/">The Sustainable Engineering Lab</a> of <a href="http://www.columbia.edu/">Columbia University</a>. We use their dataset of electrical energy demand from 43 localities (39 cities and 4 states) around the world. On this basis, we limit our scope to electrical energy. Their project and the associated dataset is obtainable from: <a href="https://github.com/ecohen4/energy">https://github.com/ecohen4/energy</a>.
 					</p>
 					<p>
-						We visualized the work through a three step procedure using <a href="http://d3js.org/">d3.js</a> (Bostock, 2013). First, we present a world map centered in the Pacific to depict the cities we considered for this project (see Figure 5). Second, we zoom in to the 4 groups of cities and present their average daily energy demand over a period of 365 days. Each group of cities are visualized in a chart (Figures 6 to 9). Third, we further zoom in to the city level and visualize the energy forecast for one sample city in each of the 4 groups. This is hidden unless the reader decides to interact with the paper by clicking the <em>Visualize</em> button. This cascade of visualizations emphasizes the “drill-down” technique espoused by Schneiderman (1996) in his seminal paper on the visual information seeking mantra. This way, the first visualization provides an overarching overview before the second and third visualization take reader into greater and greater detail. At the same time, we have kept the visualizations minimalist to maximize data-ink and minimize chart-junk (Tufte, 1983).
+						We visualized the work through a three step procedure using <a href="http://d3js.org/">d3.js</a> (Bostock, 2013). First, we present a world map centered in the Pacific to depict the cities we considered for this project (see Figure 4). Second, we zoom in to the 4 groups of cities and present their average daily energy demand over a period of 365 days. Each group of cities are visualized in a chart (Figures 5 to 8). Third, we further zoom in to the city level and visualize the energy forecast for one sample city in each of the 4 groups. This is hidden unless the reader decides to interact with the paper by clicking the <em>Visualize</em> button. This cascade of visualizations emphasizes the “drill-down” technique espoused by Schneiderman (1996) in his seminal paper on the visual information seeking mantra. This way, the first visualization provides an overarching overview before the second and third visualization take reader into greater and greater detail. At the same time, we have kept the visualizations minimalist to maximize data-ink and minimize chart-junk (Tufte, 1983).
 					</p>
 			</div>
 				
@@ -141,8 +141,8 @@ res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 
 									<li>Cluster 4: North Little Rock, El Paso, Los Angeles, Memphis, Sacramento, Delhi - BRPL</li>
 								</ol> 
 							</p>
-							<p>Figure 4 visually depicts the result of clustering.</p>
-							<p><b>Figure 4: Visualization of the 4 Clusters of Cities</b><br /><img src="paper/Fig7.png" alt="image" width = "840"/><br /></p> 
+							<p>Figure 3 visually depicts the result of clustering.</p>
+							<p><b>Figure 3: Visualization of the 4 Clusters of Cities</b><br /><img src="paper/Fig7.png" alt="image" width = "840"/><br /></p> 
 							<p>
 								From the figure, it is clear that the cities have been appropriately clustered according to the shape of their daily energy demand over the period of a single calendar year. Cluster 1 cities appear to have energy demand peak in January and trough in August. Cluster 2 cities appear to have a relatively flat energy demand profile throughout the year. Cluster 3 cities appear to have 2 peaks in energy demand per year in both January and August. Finally, cluster 4 cities appear to also have 2 peaks but the peak in January is much less pronounced.
 							</p>
@@ -152,8 +152,8 @@ res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 
 		ggplot(data = data.7, aes(x = day, y = MW, color = city)) + geom_line() + facet_wrap(~cluster, scales=&quot;free&quot;)
 											</code>
 							</pre>-->
-										<p>The map in Figure 5 shows the geographical location of these 30 cities.</p>
-										<p><b>Figure 5: Geographic Location of 30 Cities</b>
+										<p>The map in Figure 4 shows the geographical location of these 30 cities.</p>
+										<p><b>Figure 4: Geographic Location of 30 Cities</b>
 											<br />
 											<div id="Map"> 
 												<script type = "text/javascript"src="map.js"></script>
@@ -165,7 +165,7 @@ res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 
 										<div id="cluster-1" class="section level4">
 											<h4>Cluster 1</h4>
 												<!--<p>Figure 6 depicts the energy demand profile for cluster 1 cities.</p>-->
-												<p><b>Figure 6: Cluster 1 Normalized Energy Demand Plot Over 1 Year</b>
+												<p><b>Figure 5: Cluster 1 Normalized Energy Demand Plot Over 1 Year</b>
 													<br />
 													<div id="ClusterViz1">
 														<script type = "text/javascript"src="cluster1.js"></script>
@@ -194,7 +194,7 @@ res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 
 										<div id="cluster-2" class="section level4">
 											<h4>Cluster 2</h4>
 												<!--<p>Figure 7 depicts the energy demand profile for cluster 2 cities.</p>-->
-												<p><b>Figure 7: Cluster 2 Normalized Energy Demand Plot Over 1 Year</b>
+												<p><b>Figure 6: Cluster 2 Normalized Energy Demand Plot Over 1 Year</b>
 													<br />
 													<div id="ClusterViz2">
 														<script type = "text/javascript"src="cluster2.js"></script>
@@ -217,7 +217,7 @@ res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 
 										<div id="cluster-3" class="section level4">
 											<h4>Cluster 3</h4>
 												<!--<p>Figure 8 depicts the energy demand profile for cluster 3 cities.</p>-->
-												<p><b>Figure 8: Cluster 3 Normalized Energy Demand Plot Over 1 Year</b>
+												<p><b>Figure 7: Cluster 3 Normalized Energy Demand Plot Over 1 Year</b>
 													<br />
 													<div id="ClusterViz3">
 														<script type = "text/javascript"src="cluster3.js"></script>
@@ -232,7 +232,7 @@ res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 
 													<div id="cluster-4" class="section level4">
 														<h4>Cluster 4</h4>
 															<!--<p>Figure 9 depicts the energy demand profile for cluster 4 cities.</p>-->
-															<p><b>Figure 9: Cluster 4 Normalized Energy Demand Plot Over 1 Year</b>
+															<p><b>Figure 8: Cluster 4 Normalized Energy Demand Plot Over 1 Year</b>
 																<br />
 																<div id="ClusterViz4">
 																	<script type = "text/javascript"src="cluster4.js"></script>
@@ -265,10 +265,10 @@ res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 
 										After clustering energy data into four groups, we turn to forecasting. For forecasting, we trim the original dataset to the 30 cities used in the clustering analysis but retain multiple years of energy data for all cities. We also aggregated the half-hourly data to the daily level to remove unnecessary granularity.
 									</p>
 									<p>
-										The energy demand data shows periodicity and can be said to have three components: seasonal, trend, and random component. Seasonality is defined as the tendency of time-series data to exhibit behavior that repeats itself in regular intervals. If the seasonal component is present, it can be additive (where the size of the seasonal component is constant) or multiplicative (where the size of the seasonal component is proportionate to the level of the trend). Visual inspection seems to indicate additive seasonablity (see Figure 3). Trend represents the non-cyclical pattern of the data. The random component is the residual after seasonality and trend have been removed. Using R (Version 3.0.2), we applied the <em>decompose()</em> function from the <em>{forecast}</em> package in to a sample city from each of the four clusters and plotted the outcome in Figure 3.
+										The energy demand data shows periodicity and can be said to have three components: seasonal, trend, and random component. Seasonality is defined as the tendency of time-series data to exhibit behavior that repeats itself in regular intervals. If the seasonal component is present, it can be additive (where the size of the seasonal component is constant) or multiplicative (where the size of the seasonal component is proportionate to the level of the trend). Visual inspection seems to indicate additive seasonablity (see Figure 3). Trend represents the non-cyclical pattern of the data. The random component is the residual after seasonality and trend have been removed. Using R (Version 3.0.2), we applied the <em>decompose()</em> function from the <em>{forecast}</em> package in to a sample city from each of the four clusters and plotted the outcome in Figure 9.
 									</p>
 									<p>
-										<b>Figure 3: Decomposition of Daily Energy Demand of Eugenia, Dakar, Louisville, and Sacramento</b><br /><img src="paper/Fig3.svg" alt="image" width="640"/>
+										<b>Figure 9: Decomposition of Daily Energy Demand of Eugenia, Dakar, Louisville, and Sacramento</b><br /><img src="paper/Fig3.svg" alt="image" width="840"/>
 									</p>
 							</div>
 							<div id="holt-winters-times-series-forecasting-algoritm" class="section level4">
