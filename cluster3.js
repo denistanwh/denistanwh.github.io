@@ -19,7 +19,7 @@ function addAxesAndLegendThree (svg, xAxis, yAxis, margin, chartWidth, chartHeig
 			.attr('y', -36)
 			.attr('dy', '.71em')
 			.style('text-anchor', 'end')
-			.text('Daily Average Energy Demand (Cluster 3)');
+			.text('Normalized Daily-Average Energy Demand (Cluster 3)');
 
 
 }
