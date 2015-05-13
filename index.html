@@ -34,13 +34,13 @@
 				<ul>
 					<li><a href="#motivation">Motivation</a></li>
 					<li><a href="#grouping-of-cities">Grouping of Cities</a><ul>
-						<li><a href="#methodology">Methodology</a></li>
-						<li><a href="#results-discussion">Results &amp; Discussion</a></li>
+						<li><a href="#methodology1">Methodology</a></li>
+						<li><a href="#results-discussion1">Results &amp; Discussion</a></li>
 						<!--<li><a href="#visualization">Visualiation</a></li>
 					</ul></li>-->
 					<li><a href="#forecasting-energy-demand">Forecasting Energy Demand</a><ul>
-						<li><a href="#methodology">Methodology</a></li>
-						<li><a href="#results-discussion">Results &amp; Discussion</a></li>
+						<li><a href="#methodology2">Methodology</a></li>
+						<li><a href="#results-discussion2">Results &amp; Discussion</a></li>
 					</ul></li>
 					<li><a href="#conclusion">Conclusion</a></li>
 					<li><a href="#references">References</a></li>
@@ -131,7 +131,7 @@ res&lt;-NbClust(data.6, diss = NULL, distance = &quot;euclidean&quot;, min.nc = 
 									</p>
 							</div>
 					</div>
-					<div id="results-discussion" class="section level3">
+					<div id="results-discussion1" class="section level3">
 						<h3>Results &amp; Discussion</h3>
 							<p>Through clustering, we obtained the following four clusters.
 								<ol style="list-style-type: decimal">
@@ -297,7 +297,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 
 							</div>
 					</div>
-								<div id="results-discussion" class="section level3">
+								<div id="results-discussion2" class="section level3">
 									<h3>Results &amp; Discussion</h3>
 																<p>We picked Eugene, Dakar, Louisville, and Sacramento to represent Cluster 1, 2, 3, and 4 respectively. Through application of the Holt-Winters forecasting algorithm, we obtained a model for each of the four cities and forecasted the energy demand for 365 days for each city. We then analyzed the model fit using the Box-Ljung residual test. The results are summarized in Table 1. The results are acceptable, indicating that the forecasting model is feasible.
 																</p>
