@@ -75,5 +75,5 @@ var zoom = d3.behavior.zoom()
 
   });
 
-  svg.call(zoom);
+  //svg.call(zoom);
 }
