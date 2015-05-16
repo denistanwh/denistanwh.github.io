@@ -299,9 +299,21 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 					</div>
 								<div id="results-discussion2" class="section level3">
 									<h3>Results &amp; Discussion</h3>
-																<p>We picked Eugene, Dakar, Louisville, and Sacramento to represent Cluster 1, 2, 3, and 4 respectively. Through application of the Holt-Winters forecasting algorithm, we obtained a model for each of the four cities and forecasted the energy demand for 365 days for each city. We then analyzed the model fit using the Box-Ljung residual test. The results are summarized in Table 1. The results are acceptable, indicating that the forecasting model is feasible.
-																</p>
-																<p>Table 1: Summary of Box-Ljung test results</p>
+																<p>We picked Eugene, Dakar, Louisville, and Sacramento to represent Cluster 1, 2, 3, and 4 respectively. Through application of the Holt-Winters forecasting algorithm, we obtained a model for each of the four cities.
+																Before applying the respective models for out-of-sample forecasting, we tested took a truncated segment of the data to run in-sample forecasts to determine the efficacy of the model. For example, although we have energy data for Eugene from 2006 to the end of 2013, we predicted energy demand for 2013 using the truncated Eugene dataset that has 2006 to end of 2012 data. Comparing between our model results and the actual energy demand data, we quantified the accuracy and perfomance of our model for the four cities. The results are summarized from figure <b>10 to 13</b>.</p>
+
+																<p>We then forecasted a full calendar year of energy data and analyzed the model fit using the Box-Ljung residual test. These results are summarized in Table 1 and Table 2.</p>
+
+																<p>Table 1: RMSE on Test Data</p>
+
+																<p>City.name     |Cluster|RMSE
+																--------------|-------|----------
+																Eugene        |1| 1365.707 |29.55
+																Dakar         |2| 1171.423 |32.37
+																Louisvill     |3| 1926.477 |1055.32
+																Sacramento    |4| 915.5914 |199.48
+																
+																<p>Table 2: Summary of Box-Ljung Test Results</p>
 																<table>
 																	<thead>
 																		<tr>
@@ -344,7 +356,7 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 																	</tbody>
 																</table>
 																<p>
-																	We present the forecasting results of each of the four cities separately, below. The first cluster’s representative, Eugene exhibits the 'U' profile with a distinct upward trend (see Figure 10).
+																	We present the forecasting results of each of the four cities separately, below. The first cluster’s representative, Eugene exhibits the 'U' profile with a distinct upward trend (see Figure 10). From the RMSE in Table 1, of the four cities, the Holt-Winters forecasting model is most effective for Eugene (lowest RMSE).
 																</p>
 																<p>
 																	<b>Figure 10: Holt-Winters Forecast for Eugene (Cluster1)</b>
@@ -352,9 +364,9 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 																	<img src="paper/Fig13.svg" alt="image" width = "640"/>
 																	<br />
 																	<i>
-																		Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Eugene. Original data spanned 4 calendar years from 2010 to end of 2013.
+																		Note: Original data spanned 4 calendar years from 2010 to end of 2013. Top left chart depicts comparison between fitted values from the model (red) and original data (black) for the entire dataset is available. Top right chart depicts the comparison between the observed energy demand (black) and the predicted energy demand (red) using the truncated dataset (2010 to end 2012). Bottom left chart depicts the same comparison as the top right chart, albeit as a scatter plot. Bottom right chart depicts the 365-day forecast of daily energy demand of Eugene by applying the model on the full dataset.
 																	</i>
-																</p>
+																</p>	
 																<p>Interact with the data by clicking below:</p>
 																<div id="City1">
 																	<button onclick="runCOne()">
@@ -364,14 +376,14 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 																</div>	
 																<br>
 																<p>
-																	The second cluster’s representative, Dakar, has both a general upward trend and a relatively flat profile though a seasonal (cyclical) pattern in the middle of the year can be observed.
+																	The second cluster’s representative, Dakar, has both a general upward trend and a relatively flat profile though a seasonal (cyclical) pattern in the middle of the year can be observed. From the RMSE in Table 1, of the four cities, the Holt-Winters forecasting model is highly effective for Dakar (second lowest RMSE) but not as effective as for Eugene of Cluster 1.
 																</p>
 																<p>
 																	<b>Figure 11: Holt-Winters Forecast for Dakar (Cluster 2)</b>
 																	<br />
 																	<img src="paper/Fig14.svg" alt="image" width="640"/>
 																	<br />
-																	<i>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365-day forecast of daily energy demand of Dakar. Original data spanned 4 calendar years from 2011 to end of 2014.</i>
+																	<i>Note: Original data spanned 4 calendar years from 2011 to end of 2014. Top left chart depicts comparison between fitted values from the model (red) and original data (black) for the entire dataset is available. Top right chart depicts the comparison between the observed energy demand (black) and the predicted energy demand (red) using the truncated dataset (2011 to end 2013). Bottom left chart depicts the same comparison as the top right chart, albeit as a scatter plot. Bottom right chart depicts the 365-day forecast of daily energy demand of Eugene by applying the model on the full dataset.</i>
 																</p> 
 																<p>Interact with the data by clicking below:</p>
 																<div id="City2">
@@ -382,14 +394,14 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 																</div>
 																<br>
 																<p>
-																	The third cluster’s representative, Louisville, has significant periodicity on a yearly basis (see Figure 12). As is the case for cities in Cluster 3, Louisville has two energy demand peaks, a more pronounced peak in the summer and a less pronounced peak in the winter.
+																	The third cluster’s representative, Louisville, has significant periodicity on a yearly basis (see Figure 12). As is the case for cities in Cluster 3, Louisville has two energy demand peaks, a more pronounced peak in the summer and a less pronounced peak in the winter. From the RMSE in Table 1, of the four cities, the Holt-Winters forecasting model is least effective for Louisville (highest RMSE). In fact, the RMSE for Louisville is more than 30 times higher than that of Dakar (Cluster 2) and Eugene (Cluster 1).
 																</p>
 																<p>
 																	<b>Figure 12: Holt-Winters Forecast for Louisville (Cluster 3)</b>
 																	<br />
 																	<img src="paper/Fig15.svg" alt="image" width = "640"/>
 																	<br />
-																	<i>Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Louisville. Original data spanned 3 calendar years from 2011 to end of 2013.</i>
+																	<i>Note: Original data spanned 3 calendar years from 2011 to end of 2013. Top left chart depicts comparison between fitted values from the model (red) and original data (black) for the entire dataset is available. Top right chart depicts the comparison between the observed energy demand (black) and the predicted energy demand (red) using the truncated dataset (2011 to end 2012). Bottom left chart depicts the same comparison as the top right chart, albeit as a scatter plot. Bottom right chart depicts the 365-day forecast of daily energy demand of Eugene by applying the model on the full dataset.</i>
 																</p>
 																<p>Interact with the data by clicking below:</p>
 																<div id="City3">
@@ -399,14 +411,13 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 																	<script type = "text/javascript"src="city3.js"></script>
 																</div>	
 																<br>
-																<p>The fourth cluster’s representative, Sacramento, shows a large peak during the boreal summer. Sacramento’s energy demand profile shows a slight downward trend from 2007 to 2013 (see Figure 13).</p>
+																<p>The fourth cluster’s representative, Sacramento, shows a large peak during the boreal summer. Sacramento’s energy demand profile shows a slight downward trend from 2007 to 2013 (see Figure 13). From the RMSE in Table 1, of the four cities, the Holt-Winters forecasting model is much less effective for Sacramento than for Eugene (Cluster 1) and Dakar (Cluster 2). The RMSE for Sacramento is more than 6 times that of Eugene and Dakar.</p>
 																<p>
 																	<b>Figure 13: Holt-Winters Forecast for Sacramento (Cluster 4)</b>
 																	<br />
 																	<img src="paper/Fig16.svg" alt="image" width="640"/>
 																	<br/>
-																	<i>
-																		Note: Left chart depicts comparison between model (red) and original data (black). Right chart depicts the 365 day forecast of daily energy demand of Sacramento. Original data spanned 7 calendar years from 2006 to end of 2013.
+																	<i>Original data spanned 7 calendar years from 2006 to end of 2013. Top left chart depicts comparison between fitted values from the model (red) and original data (black) for the entire dataset is available. Top right chart depicts the comparison between the observed energy demand (black) and the predicted energy demand (red) using the truncated dataset (2006 to end 2012). Bottom left chart depicts the same comparison as the top right chart, albeit as a scatter plot. Bottom right chart depicts the 365-day forecast of daily energy demand of Eugene by applying the model on the full dataset.
 																	</i>
 																</p>
 																<p>Interact with the data by clicking below:</p>
