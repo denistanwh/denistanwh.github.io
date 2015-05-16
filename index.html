@@ -300,20 +300,44 @@ x_{i+h}=s_{i}+ht_{i}+p_{i-k+(h\,mod\,k)}
 								<div id="results-discussion2" class="section level3">
 									<h3>Results &amp; Discussion</h3>
 																<p>We picked Eugene, Dakar, Louisville, and Sacramento to represent Cluster 1, 2, 3, and 4 respectively. Through application of the Holt-Winters forecasting algorithm, we obtained a model for each of the four cities.
-																Before applying the respective models for out-of-sample forecasting, we tested took a truncated segment of the data to run in-sample forecasts to determine the efficacy of the model. For example, although we have energy data for Eugene from 2006 to the end of 2013, we predicted energy demand for 2013 using the truncated Eugene dataset that has 2006 to end of 2012 data. Comparing between our model results and the actual energy demand data, we quantified the accuracy and perfomance of our model for the four cities. The results are summarized from figure <b>10 to 13</b>.</p>
+																Before applying the respective models for out-of-sample forecasting, we tested took a truncated segment of the data to run in-sample forecasts to determine the efficacy of the model. For example, although we have energy data for Eugene from 2006 to the end of 2013, we predicted energy demand for 2013 using the truncated Eugene dataset that has 2006 to end of 2012 data. Comparing between our model results and the actual energy demand data, we quantified the accuracy and perfomance of our model for the four cities using the RMSE. The results are summarized in Table 1. More detailed results are found in Figures 10 to 13.</p>
 
-																<p>We then forecasted a full calendar year of energy data and analyzed the model fit using the Box-Ljung residual test. These results are summarized in Table 1 and Table 2.</p>
+																<p>We then forecasted a full calendar year of energy data and analyzed the model fit using the Box-Ljung residual test. The results are summarized in Table 2.</p>
 
-																<p>Table 1: RMSE on Test Data</p>
-
-																<p>City.name     |Cluster|RMSE
-																--------------|-------|----------
-																Eugene        |1| 1365.707 |29.55
-																Dakar         |2| 1171.423 |32.37
-																Louisvill     |3| 1926.477 |1055.32
-																Sacramento    |4| 915.5914 |199.48
+																<p><b>Table 1: RMSE on Test Data</b></p>
+																<table>
+																	<thead>
+																		<tr>
+																			<th>City</th>
+																			<th>Cluster</th>
+																			<th>RMSE</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td>Eugene</td>
+																			<td>1</td>
+																			<td>29.55</td>
+																		</tr>
+																		<tr>
+																			<td>Dakare</td>
+																			<td>2</td>
+																			<td>32.37</td>
+																		</tr>
+																		<tr>
+																			<td>Louisville</td>
+																			<td>3</td>
+																			<td>1055.32</td>
+																		</tr>
+																		<tr>
+																			<td>Sacramento</td>
+																			<td>4</td>
+																			<td>199.48</td>
+																		</tr>
+																	</tbody>
+																</table>
 																
-																<p>Table 2: Summary of Box-Ljung Test Results</p>
+																<p><b>Table 2: Summary of Box-Ljung Test Results</b></p>
 																<table>
 																	<thead>
 																		<tr>
