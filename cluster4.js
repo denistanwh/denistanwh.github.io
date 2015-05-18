@@ -30,6 +30,7 @@ var cityFourThree = "Los Angeles";
 var cityFourFour = "Memphis";
 var cityFourFive = "Sacramento";
 var cityFourSix = "Delhi - BRPL";
+var cityFourSeven = "New South Wales"
 
 function drawPathsFour (svg, data, x, y) {
 	var pathOne = d3.svg.line()
@@ -73,6 +74,13 @@ function drawPathsFour (svg, data, x, y) {
 		.defined(function(d) { if (d.city == cityFourSix) { return !isNaN(d.date); } })
 		.y(function (d) { if (d.city == cityFourSix) { return y(d.MW); } })
 		.defined(function(d) { if (d.city == cityFourSix) { return !isNaN(d.MW); } });
+		
+	var pathSeven = d3.svg.line()
+		.interpolate('basis')
+		.x(function (d) { if (d.city == cityFourSeven) { return x(d.date); } })
+		.defined(function(d) { if (d.city == cityFourSeven) { return !isNaN(d.date); } })
+		.y(function (d) { if (d.city == cityFourSeven) { return y(d.MW); } })
+		.defined(function(d) { if (d.city == cityFourSeven) { return !isNaN(d.MW); } });
 		
 	svg.datum(data);
 
@@ -120,10 +128,19 @@ function drawPathsFour (svg, data, x, y) {
 		.attr("fill", "none")
 		.attr("stroke", "#8ab2ea")
 		.attr("stroke-width", "2.5");
-		
+	
 	svg.append('path')
 		.attr('class', 'Six')
 		.attr('d', pathSix)
+		.attr('clip-path', 'url(#rect-clip)')
+		.attr('shape-rendering', "crispEdges")
+		.attr("fill", "none")
+		.attr("stroke", "#d4d4d4")
+		.attr("stroke-width", "2.5");
+		
+	svg.append('path')
+		.attr('class', 'Seven')
+		.attr('d', pathSeven)
 		.attr('clip-path', 'url(#rect-clip)')
 		.attr('shape-rendering', "crispEdges")
 		.attr("fill", "none")
